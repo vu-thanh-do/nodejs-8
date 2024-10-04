@@ -1,0 +1,163 @@
+[{
+  "_id": {
+    "$oid": "64491f49903624fa08f00dc6"
+  },
+  "email": "admin@gmail.com",
+  "phone": "0938283923",
+  "username": "admin",
+  "password": "$2b$10$HAathgnQy3LZkX2c4tJXcuJ55qzhphtpyI.NEfsRMdFvpcla9dsiO",
+  "role": "isAdmin",
+  "status": "actived",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-04-26T12:55:37.978Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-26T12:55:37.978Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64491f7e903624fa08f00dcb"
+  },
+  "email": "client@gmail.com",
+  "phone": "0938283923",
+  "username": "client",
+  "password": "$2b$10$lkVrXppwZi.bMBBN2R/kfeb5i.QKkOe0tv1/.rjrIXyKzbH0PggNK",
+  "role": "isClient",
+  "status": "actived",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-04-26T12:56:30.535Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-29T16:01:58.871Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64747e9fbbc861d2823d147c"
+  },
+  "email": "admin2@gmail.com",
+  "phone": "0938283923",
+  "username": "admin2",
+  "password": "$2b$10$F8Jjqhnc9G7KNP5aUAULK.h/q/u/LnU2bIvCvv68wwBJJJen7bFXm",
+  "role": "isAdmin",
+  "status": "actived",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-05-29T10:29:51.313Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-29T10:29:51.313Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6523debf24c65007ee0ac9b6"
+  },
+  "email": "user123@example.com",
+  "phone": "1234567890",
+  "username": "user123",
+  "password": "$2b$10$mirgLiQTXQqVCXW1HF7p1uOlsKEhu4ga44Yh4ZmP7NxNiCRFI93s.",
+  "role": "user",
+  "status": "active",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-10-09T11:06:39.194Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-09T11:06:39.194Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6523decd24c65007ee0ac9ba"
+  },
+  "email": "",
+  "phone": "1112223333",
+  "username": "user789",
+  "password": "$2b$10$Xbwe5Sb6DjR5kRgHp.T7neDkRDiEZRmt6Zh0TGL.cCPm2P2M4NU7a",
+  "role": "user",
+  "status": "active",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-10-09T11:06:53.297Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-09T11:06:53.297Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6523deff24c65007ee0ac9be"
+  },
+  "email": "user1234@example.com",
+  "phone": "1112223333",
+  "username": "user789",
+  "password": "$2b$10$xNho5oHxkFziUFo7Pm2SnePJPeb9ik/TQWtHavFLWgO9MLkq8A.se",
+  "role": "user",
+  "status": "active",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-10-09T11:07:43.369Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-09T11:07:43.369Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6523df5424c65007ee0ac9c1"
+  },
+  "email": "",
+  "phone": "",
+  "username": "user789",
+  "password": "$2b$10$oAHPtB49NwoimUt/vUu6DeBd5h0wbHohrfD1uA6X55z1CcdsaJCY2",
+  "role": "",
+  "status": "noactive",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-10-09T11:09:08.492Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-09T11:09:08.492Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6523df5b24c65007ee0ac9c4"
+  },
+  "email": "",
+  "phone": "",
+  "username": "",
+  "password": "$2b$10$I0KkRponC22OKsSRHic.E.Ad98lSpKiVTVJqKuhNuCd/CKBwW0LFy",
+  "role": "",
+  "status": "noactive",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-10-09T11:09:15.504Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-09T11:09:15.504Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "653284cc94da53cffa44ba05"
+  },
+  "email": "vanhung@gmail.com",
+  "phone": "0123456789",
+  "username": "vanhung",
+  "password": "$2b$10$mjSBOo3SdBCBK.jBCRXLFu6KxMxRX6.oJTJpJgoPVF2alYWnX.PnG",
+  "role": "isClient",
+  "status": "actived",
+  "image": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+  "createdAt": {
+    "$date": "2023-10-20T13:46:52.646Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-20T13:46:52.646Z"
+  },
+  "__v": 0
+}]

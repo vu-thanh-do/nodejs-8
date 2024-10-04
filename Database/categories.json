@@ -1,0 +1,128 @@
+[{
+  "_id": {
+    "$oid": "65fd6755207e1639f49dbfe4"
+  },
+  "name": "Kỹ Năng Sống",
+  "description": "Tâm Lý Kỹ Năng Sống",
+  "slug": "tam-ly-ky-nang-song",
+  "image": "http://localhost:3100/uploads\\1711105921146-ea1d01bf505e42d7aa42d40edc14fb44.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:11:17.728Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:12:01.190Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd67c2207e1639f49dc012"
+  },
+  "name": "Khoa Học",
+  "description": "Khoa Học",
+  "slug": "khoa-hoc",
+  "image": "http://localhost:3100/uploads\\1711105986327-774abf0ea31c41e9848b82f237611413.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:13:06.361Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:13:06.361Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd67f2207e1639f49dc016"
+  },
+  "name": "Tiểu Thuyết",
+  "description": "Tiểu Thuyết",
+  "slug": "tieu-thuyet",
+  "image": "http://localhost:3100/uploads\\1711106034167-8aa7388d49aa451394a45b40d793d90e.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:13:54.206Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:13:54.206Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd6822207e1639f49dc01a"
+  },
+  "name": "Truyện",
+  "description": "Truyện",
+  "slug": "truyen-tranh",
+  "image": "http://localhost:3100/uploads\\1711106082520-2946931194a646fe86ffb79c47a640df.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:14:42.573Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:14:42.573Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd687b207e1639f49dc024"
+  },
+  "name": "Kinh Tế - Quản Lý",
+  "description": "Kinh Tế - Quản Lý",
+  "slug": "kinh-te-quan-ly",
+  "image": "http://localhost:3100/uploads\\1711106171282-42941e9405f746f6b43732dd7a164ec0.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:16:11.338Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:16:11.338Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd68b5207e1639f49dc02e"
+  },
+  "name": "Y Học -Sức Khỏe",
+  "description": "Y Học -Sức Khỏe",
+  "slug": "y-hoc-suc-khoe",
+  "image": "http://localhost:3100/uploads\\1711106229157-009ea13780ff4c2fb54c2d8e69866ac4.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:17:09.244Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:17:09.244Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd68e8207e1639f49dc032"
+  },
+  "name": "Ngoại Ngữ",
+  "description": "Ngoại Ngữ",
+  "slug": "ngoai-ngu",
+  "image": "http://localhost:3100/uploads\\1711106280288-32136df55948484993e0324b800987d3.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:18:00.344Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:18:00.344Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd691b207e1639f49dc036"
+  },
+  "name": "Làm Đẹp",
+  "description": "Làm Đẹp",
+  "slug": "lam-dep",
+  "image": "http://localhost:3100/uploads\\1711106331274-512c8e49614f4b46993e9ad5c2279626.jpg",
+  "createdAt": {
+    "$date": "2024-03-22T11:18:51.346Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-22T11:18:51.346Z"
+  },
+  "__v": 0
+}]
