@@ -1,395 +1,295 @@
-[{
-  "_id": {
-    "$oid": "65fd69b0207e1639f49dc057"
+[
+  {
+    "_id": {
+      "$oid": "65fd69b0207e1639f49dc057"
+    },
+    "name": "Ước vọng cho học đường",
+    "price": 100000,
+    "promotion": 80000,
+    "quantity": 18,
+    "description": "<p style=\"box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: center;\"><span style=\"box-sizing: border-box; color: rgb(255, 0, 0);\"><span style=\"box-sizing: border-box; font-size: 28px;\"><strong><span style=\"box-sizing: border-box; line-height: 2em; font-family: verdana, geneva, sans-serif;\">&nbsp;</span>Ước Vọng Cho Học Đường</strong></span></span></p><p style=\"box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: justify;\"><span style=\"box-sizing: border-box; font-size: 14px;\"><span style=\"box-sizing: border-box; font-family: verdana, geneva, sans-serif;\"><span style=\"box-sizing: border-box; line-height: 2.5em;\"><span style=\"box-sizing: border-box; color: rgb(34, 34, 34); background-color: rgb(245, 245, 245);\">GS. Huỳnh Như Phương là nhà giáo chuyên giảng dạy lý thuyết văn học, đồng thời là tác giảcủa nhiều công trìnhnghiên cứu, phê bình văn học. Với tư cách một nhà giáo dạy văn, ôngluôn ưu tư về nền giáo dục nước nhà, không ngừng trăn trở về văn học và nghề dạy học của bản thân. Trong hơn 40 năm làm việc, tác giả đã viết nhiều bài báo nhằm đóng góp ý kiến nâng cao chất lượng dạy và học.</span><br style=\"box-sizing: border-box; font-family: &quot;UTM Avo&quot;, sans-serif; color: rgb(34, 34, 34); font-size: 14.4px; background-color: rgb(245, 245, 245);\"><span style=\"box-sizing: border-box; color: rgb(34, 34, 34); background-color: rgb(245, 245, 245);\">“Ước vọng cho học đường”chọn lựa vàtập hợp 20 bài trong hơn 100 bàiviết về giáo dục của tác giả đã được đăng trêncác báo và tạp chí hơn 40 năm qua. GS. Huỳnh Như Phương chủ ý chọn ra những bài viết khoảng hai thập niên đầu thế kỷ XXI để cuốn sách còn giữ được tính thời sự, như vấn đề đổi mới đại học, cải cách chương trình giáo dục phổ thông, biên soạn sách giáo khoa, tăng học phí ở bậc trung học, v.v. – những vấn đề hiện nay vẫn còn “nóng”. Bằng lối viết điềm tĩnh nhưng sáng rõ, các bài viết bóc tách từng lớp sự kiệnđể tìm ra gốc rễ và kiến nghị giải pháp. Như tên gọi, cuốn sách là ước vọng của một nhà giáo luôn nặng tình với giáo dục.</span><br style=\"box-sizing: border-box; font-family: &quot;UTM Avo&quot;, sans-serif; color: rgb(34, 34, 34); font-size: 14.4px; background-color: rgb(245, 245, 245);\"><span style=\"box-sizing: border-box; color: rgb(34, 34, 34); background-color: rgb(245, 245, 245);\">Nhà xuất bản Phụ nữ Việt Nam xin trân trọng giới thiệu với quý độc giả cuốn sách “Ước vọng cho học đường”.</span><br style=\"box-sizing: border-box; font-family: &quot;UTM Avo&quot;, sans-serif; color: rgb(34, 34, 34); font-size: 14.4px; background-color: rgb(245, 245, 245);\"><span style=\"box-sizing: border-box; color: rgb(34, 34, 34); background-color: rgb(245, 245, 245);\">Trích đoạn</span><br style=\"box-sizing: border-box; font-family: &quot;UTM Avo&quot;, sans-serif; color: rgb(34, 34, 34); font-size: 14.4px; background-color: rgb(245, 245, 245);\"><span style=\"box-sizing: border-box; color: rgb(34, 34, 34); background-color: rgb(245, 245, 245);\">“Từ chỗ đứng của một nhà giáo ở cơ sở, tôi không có được cái nhìn toàn cảnh về thực trạng và cũng không có khả năng đưa ra những giải pháp căn bản cho giáo dục. Đây chẳng qua là những gợi ý và nhất là, như tên gọi của cuốn sách, những ước vọng của một người bày tỏ từ sân trường, từ bục giảng, về tương lai của nền giáo dục nước nhà. Những ước vọng này có thể sẽ mãi là ước vọng, nhưng thiết nghĩ, vẫn cần được bộc bạch với tất cả sự chân thành.”</span></span></span></span></p><div><br></div>",
+    "image": "http://localhost:3100/uploads\\1728295331080-uoc-vong-cho-hoc-duong_134477_1.jpg",
+    "slide": [],
+    "category": {
+      "$oid": "65fd6755207e1639f49dbfe4"
+    },
+    "createdAt": {
+      "$date": "2024-03-22T11:21:20.342Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:22:07.907Z"
+    },
+    "__v": 0,
+    "status": "Available",
+    "url_book": "",
+    "manufacturer": "Huỳnh như phương",
+    "year": 2008,
+    "form": "Cứng",
+    "size": "12x24cm",
+    "weight": 400,
+    "pages": 300,
+    "pulisher": "Kim Đồng"
   },
-  "name": "Yêu nhau nên biết",
-  "price": 150000,
-  "promotion": 150000,
-  "quantity": 95,
-  "description": "<div>​<span style=\"color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">« Yêu nhau nên biết » là một cái địa- bàn chỉ phương hướng cho các bạn tình.</span><br style=\"box-sizing: border-box; color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">​<span style=\"color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Đọc « Yêu nhau nên biết » sẽ biết hưởng cái thú tính-due một cách cao- thượng, viên mãn, hợp với đạo đức và vệ sinh sau khi đã đọc qua sách « Ái- tình bảo-giám » rồi.</span><br style=\"box-sizing: border-box; color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">​<span style=\"color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Rồi, đến cuốn « Trường học ái-tinh &gt;&gt;&gt; sẽ in tiếp để dẫn-bảo cho bạn trai bạn gái cách xem xét tướng mạo, tính-tinh, chiều chuộng, cám dỗ sao cho cuộc sinh- hoạt ái-tinh được đằm thắm nồng nàn mãi mãi:</span><br style=\"box-sizing: border-box; color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><br style=\"box-sizing: border-box; color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">​<span style=\"color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Một giây một buộc,</span><br style=\"box-sizing: border-box; color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">​<span style=\"color: rgb(79, 93, 119); font-family: lato, sans-serif; font-size: 19px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Ai giằng cho ra...</span><br><br><br></div>",
-  "image": "http://localhost:3100/uploads\\1711106480246-0d8347f0d79542c1962ee03a989bc58a.jpg",
-  "slide": [],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
+  {
+    "_id": {
+      "$oid": "65fd6de3207e1639f49dc1c0"
+    },
+    "name": "Doraemon Hoạt Hình Màu - Tập 1 (Tái Bản 2020)",
+    "price": 130000,
+    "promotion": 98000,
+    "quantity": 12,
+    "description": "<p style=\"box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: justify;\"><span style=\"box-sizing: border-box; font-size: small;\"><span style=\"box-sizing: border-box; font-family: Verdana;\">Trọn bộ 2 tập<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Tuyển tập những truyện ngắn đặc sắc nhất được dựng thành phim hoạt hình.</span></span></p><p style=\"box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: justify;\"><br></p><div><br></div>",
+    "image": "http://localhost:3100/uploads\\1728295751741-doraemon-hoat-hinh-mau-tap-1_14542_12609.jpg",
+    "slide": [],
+    "category": {
+      "$oid": "65fd6822207e1639f49dc01a"
+    },
+    "url_book": "http://localhost:3100/uploads\\1711107665864-33f8208cf0ee43e78589621f7d6b6ab5.jpg",
+    "createdAt": {
+      "$date": "2024-03-22T11:39:15.209Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:21:59.460Z"
+    },
+    "__v": 0,
+    "manufacturer": "FujikoFFujio  ",
+    "status": "Available",
+    "form": "Cứng",
+    "pages": 150,
+    "pulisher": "Kim Đồng",
+    "size": "13x19cm",
+    "weight": 300,
+    "year": 2004
   },
-  "createdAt": {
-    "$date": "2024-03-22T11:21:20.342Z"
+  {
+    "_id": {
+      "$oid": "65fd6f33207e1639f49dc1d3"
+    },
+    "name": "Thám Tử Lừng Danh Conan - Tiểu Thuyết - Ngôi Sao 5 Cánh 1 Triệu Đô",
+    "price": 80000,
+    "promotion": 44999,
+    "quantity": 89,
+    "description": "<div><span style=\"font-size: 18px;\">“Thành công là một hành trình, không phải là một điểm đến”. -- David Niven, Ph. D.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">“Không có gì vĩ đại đạt được mà thiếu sự tâm huyết.” -- Ralph Waldo Emerson</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cuốn sách đã chỉ ra rằng trong cuộc sống, ai cũng mong muốn có được thành công. Và để đạt được ước mơ đó, mỗi người phải nỗ lực học tập, rèn luyện và làm việc, cũng như phải suy nghĩ, trăn trở để lựa chọn hướng đi đến thành công. Và thành công không phải là một may mắn hay số phận mà thành công là sự cố gắng của cả một quá trình và chúng ta phải vượt qua rất nhiều khó khăn và thử thách để đạt được.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Bí quyết của thành công không phải là những gì xa lạ và khó thực hiện, đòi hỏi phải rèn luyện công phu trong nhiều năm trời mới có được. Cuốn sách không đưa ra những điều cao siêu hay đặt ra những mục tiêu lớn lao vượt khỏi khả năng của mỗi người. Mà chỉ đơn giản là những thái độ sống, những suy nghĩ tích cực, những điều khuyên thực tế mà bạn có thể áp dụng ngay vào lúc này – bất kể hoàn cảnh và tình trạng hiện có của bạn.​</span><br></div>",
+    "image": "http://localhost:3100/uploads\\1728296047937-tham-tu-lung-danh-conan-tieu-thuyet-ngoi-sao-5-canh-1-trieu-do_133956_1.jpg",
+    "slide": [
+      "http://localhost:3100/uploads\\1711107851540-baa6b241fc584f3d938ce8b341ee1162.jpg"
+    ],
+    "category": {
+      "$oid": "65fd6822207e1639f49dc01a"
+    },
+    "url_book": "",
+    "createdAt": {
+      "$date": "2024-03-22T11:44:51.537Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:21:51.483Z"
+    },
+    "__v": 0,
+    "manufacturer": "Gosho Aoyama  ",
+    "status": "Available",
+    "form": "Cứng",
+    "pages": 200,
+    "pulisher": "Kim Đồng",
+    "size": "13x19cm",
+    "weight": 300,
+    "year": 2022
   },
-  "updatedAt": {
-    "$date": "2024-03-29T08:44:07.601Z"
+  {
+    "_id": {
+      "$oid": "65fd6fe1207e1639f49dc1e0"
+    },
+    "name": "Shin - cậu bé bút chì - Hoạt hình màu - Tập 15",
+    "price": 60000,
+    "promotion": 40000,
+    "quantity": 99,
+    "description": "<div><span style=\"font-size: 18px;\"><span style=\"font-family: Verdana;\"><strong>BookGarden mời bạn đón đọc.</strong></span></span><br><br></div>",
+    "image": "http://localhost:3100/uploads\\1728296187448-shin-cau-be-but-chi-hoat-hinh-mau-tap-15_27106_1.jpg",
+    "slide": [
+      "http://localhost:3100/uploads\\1711107993842-edc448afabe243b4b617bb59c3043113.jpg"
+    ],
+    "category": {
+      "$oid": "65fd6822207e1639f49dc01a"
+    },
+    "url_book": "",
+    "createdAt": {
+      "$date": "2024-03-22T11:47:45.355Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:21:33.907Z"
+    },
+    "__v": 0,
+    "manufacturer": "Yoshito Usui  ",
+    "status": "Available",
+    "form": "Cứng",
+    "pages": 320,
+    "pulisher": "Kim Đồng",
+    "size": "13x19cm",
+    "weight": 300,
+    "year": 2012
   },
-  "__v": 0,
-  "status": "Available",
-  "url_book": ""
-},
-{
-  "_id": {
-    "$oid": "65fd6de3207e1639f49dc1c0"
+  {
+    "_id": {
+      "$oid": "65fd7074207e1639f49dc1e6"
+    },
+    "name": "Bí Mật Của Trăng",
+    "price": 150000,
+    "promotion": 99999,
+    "quantity": 100,
+    "description": "<p style=\"box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: center;\"><span style=\"box-sizing: border-box; color: rgb(255, 0, 0);\"><span style=\"box-sizing: border-box; font-size: 28px;\"><strong><span style=\"box-sizing: border-box; line-height: 2em; font-family: verdana, geneva, sans-serif;\">&nbsp;</span>Bí Mật Của Trăng</strong></span></span></p><p style=\"box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><span style=\"box-sizing: border-box; line-height: 2em; font-family: verdana, geneva, sans-serif; font-size: 14px;\">&nbsp;</span></p><p style=\"box-sizing: border-box; margin: 0px 0px 1rem; padding: 0px; text-align: justify;\"><span style=\"box-sizing: border-box; font-family: verdana, geneva, sans-serif;\"><span style=\"box-sizing: border-box; font-size: 14px;\"><span style=\"box-sizing: border-box; line-height: 2.5em;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">BỘ THƠ &amp; TRANH TÔ MÀU SONG NGỮ NÀY LÀ MÓN QUÀ TUYỆT VỜI DÀNH CHO CÁC BẠN NHỎ!!!</span></span></span></span></p><p style=\"box-sizing: border-box; margin: 0px 0px 1rem; padding: 0px; text-align: justify;\"><span style=\"box-sizing: border-box; font-family: verdana, geneva, sans-serif;\"><span style=\"box-sizing: border-box; font-size: 14px;\"><span style=\"box-sizing: border-box; line-height: 2.5em;\">Bộ sách được thiết kế nhằm giúp các bạn nhỏ phát triển tư duy ngôn ngữ, tư duy hình ảnh và trí tuệ cảm xúc!</span></span></span></p><p style=\"box-sizing: border-box; margin: 0px 0px 1rem; padding: 0px; text-align: justify;\"><span style=\"box-sizing: border-box; font-family: verdana, geneva, sans-serif;\"><span style=\"box-sizing: border-box; font-size: 14px;\"><span style=\"box-sizing: border-box; line-height: 2.5em;\">Bạn có thể tìm thấy trong cuốn sách này:</span></span></span></p><ul style=\"box-sizing: border-box; margin: 0px 0px 1rem; padding: 0px; list-style: inherit;\"><li style=\"box-sizing: border-box; margin: 0px; padding: 0px; list-style-type: none; display: list-item; text-align: justify;\"><span style=\"box-sizing: border-box; font-family: verdana, geneva, sans-serif;\"><span style=\"box-sizing: border-box; font-size: 14px;\"><span style=\"box-sizing: border-box; line-height: 2.5em;\">Những câu chuyện thú vị được thể hiện bằng những bài thơ</span></span></span></li><li style=\"box-sizing: border-box; margin: 0px; padding: 0px; list-style-type: none; display: list-item; text-align: justify;\"><span style=\"box-sizing: border-box; font-family: verdana, geneva, sans-serif;\"><span style=\"box-sizing: border-box; font-size: 14px;\"><span style=\"box-sizing: border-box; line-height: 2.5em;\">Những bức tranh tô màu cho bé thỏa thuê tí toáy</span></span></span></li><li style=\"box-sizing: border-box; margin: 0px; padding: 0px; list-style-type: none; display: list-item; text-align: justify;\"><span style=\"box-sizing: border-box; font-family: verdana, geneva, sans-serif;\"><span style=\"box-sizing: border-box; font-size: 14px;\"><span style=\"box-sizing: border-box; line-height: 2.5em;\">Những từ ngữ phong phú được trình bày dưới dạng song ngữ Anh - Việt</span></span></span></li></ul><div><br></div>",
+    "image": "http://localhost:3100/uploads\\1728308937349-bi-mat-cua-trang_134478_1.jpg",
+    "slide": [
+      "http://localhost:3100/uploads\\1711108166581-0f980a3ca32f4ee28c5d5004edca158c.jpg"
+    ],
+    "category": {
+      "$oid": "65fd6755207e1639f49dbfe4"
+    },
+    "url_book": "http://localhost:3100/uploads\\1711108169966-0f980a3ca32f4ee28c5d5004edca158c.jpg",
+    "createdAt": {
+      "$date": "2024-03-22T11:50:12.201Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:21:42.085Z"
+    },
+    "__v": 0,
+    "status": "Available",
+    "manufacturer": "Nguyễn Bá Đô​",
+    "form": "Cứng",
+    "pages": 250,
+    "pulisher": "Hà Nội",
+    "size": "13x19cm",
+    "weight": 350,
+    "year": 2007
   },
-  "name": "Suy Nghĩ Lớn, Hành Động Nhỏ",
-  "price": 130000,
-  "promotion": 98000,
-  "quantity": 35,
-  "description": "<div><span style=\"font-size: 18px;\">Mọi người thường cho rằng có 3 cách để gia tăng lợi nhuận của một công ty, đó là cắt giảm biên chế và chi phí, thu nhỏ quy mô quy mô doanh nghiệp hay làm lại sổ sách kế toán. Nhưng vẫn còn một cách khác tốt hơn – một cách đã được 9 công ty có mức tăng lợi nhuận khó tin và được điều hành tốt áp dụng.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Jason Jenning và đội ngũ nghiên cứu đã sàng lọc 100 nghìn công ty trên khắp nước Mỹ để tìm ra 9 công ty tuy hiếm khi xuất hiện trên truyền thông nhưng lại có mức tăng doanh thu và lợi nhuận hằng năm lên đến 10% hoặc hơn. Họ đã phỏng vấn các nhà lãnh đạo, công nhân và khách hàng của những “siêu sao” thầm lặng này và tìm ra được bí mật ẩn sâu đằng sau đó.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Hóa ra, tất cả các công ty này đều có một điểm chung. Văn hóa của họ đều dựa trên một khái niệm đơn giản đến vô cùng: Suy nghĩ lớn nhưng hành động nhỏ. Cả 9 công ty đều nghĩ đến những ý tưởng lớn lao về việc giải quyết các nhu cầu của khách hàng, cho ra mắt những sản phẩm tốt hơn và tạo ra giá trị. Họ không bao giờ dừng đổi mới như các công ty khởi nghiệp – mà vẫn luôn khiêm tốn, đối xử bình đẳng với nhân viên và dạy cho các quản lý phải biết cách để đôi tay mình lấm bẩn.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Mặc cho nền kinh tế thế giới suy thoái, 9 công ty kia vẫn không ngừng phát triển. Họ chính là minh chứng cho việc bất kể quy mô hay ngành nghề kinh doanh, các công ty chỉ cần có được hướng tiếp cận đúng đắn là có thể gặt hái được thành công giống như họ.</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711107667787-33f8208cf0ee43e78589621f7d6b6ab5.jpg",
-  "slide": [],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
+  {
+    "_id": {
+      "$oid": "65fd733e207e1639f49dc21a"
+    },
+    "name": "Đêm Trước - Cha và Con",
+    "price": 140000,
+    "promotion": 109000,
+    "quantity": 100,
+    "description": "<div><span style=\"font-size: 18px;\">Hai tiểu thuyết nổi tiếng của nhà văn Nga Ivan Turgenev có chung đề tài về cuộc sống của thanh niên Nga trong giai đoạn khủng hoảng về tư tưởng xã hội. Tác phẩm Đêm trước viết về tình yêu giữa Elena - người thiếu nữ Nga và Inxarov - một chàng trai Bungari. Họ có chung lí tưởng và cá tính mạnh mẽ, mong muốn thay đổi tình trạng trì trệ, tối tăm của xã hội. Nhưng, Inxarov đã chết trước khi anh kịp làm một điều gì đó cụ thể cho đất nước Bungari của anh và số phận Elena vẫn còn bỏ ngỏ. Cũng tương tự như vậy Bazarov trong Cha và con là một thanh niên thông minh, nhiệt tình và phủ nhận mọi đức tin cũng như những hành động đạo đức nửa vời. Với cá tính mãnh liệt, anh sẵn sàng tranh cãi và thậm chí đấu súng với những người mà anh cho là trưởng giả và lạc hậu. Tuy nhiên, chàng thanh niên theo chủ nghĩa hư vô đó cũng sớm lìa khỏi cuộc sống vì lây bệnh khi anh khám chữa cho những người nông dân.</span></div><div><span style=\"font-size: 18px;\">​</span></div>",
+    "image": "http://localhost:3100/uploads\\1728296765053-24733016.jpg",
+    "slide": [
+      "http://localhost:3100/uploads\\1711108814955-38e080a07cad4ecca91b51ad05a3140e.jpg"
+    ],
+    "category": {
+      "$oid": "65fd67f2207e1639f49dc016"
+    },
+    "url_book": "",
+    "createdAt": {
+      "$date": "2024-03-22T12:02:06.264Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:22:24.054Z"
+    },
+    "__v": 0,
+    "status": "Available",
+    "manufacturer": "Ivan Turgenev",
+    "form": "Mềm",
+    "pages": 300,
+    "pulisher": "Nhã Nam",
+    "size": "14,5x22",
+    "weight": 510,
+    "year": 2006
   },
-  "url_book": "http://localhost:3100/uploads\\1711107665864-33f8208cf0ee43e78589621f7d6b6ab5.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T11:39:15.209Z"
+  {
+    "_id": {
+      "$oid": "65fd73c7207e1639f49dc220"
+    },
+    "name": "Những Kỳ Án Nổi Tiếng Chưa Có Lời Giải",
+    "price": 230000,
+    "promotion": 179000,
+    "quantity": 50,
+    "description": "<div><span style=\"font-size: 18px;\">\"Vườn Hoa Mạt Dược Ký Sự - Những Kỳ Án Nổi Tiếng Chưa Có Lời Giải\" là một cuốn sách trinh thám, tập hợp 15 vụ án nổi tiếng chưa có lời giải trên thế giới. Các vụ án được tác giả Hà Mạt Bì thu thập và phân tích một cách chi tiết, đầy đủ thông tin, từ diễn biến vụ án, những manh mối được tìm thấy, đến những giả thuyết được đưa ra.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cuốn sách mở đầu với vụ án \"Chiếc ghế điện ma ám\" xảy ra tại nhà tù Sing Sing, Mỹ. Vụ án này đã khiến cho chiếc ghế điện trở thành một nỗi ám ảnh kinh hoàng đối với các tử tù. Tiếp theo là vụ án \"Bóng ma nhà hát\" xảy ra tại nhà hát Grand Guignol, Pháp. Vụ án này đã khiến cho nhà hát này trở thành một nơi bị bỏ hoang, không ai dám bén mảng đến.</span><br></div>",
+    "image": "http://localhost:3100/uploads\\1728296950440-a91636480676453f90d2c4c565579825.jpg",
+    "slide": [
+      "http://localhost:3100/uploads\\1711108989881-cade1bf1dc8447568e9f8aeae59e0d93.jpg"
+    ],
+    "category": {
+      "$oid": "65fd67f2207e1639f49dc016"
+    },
+    "url_book": "",
+    "createdAt": {
+      "$date": "2024-03-22T12:04:23.677Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:21:09.240Z"
+    },
+    "__v": 0,
+    "status": "Available",
+    "manufacturer": "Hà Mạt Bì",
+    "form": "Mềm",
+    "pages": 400,
+    "pulisher": "Thế Giới",
+    "size": "20.5 x 14.5 cm",
+    "weight": 450,
+    "year": 2021
   },
-  "updatedAt": {
-    "$date": "2024-03-23T03:51:29.484Z"
+  {
+    "_id": {
+      "$oid": "65fd74fc207e1639f49dc226"
+    },
+    "name": "Mùa Tôm",
+    "price": 160000,
+    "promotion": 110000,
+    "quantity": 95,
+    "description": "<div><span style=\"font-size: 18px;\">Trong nền văn học Ấn Độ thế kỷ XX, các tác giả càng ngày càng muốn nắm bắt và thể hiện được cuộc sống trong dạng chân chất, nguyên khai của nó, không thỏa mãn với các miêu tả đầy lãng mạn và huyền bí, cũng như không chỉ thu hẹp vào thế giới tinh thần mang đậm màu sắc tôn giáo của con người, như trong những tác phẩm viết về Ấn Độ thế kỷ 19. Trong số các tác giả có nhiều cách tân, Thakagi Sivasankara Pillai là một ngòi bút có nhiều đóng góp xuất sắc. Ông sinh ngày 17/4/1912 tại làng Thakagi, bang Kerala, một trong những bang nghèo bậc nhất ở Ấn Độ nhưng lại có truyền thống lâu đời về văn hóa -- nền văn hóa Malayalam. Thiên nhiên ở miền nam Ấn Độ này hết sức khắc nghiệt, cộng với một bối cảnh xã hội còn chịu ảnh hưởng nặng nề của đời sống đẳng cấp đã khiến đời sống người dân nghèo luôn luôn đứng trước những xung đột, tai họa, bất công. Thakagi Pillai có ý thức rõ rệt muốn góp một tiếng nói, một cách nhìn xây dựng vào thực tế xã hội của quê hương mình. Từ bút pháp lãng mạn thời kỳ đầu, ông chuyển sang bút pháp hiện thực. Năm 1942, ông sáng lập Liên đoàn các nhà văn tiến bộ bang Kerala. Ngay những tác phẩm thời trẻ như Hoa mới nở (1934), Những câu chuyện Thakagi (1938), Pillai đã dũng cảm đứng về phía người nghèo, phê phán những bất công xã hội. Trong nhiều truyện dài của ông, nhân vật chính thường là những con người lao động, xuất thân từ những đẳng cấp thấp, luôn phải hứng chịu những thử thách khốc liệt của cuộc sống như trong Cái đầu lâu (1947), Con trai người quét rác (1948), Hai vốc cơm (1949). Nhưng với tiểu thuyết Mùa Tôm (1956), Pillai đã trở lại với bút pháp lãng mạn ban đầu của mình khi viết về tình yêu khác đẳng cấp và tín ngưỡng ở một vùng dân chài. Cuốn tiểu thuyết đã đem lại vinh quang cho Pillai, được giải thưởng của Viện hàn lâm văn học Ấn Độ do Tổng thống Ấn Độ trao tặng (năm 1957), Giải thưởng văn học cao nhất ở Ấn Độ. Trong Mùa tôm, cuộc sốngvới những vật lộn khắc nghiệt hàng ngày của người lao động tại một làng chài Ấn Độ hiện lên rất sáng rõ trong bối cảnh thiên nhiên nghiệt ngã, giữa những hàng rào vô hình mà tai ác, ngăn cách những con người ở những đẳng cấp xã hội và tín ngưỡng khác nhau và dẫn đến kết cục thật bi thảm. Cuốn sách từ khi ra đời đã được bàn cãi sôi nổi, tính đến năm 1965 đã được in đi in lại mười bốn lần và trở thành một sự kiện trong đời sống văn học Ấn Độ những năm 50-60. Đưa tác phẩm này của Pillai đến với bạn đọc Việt Nam, chúng tôi muốn giới thiệu một ngòi bút giàu lương tri, nhân ái. Suốt đời chiến đấu cho sự đổi mới và tiến bộ xã hội, dũng cảm bênh vực những khát vọng của con người ở dưới đáy xã hội, và luôn kêu gọi họ hợp lực lại đấu tranh cho một cuộc sống thật xứng đáng với con người.</span><br></div>",
+    "image": "http://localhost:3100/uploads\\1728296987278-290743-mua-tom.jpg",
+    "slide": [
+      "http://localhost:3100/uploads\\1711109266443-8aa7388d49aa451394a45b40d793d90e.jpg"
+    ],
+    "category": {
+      "$oid": "65fd67f2207e1639f49dc016"
+    },
+    "url_book": "",
+    "createdAt": {
+      "$date": "2024-03-22T12:09:32.229Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:24:11.480Z"
+    },
+    "__v": 0,
+    "status": "Available",
+    "manufacturer": "Thakazhi Sivasankara Pillai",
+    "form": "Mềm",
+    "pages": 286,
+    "pulisher": "Văn Học",
+    "size": "20.5x13cm",
+    "weight": 450,
+    "year": 2015
   },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65fd6f33207e1639f49dc1d3"
-  },
-  "name": "Bí Quyết Của Thành Công",
-  "price": 195000,
-  "promotion": 120000,
-  "quantity": 89,
-  "description": "<div><span style=\"font-size: 18px;\">“Thành công là một hành trình, không phải là một điểm đến”. -- David Niven, Ph. D.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">“Không có gì vĩ đại đạt được mà thiếu sự tâm huyết.” -- Ralph Waldo Emerson</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cuốn sách đã chỉ ra rằng trong cuộc sống, ai cũng mong muốn có được thành công. Và để đạt được ước mơ đó, mỗi người phải nỗ lực học tập, rèn luyện và làm việc, cũng như phải suy nghĩ, trăn trở để lựa chọn hướng đi đến thành công. Và thành công không phải là một may mắn hay số phận mà thành công là sự cố gắng của cả một quá trình và chúng ta phải vượt qua rất nhiều khó khăn và thử thách để đạt được.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Bí quyết của thành công không phải là những gì xa lạ và khó thực hiện, đòi hỏi phải rèn luyện công phu trong nhiều năm trời mới có được. Cuốn sách không đưa ra những điều cao siêu hay đặt ra những mục tiêu lớn lao vượt khỏi khả năng của mỗi người. Mà chỉ đơn giản là những thái độ sống, những suy nghĩ tích cực, những điều khuyên thực tế mà bạn có thể áp dụng ngay vào lúc này – bất kể hoàn cảnh và tình trạng hiện có của bạn.​</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711107911917-baa6b241fc584f3d938ce8b341ee1162.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711107851540-baa6b241fc584f3d938ce8b341ee1162.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711107905007-baa6b241fc584f3d938ce8b341ee1162.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T11:44:51.537Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-22T11:45:12.107Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65fd6fe1207e1639f49dc1e0"
-  },
-  "name": "Thế Giới Trong Bạn",
-  "price": 110000,
-  "promotion": 99000,
-  "quantity": 99,
-  "description": "<div><span style=\"font-size: 18px;\">“Thế giới trong bạn”(tựa gốc: “The World Within”) tổng hợp những cuộc hỏi đáp giữa Jiddu Krishnamurti với những người đã tìm đến ông vào giai đoạn ông sống “lánh đời” hồi Thế chiến thứ 2. Dù vậy, cuốn sách vẫn mang tính thời đại và có liên hệ trực tiếp với cuộc sống ngày nay.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Người ta tìm đến để hỏi Krishnamurti về mọi thứ: sinh kế, mối quan hệ, nuôi dạy con, mâu thuẫn hàng ngày, bế tắc trong cuộc sống, nỗi đau đang xiềng xích họ, tình trạng trống rỗng, chán nản nghề nghiệp, những giấc mơ lộn xộn, xung đột với tổ chức, chiến tranh và thậm chí là cách để thay đổi thế giới…</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Đọc “Thế giới trong bạn”, ta sẽ thấy rằng trước mọi câu hỏi, lời hồi đáp của Krishnamurti đều giúp cho người đọc tự nhìn thấy các vấn đề của họ bằng cách hãy tự biết mình. Bởi mọi niềm vui và đau khổ của thế giới đều là sự phản ánh của niềm vui và đau khổ trong ta, vì ta chính là thế giới, nên mọi thay đổi đều phải bắt đầu từ chính mình. “Giống như cái cây sẽ chết nếu các cành và lá của nó bị cắt cụt nhiều lần, sự vô minh và đau khổ phải bị triệt hạ ngay khi chúng xuất hiện, thông qua nhận thức không ngừng và sự hiểu biết”, ông nói.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Nhưng, tự biết mình bằng cách nào và tự nhận thức như thế nào là sâu sắc? Câu trả lời sẽ được lật mở chậm rãi qua 80 bài đối thoại trong cuốn sách “Thế giới trong bạn”. Tựu trung, theo Krishnamurti, sự hiểu biết trọn vẹn về chính mình bắt đầu từ việc xem xét triệt để các suy nghĩ và cảm xúc, vượt lên trên kiến thức, không so sánh, không phán xét, không lệ thuộc vào người khác và nhất là không tuân theo bất cứ khuôn mẫu nào.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">“Tự biết mình là việc không dễ dàng”, Krishnamurti nói, “Nó giống như một bộ sách dày trang. Bạn không thể bỏ qua một trang nào, bởi vì mỗi trang đều đưa ra gợi ý về sự khám phá và trải nghiệm”. Một khi ta biết cách đọc cuốn sách chính mình, ta cũng sẽ biết về thế giới xung quanh và mọi vấn đề của nó. “Bạn chính là thế giới”, Krishnamurti nói.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cách đối thoại của Krishnamurti trực diện và tỉnh táo, lập luận của ông đôi khi sắc như dao, có lúc lại uyển chuyển với hình ảnh cái cây, con sông, đám lửa... Cứ thế, qua từng đoạn đối thoại ngắn, ông đã khiến cho người xem thời xưa lẫn người đọc hiện tại choáng váng, như lời của một người được giải đáp đã chia sẻ: “Điều ông vừa nói dường như đã mở ra những triển vọng lớn lao, tôi phải suy nghĩ về nó”.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Không khuyên bảo hay dạy dỗ, điều Krishnamurti làm là gợi mở cho người ta tự chiêm nghiệm, tự suy nghĩ để tìm kiếm câu trả lời. Ông không ngừng nhắc nhở mọi người nhìn vào nội tâm, nhìn thế giới qua chính mình, để tự giải thoát bản thân khỏi những sự khuôn định, khỏi những tư tưởng và thẩm quyền. Và để bắt đầu hành trình đó, chúng ta không cần tìm kiếm đâu xa cũng không cần cầu viện bất kỳ ai, chúng ta có thể bắt đầu từ chính mình, bằng thiền định đúng và tư duy đúng.​</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711108065258-edc448afabe243b4b617bb59c3043113.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711107993842-edc448afabe243b4b617bb59c3043113.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711107997527-edc448afabe243b4b617bb59c3043113.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T11:47:45.355Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-25T03:55:16.249Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65fd7074207e1639f49dc1e6"
-  },
-  "name": "Những câu chuyện lý thú về hình học",
-  "price": 105000,
-  "promotion": 79000,
-  "quantity": 100,
-  "description": "<div><span style=\"font-size: 18px;\">Cuốn sách này kể Những câu chuyện lý thú về hình học. Tuy vậy chúng tôi không có ý định và cũng không thể mô tả một cách hoàn chỉnh, liền mạch từng vân để của hình học. Đó là nhiệm vụ của sách giáo khoa.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Trong quá trình từ dạy đến học, từ học đến hiểu, từ hiểu đến áp dụng, từ áp dụng đến sáng tạo đòi hỏi mỗi người phải tìm tòi, năng động. Sách giáo khoa chỉ cung cấp những điều cót yếu, cho nên muốn hiểu đầy đủ và sâu sắc hơn từng vẫn để cán đọc các sách bổ khuyết. Và đây là cuốn sách bổ khuyết như vậy về hình học.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Sách phục vụ học sinh, giáo viên phổ thông và những người yêu thích toán.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Nguyễn Bá Đô​</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711108212091-0f980a3ca32f4ee28c5d5004edca158c.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711108166581-0f980a3ca32f4ee28c5d5004edca158c.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd67c2207e1639f49dc012"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711108169966-0f980a3ca32f4ee28c5d5004edca158c.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T11:50:12.201Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-22T11:50:12.201Z"
-  },
-  "__v": 0,
-  "status": "Available"
-},
-{
-  "_id": {
-    "$oid": "65fd71d7207e1639f49dc200"
-  },
-  "name": "Tạp chí kiến thức ngày nay - số 282",
-  "price": 70000,
-  "promotion": 59000,
-  "quantity": 93,
-  "description": "<div><span style=\"font-size: 18px;\">Số 282 phát hành ngày 01/06/1998 bao gồm các bài viết như :</span></div><ul><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Mấy ý nghĩa về bản sắc văn hóa Nam Bộ&nbsp;</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Về cuộc thăm dò ý kiến bạn đọc kiến thức ngày nay</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Alan Shearer vua phá lưới lần 2</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Chăm sóc và chữa trị trẻ trước khi chào đời&nbsp;</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Kim Dung trở lại Việt Nam</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">ABC kinh tế: GDP, tổng sản phẩm quốc nội</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Đứa trẻ hoang dai</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Đam mê bàn tay&nbsp;</span></li></ul><div><span style=\"font-size: 18px;\">và nhiều bài viết khác mang tính tham khảo và hoài niệm chờ các bạn đón đọc</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711108567042-fb688ba4fab84efe9a81dfab2808b5e7.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711108491410-fb688ba4fab84efe9a81dfab2808b5e7.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd67c2207e1639f49dc012"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711108495274-fb688ba4fab84efe9a81dfab2808b5e7.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T11:56:07.194Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-25T15:23:16.783Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65fd724d207e1639f49dc206"
-  },
-  "name": "Tạp chí kiến thức ngày nay - số 270",
-  "price": 90000,
-  "promotion": 65000,
-  "quantity": 100,
-  "description": "<div><span style=\"font-size: 18px;\">Số 270 (số tất niên) bao gồm những bài viết sau đây :</span></div><ul><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Cuộc chiến chính tả vẫn còn tiếp diễn</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">10 lý do để nước chủ nhà hy vọng</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Mốt chơi mới trong giới nữ&nbsp;</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Cô gái nghèo trở thành hoa hậu</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Nét đẹp Xuân Hòa</span></li><li style=\"font-size: 18px;\"><span style=\"font-size: 18px;\">Thích khách thời Đông Chu</span></li></ul><div><span style=\"font-size: 18px;\">...&nbsp;</span></div><div><span style=\"font-size: 18px;\">và nhiều bài viết khác kính mời các bạn đọc lại để ôn lại kỷ niệm​</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711108685034-18402b9467ef4681bede861cbed6aa69.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711108623123-18402b9467ef4681bede861cbed6aa69.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd67c2207e1639f49dc012"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711108626740-18402b9467ef4681bede861cbed6aa69.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T11:58:05.158Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-22T11:58:05.158Z"
-  },
-  "__v": 0,
-  "status": "Available"
-},
-{
-  "_id": {
-    "$oid": "65fd733e207e1639f49dc21a"
-  },
-  "name": "Đêm Trước - Cha và Con",
-  "price": 140000,
-  "promotion": 109000,
-  "quantity": 100,
-  "description": "<div><span style=\"font-size: 18px;\">Hai tiểu thuyết nổi tiếng của nhà văn Nga Ivan Turgenev có chung đề tài về cuộc sống của thanh niên Nga trong giai đoạn khủng hoảng về tư tưởng xã hội. Tác phẩm Đêm trước viết về tình yêu giữa Elena - người thiếu nữ Nga và Inxarov - một chàng trai Bungari. Họ có chung lí tưởng và cá tính mạnh mẽ, mong muốn thay đổi tình trạng trì trệ, tối tăm của xã hội. Nhưng, Inxarov đã chết trước khi anh kịp làm một điều gì đó cụ thể cho đất nước Bungari của anh và số phận Elena vẫn còn bỏ ngỏ. Cũng tương tự như vậy Bazarov trong Cha và con là một thanh niên thông minh, nhiệt tình và phủ nhận mọi đức tin cũng như những hành động đạo đức nửa vời. Với cá tính mãnh liệt, anh sẵn sàng tranh cãi và thậm chí đấu súng với những người mà anh cho là trưởng giả và lạc hậu. Tuy nhiên, chàng thanh niên theo chủ nghĩa hư vô đó cũng sớm lìa khỏi cuộc sống vì lây bệnh khi anh khám chữa cho những người nông dân.</span></div><div><span style=\"font-size: 18px;\">​</span></div>",
-  "image": "http://localhost:3100/uploads\\1711108926153-38e080a07cad4ecca91b51ad05a3140e.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711108814955-38e080a07cad4ecca91b51ad05a3140e.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd67f2207e1639f49dc016"
-  },
-  "url_book": "",
-  "createdAt": {
-    "$date": "2024-03-22T12:02:06.264Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-29T02:43:25.020Z"
-  },
-  "__v": 0,
-  "status": "Available"
-},
-{
-  "_id": {
-    "$oid": "65fd73c7207e1639f49dc220"
-  },
-  "name": "Những Kỳ Án Nổi Tiếng Chưa Có Lời Giải",
-  "price": 230000,
-  "promotion": 179000,
-  "quantity": 50,
-  "description": "<div><span style=\"font-size: 18px;\">\"Vườn Hoa Mạt Dược Ký Sự - Những Kỳ Án Nổi Tiếng Chưa Có Lời Giải\" là một cuốn sách trinh thám, tập hợp 15 vụ án nổi tiếng chưa có lời giải trên thế giới. Các vụ án được tác giả Hà Mạt Bì thu thập và phân tích một cách chi tiết, đầy đủ thông tin, từ diễn biến vụ án, những manh mối được tìm thấy, đến những giả thuyết được đưa ra.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cuốn sách mở đầu với vụ án \"Chiếc ghế điện ma ám\" xảy ra tại nhà tù Sing Sing, Mỹ. Vụ án này đã khiến cho chiếc ghế điện trở thành một nỗi ám ảnh kinh hoàng đối với các tử tù. Tiếp theo là vụ án \"Bóng ma nhà hát\" xảy ra tại nhà hát Grand Guignol, Pháp. Vụ án này đã khiến cho nhà hát này trở thành một nơi bị bỏ hoang, không ai dám bén mảng đến.</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711109063517-cade1bf1dc8447568e9f8aeae59e0d93.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711108989881-cade1bf1dc8447568e9f8aeae59e0d93.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd67f2207e1639f49dc016"
-  },
-  "url_book": "",
-  "createdAt": {
-    "$date": "2024-03-22T12:04:23.677Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-29T02:43:40.759Z"
-  },
-  "__v": 0,
-  "status": "Available"
-},
-{
-  "_id": {
-    "$oid": "65fd74fc207e1639f49dc226"
-  },
-  "name": "Mùa Tôm",
-  "price": 160000,
-  "promotion": 110000,
-  "quantity": 95,
-  "description": "<div><span style=\"font-size: 18px;\">Trong nền văn học Ấn Độ thế kỷ XX, các tác giả càng ngày càng muốn nắm bắt và thể hiện được cuộc sống trong dạng chân chất, nguyên khai của nó, không thỏa mãn với các miêu tả đầy lãng mạn và huyền bí, cũng như không chỉ thu hẹp vào thế giới tinh thần mang đậm màu sắc tôn giáo của con người, như trong những tác phẩm viết về Ấn Độ thế kỷ 19. Trong số các tác giả có nhiều cách tân, Thakagi Sivasankara Pillai là một ngòi bút có nhiều đóng góp xuất sắc. Ông sinh ngày 17/4/1912 tại làng Thakagi, bang Kerala, một trong những bang nghèo bậc nhất ở Ấn Độ nhưng lại có truyền thống lâu đời về văn hóa -- nền văn hóa Malayalam. Thiên nhiên ở miền nam Ấn Độ này hết sức khắc nghiệt, cộng với một bối cảnh xã hội còn chịu ảnh hưởng nặng nề của đời sống đẳng cấp đã khiến đời sống người dân nghèo luôn luôn đứng trước những xung đột, tai họa, bất công. Thakagi Pillai có ý thức rõ rệt muốn góp một tiếng nói, một cách nhìn xây dựng vào thực tế xã hội của quê hương mình. Từ bút pháp lãng mạn thời kỳ đầu, ông chuyển sang bút pháp hiện thực. Năm 1942, ông sáng lập Liên đoàn các nhà văn tiến bộ bang Kerala. Ngay những tác phẩm thời trẻ như Hoa mới nở (1934), Những câu chuyện Thakagi (1938), Pillai đã dũng cảm đứng về phía người nghèo, phê phán những bất công xã hội. Trong nhiều truyện dài của ông, nhân vật chính thường là những con người lao động, xuất thân từ những đẳng cấp thấp, luôn phải hứng chịu những thử thách khốc liệt của cuộc sống như trong Cái đầu lâu (1947), Con trai người quét rác (1948), Hai vốc cơm (1949). Nhưng với tiểu thuyết Mùa Tôm (1956), Pillai đã trở lại với bút pháp lãng mạn ban đầu của mình khi viết về tình yêu khác đẳng cấp và tín ngưỡng ở một vùng dân chài. Cuốn tiểu thuyết đã đem lại vinh quang cho Pillai, được giải thưởng của Viện hàn lâm văn học Ấn Độ do Tổng thống Ấn Độ trao tặng (năm 1957), Giải thưởng văn học cao nhất ở Ấn Độ. Trong Mùa tôm, cuộc sốngvới những vật lộn khắc nghiệt hàng ngày của người lao động tại một làng chài Ấn Độ hiện lên rất sáng rõ trong bối cảnh thiên nhiên nghiệt ngã, giữa những hàng rào vô hình mà tai ác, ngăn cách những con người ở những đẳng cấp xã hội và tín ngưỡng khác nhau và dẫn đến kết cục thật bi thảm. Cuốn sách từ khi ra đời đã được bàn cãi sôi nổi, tính đến năm 1965 đã được in đi in lại mười bốn lần và trở thành một sự kiện trong đời sống văn học Ấn Độ những năm 50-60. Đưa tác phẩm này của Pillai đến với bạn đọc Việt Nam, chúng tôi muốn giới thiệu một ngòi bút giàu lương tri, nhân ái. Suốt đời chiến đấu cho sự đổi mới và tiến bộ xã hội, dũng cảm bênh vực những khát vọng của con người ở dưới đáy xã hội, và luôn kêu gọi họ hợp lực lại đấu tranh cho một cuộc sống thật xứng đáng với con người.</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711109372099-8aa7388d49aa451394a45b40d793d90e.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711109266443-8aa7388d49aa451394a45b40d793d90e.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd67f2207e1639f49dc016"
-  },
-  "url_book": "",
-  "createdAt": {
-    "$date": "2024-03-22T12:09:32.229Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-30T17:27:21.196Z"
-  },
-  "__v": 0,
-  "status": "Available"
-},
-{
-  "_id": {
-    "$oid": "65fd75bb207e1639f49dc22c"
-  },
-  "name": "Trong Rừng Nho",
-  "price": 180000,
-  "promotion": 129000,
-  "quantity": 120,
-  "description": "<div><span style=\"font-size: 18px;\">Là tiểu thuyết dã sử về nữ sĩ Hồ Xuân Hương, lần đầu được nhà in Mai Lĩnh xuất bản, đúng vào thời kỳ có những biến động lớn của lịch sử dân tộc. Bản thảo chưa kịp phổ biến rộng, đã phải \"khiêm nhường\" nằm ẩn khuất trong im lặng, nên được ít người biết đến, không như các tác phẩm khác của họ Ngô, chúng ta sẽ bắt gặp ở đây một ngòi bút hư cấu tài hoa, phóng túng, làm rõ những nét đặc sắc trong cuộc đời Bà Chuá thơ Nôm, cả đời tư và những bài thơ \"tương truyền\" mà chỉ bà mới làm được. Những sinh hoạt văn hóa, khoa cử của kinh thành Thăng Long, vào những năm cuối thế kỷ 19; cũng được Ngô Tất Tô tái hiện một cách chân xác, sinh động.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Chúng ta thấy hiện rõ trong tác phẩm hình ảnh Hồ Xuân Hương, một nữ sĩ đang thử phá hết những cái đạo đức giả, chấp nhận cuộc chơi \" với ông hiền, ông thánh\"; vạch rõ những thứ lễ nghi chế độ của các ông đặt ra cho đàn bà, con gái... rặt là những cái xiềng xích trói buộc.​</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711775027198-baa6b241fc584f3d938ce8b341ee1162.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711109501188-3c21b985bd2e4fbbbbcb3e4cabb420db.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd67f2207e1639f49dc016"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711774395773-33f8208cf0ee43e78589621f7d6b6ab5.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T12:12:43.335Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-30T05:03:47.448Z"
-  },
-  "__v": 0,
-  "status": "Available"
-},
-{
-  "_id": {
-    "$oid": "65fd777d207e1639f49dc26b"
-  },
-  "name": "Thiên Tài Và Sự Giáo Dục Từ Sớm",
-  "price": 250000,
-  "promotion": 199000,
-  "quantity": 98,
-  "description": "<div><span style=\"font-size: 18px;\">Nhiều năm trước đây thường xảy ra chuyện con cái của những gia đình giàu có bị bắt giữ vì những hành vi trái đạo. Khi ấy, những gia đình giàu có này sẽ tìm đến cánh nhà báo mà họ vẫn hay qua lại để phân bua: \"Tôi vì quá bận rộn với việc kinh doanh nên không để mắt đến con cái được. Nay xảy ra hậu quả thế này, tôi thật không còn mặt mũi nào nữa...\". Những lời nói như thế từng được đăng trên khắp các mặt báo.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Nói rằng công việc kinh doanh bận rộn đến mức không có thời gian dành cho con cái chỉ là ngụy biện cho sự quá ham mê kiếm tiền của bản thân. Trên đời này chắc chắn có nhiều những người như thế và cuốn sách này viết ra hiển nhiên không phải để cho những người đó đọc.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cũng có những cô gái \"của thời đại mới\" mang trong mình suy nghĩ: \"Việc làm mẹ sẽ cản trở sự phát triển cá nhân, phá hỏng công việc cũng như làm đảo lộn sinh hoạt của bản thân\". Như thế, những người này ghét làm mẹ ít nhiều là vì điều đó ảnh hưởng đến thói ích kỷ của họ. Trên đời này có không ít những cô gái như thế, và đương nhiên, cuốn sách này được viết ra không dành cho họ.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Nhưng vẫn còn những người, tuy biết rằng bản thân chỉ đạt đến đây thôi, nhưng ít nhất sẽ cố gắng làm cho con mình trở thành hoàn hảo. Họ hiểu rằng mình chỉ là nấc thang thứ nhất, con mình sẽ là nấc thứ hai, và những gì mình đã không thể làm được thì con cái sẽ tiếp tục giúp mình... Những con người đó, bất kể họ thành công hay thất bại, nhưng đối với xã hội, đối với nhân loại, họ vẫn là những thiên tài, là những con người ưu tú mà hàng ngàn vạn người mới có một.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cuốn sách này của tôi được viết ra với kỳ vọng dành cho những người như thế.​</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711110013722-2d6949ee78b24f22b2c12dec15df39c2.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711109933124-2d6949ee78b24f22b2c12dec15df39c2.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711109936844-2d6949ee78b24f22b2c12dec15df39c2.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T12:20:13.873Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-25T15:23:16.775Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65fd7825207e1639f49dc271"
-  },
-  "name": "Tư Duy Ngược Dịch Chuyển Thế Giới",
-  "price": 140000,
-  "promotion": 79000,
-  "quantity": 80,
-  "description": "<div><span style=\"font-size: 18px;\">Adam Grant là tác giả cuốn Give and take (tựa tiếng Việt là “Cho và nhận), tác phẩm được The New York Times bình chọn là sách bán chạy nhất. Trong Give and take, Adam đã chỉ cho mọi người cách thức để bảo vệ thành công những ý tưởng mới, cũng như phương pháp để các nhà lãnh đạo có thể khuyến khích sự đa dạng và khác biệt trong suy nghĩ và hành động của tổ chức mình.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Với Tư duy ngược dịch chuyển thế giới, một lần nữa, Adam Grant lại giải quyết vấn đề làm sao để cải thiện thế giới, nhưng từ góc nhìn mới “trở nên khác biệt”: Chọn đi “ngược dòng”, đấu tranh với tính tuân thủ cứng nhắc và đập tan các truyền thống lỗi thời.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Làm sao chúng ta có thể hình thành những ý tưởng, chính sách và thực hành mới mà không phải mạo hiểm một cách mù quáng?</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Qua những nghiên cứu và câu chuyện đáng kinh ngạc trong lĩnh vực kinh doanh, chính trị, thể thao và giải trí, Grant đã khám phá ra phương pháp để nhận biết một ý tưởng hay, cách lên tiếng mà không bị cô lập, xây dựng liên minh, chọn thời điểm thích hợp để hành động, kiểm soát nỗi sợ hãi và nghi ngờ; cũng như cách thức để các bậc phụ huynh và giáo viên có thể nuôi dưỡng khả năng sáng tạo độc đáo ở trẻ; và giải pháp để các nhà lãnh đạo đấu tranh với tư duy “bầy đàn”.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Ngoài ra, độc giả còn có thể học hỏi được kinh nghiệm của một nhà khởi nghiệp gọi vốn bằng cách nhấn mạnh những lý do mà các nhà đầu tư không nên đầu tư.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Chẳng hạn một nữ quản lý dưới Steve Jobs ba bậc đã thách thức ông ấy như thế nào, một nhà phân tích ra tay lật ngược quy tắc bảo mật tại CIA, một ông trùm tài chính nắm trong tay hàng tỷ đô-la đã sa thải những nhân viên nào không dám chỉ trích ông, và một giám đốc truyền hình thậm chí còn chẳng biết gì về hài kịch nhưng đã cứu chương trình Seinfeld ra khỏi phòng kiểm duyệt. Phần thưởng của họ là tập hợp những quan niệm và nhận thức đột phá khi từ chối tuân thủ các khuôn mẫu sẵn có và luôn tìm cách cải thiện nguyên trạng</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Tư duy ngược dịch chuyển thế giới được COO của Facebook Sheryl Sandberg, tỷ phú sáng tạo Richard Branson, tác giả kỳ cựu Malcome Gladwell và nhiều nhà lãnh đạo hàng đầu thế giới đánh giá cao. COO của Facebook nhận xét: “Đây là một trong những cuốn sách quan trọng và cuốn hút nhất mà tôi từng đọc, đầy những ý tưởng đáng kinh ngạc và vô cùng mạnh mẽ. Cuốn sách này không chỉ thay đổi cách bạn nhìn thế giới mà còn có thể thay đổi cuộc đời bạn. Cuốn sách cũng có thể truyền cảm hứng cho bạn thay đổi cả thế giới này”.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\"><strong>Về tác giả&nbsp;</strong></span></div><div><span style=\"font-size: 18px;\">Adam Grant được công nhận là giáo sư hàng đầu trong bốn năm liền của Đại học Wharton, một trong những nhà tư tưởng quốc tế có tầm ảnh hưởng lớn nhất theo tạp chí HR, và nằm trong danh sách 40 giáo sư kinh doanh dưới 40 tuổi tài giỏi nhất thế giới.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cuốn sách đầu tay của Adam Grant, Give and Take (Cho và nhận), là tác phẩm bán chạy nhất theo đánh giá của The New York Times và đã được dịch sang hơn 27 ngôn ngữ. Đồng thời, Give and Take cũng góp mặt trong danh sách những cuốn sách hay nhất năm 2013 của Amazon, Financial Times và Wall Street Journal; Give and Take được Oprah xem là một trong những cuốn sách hấp dẫn nhất và là một trong những ý tưởng làm sắc nét ngành quản trị, theo Harvard Business Review.&nbsp;</span></div><div><br></div><div><span style=\"font-size: 18px;\">Adam Grant cũng từng diễn thuyết và tư vấn cho nhiều khách hàng, trong đó có Google, Goldman Sachs, Disney Pixar, Liên Hợp Quốc,…Ông có bằng tiến sĩ của Đại học Michigan và bằng cử nhân của Đại học Harvard.​</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711110180921-c416f22ec60d4d92976df4c4a900ce91.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711110075701-c416f22ec60d4d92976df4c4a900ce91.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711110079480-c416f22ec60d4d92976df4c4a900ce91.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T12:23:01.061Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-22T12:23:01.061Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65fd78be207e1639f49dc2a3"
-  },
-  "name": "Hành Trình Kẻ Cô Đơn",
-  "price": 79000,
-  "promotion": 59000,
-  "quantity": 196,
-  "description": "<div><span style=\"font-size: 18px;\">Tất cả chúng ta, những ai đang sống và đang đi tìm chân lý, thường sẽ tình cờ gặp nhau trên một con đường chung, nơi những sợi tư duy đồng quan điểm kéo chúng ta gần lại với nhau - chúng sống trong chúng ta bằng một tiềm lực đủ mạnh để từ nơi khởi sinh nội tại, ta xây cho bản thân hệ tư duy của riêng mình.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Thế nhưng, theo thời gian, rất nhiều chân lý bị rơi vào quên lãng bởi chúng không thể hứng chịu hết chính những câu hỏi nội tại từ chúng ta, hay có lẽ bởi vì đó là một chân lý mới phải tự đấu tranh khi không tương hợp với các chân lý hiện tại, hoặc giả đơn giản là chúng xuất hiện, rồi lại tự triệt tiêu.</span><br></div>",
-  "image": "http://localhost:3100/uploads\\1711110334332-7eddceb8f5d84672a3545a3981429c1b.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711110294577-7eddceb8f5d84672a3545a3981429c1b.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
-  },
-  "url_book": "http://localhost:3100/uploads\\1711110298297-7eddceb8f5d84672a3545a3981429c1b.jpg",
-  "createdAt": {
-    "$date": "2024-03-22T12:25:34.455Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-25T15:23:16.779Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66019bd3d0f2e99427ca18dd"
-  },
-  "name": "Tâm Lý Kỹ Năng Sống",
-  "price": 150000,
-  "promotion": 110000,
-  "quantity": 50,
-  "description": "<div>Sách rất hay</div>",
-  "image": "http://localhost:3100/uploads\\1711774637251-baa6b241fc584f3d938ce8b341ee1162.jpg",
-  "slide": [
-    "http://localhost:3100/uploads\\1711381411289-2d6949ee78b24f22b2c12dec15df39c2.jpg",
-    "http://localhost:3100/uploads\\1711381417757-3c21b985bd2e4fbbbbcb3e4cabb420db.jpg"
-  ],
-  "color": [],
-  "category": {
-    "$oid": "65fd6755207e1639f49dbfe4"
-  },
-  "url_book": "",
-  "createdAt": {
-    "$date": "2024-03-25T15:44:19.918Z"
-  },
-  "updatedAt": {
-    "$date": "2024-03-30T05:08:02.791Z"
-  },
-  "__v": 0,
-  "status": "Available"
-}]
+  {
+    "_id": {
+      "$oid": "65fd777d207e1639f49dc26b"
+    },
+    "name": "Thiên Tài Và Sự Giáo Dục Từ Sớm",
+    "price": 250000,
+    "promotion": 199000,
+    "quantity": 98,
+    "description": "<div><span style=\"font-size: 18px;\">Nhiều năm trước đây thường xảy ra chuyện con cái của những gia đình giàu có bị bắt giữ vì những hành vi trái đạo. Khi ấy, những gia đình giàu có này sẽ tìm đến cánh nhà báo mà họ vẫn hay qua lại để phân bua: \"Tôi vì quá bận rộn với việc kinh doanh nên không để mắt đến con cái được. Nay xảy ra hậu quả thế này, tôi thật không còn mặt mũi nào nữa...\". Những lời nói như thế từng được đăng trên khắp các mặt báo.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Nói rằng công việc kinh doanh bận rộn đến mức không có thời gian dành cho con cái chỉ là ngụy biện cho sự quá ham mê kiếm tiền của bản thân. Trên đời này chắc chắn có nhiều những người như thế và cuốn sách này viết ra hiển nhiên không phải để cho những người đó đọc.&nbsp;</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cũng có những cô gái \"của thời đại mới\" mang trong mình suy nghĩ: \"Việc làm mẹ sẽ cản trở sự phát triển cá nhân, phá hỏng công việc cũng như làm đảo lộn sinh hoạt của bản thân\". Như thế, những người này ghét làm mẹ ít nhiều là vì điều đó ảnh hưởng đến thói ích kỷ của họ. Trên đời này có không ít những cô gái như thế, và đương nhiên, cuốn sách này được viết ra không dành cho họ.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Nhưng vẫn còn những người, tuy biết rằng bản thân chỉ đạt đến đây thôi, nhưng ít nhất sẽ cố gắng làm cho con mình trở thành hoàn hảo. Họ hiểu rằng mình chỉ là nấc thang thứ nhất, con mình sẽ là nấc thứ hai, và những gì mình đã không thể làm được thì con cái sẽ tiếp tục giúp mình... Những con người đó, bất kể họ thành công hay thất bại, nhưng đối với xã hội, đối với nhân loại, họ vẫn là những thiên tài, là những con người ưu tú mà hàng ngàn vạn người mới có một.</span></div><div><span style=\"font-size: 18px;\"><br></span></div><div><span style=\"font-size: 18px;\">Cuốn sách này của tôi được viết ra với kỳ vọng dành cho những người như thế.​</span><br></div>",
+    "image": "http://localhost:3100/uploads\\1728297127910-20696754.jpg",
+    "slide": [
+      "http://localhost:3100/uploads\\1711109933124-2d6949ee78b24f22b2c12dec15df39c2.jpg"
+    ],
+    "category": {
+      "$oid": "65fd6755207e1639f49dbfe4"
+    },
+    "url_book": "http://localhost:3100/uploads\\1711109936844-2d6949ee78b24f22b2c12dec15df39c2.jpg",
+    "createdAt": {
+      "$date": "2024-03-22T12:20:13.873Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-15T11:25:57.401Z"
+    },
+    "__v": 0,
+    "manufacturer": "Kimura Kyuichi",
+    "status": "Available",
+    "form": "Mềm",
+    "pages": 232,
+    "pulisher": "Tổng Hợp TPHCM",
+    "size": "13x20.5 cm",
+    "weight": 250,
+    "year": 2019
+  }
+]
