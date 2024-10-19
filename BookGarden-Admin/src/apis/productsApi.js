@@ -61,6 +61,36 @@ const productApi = {
     return axiosClient.get(url, { params });
   },
 
+  /*Danh sách api pulisher */
+
+  createPulisher(data) {
+    const url = "/pulisher/search";
+    return axiosClient.post(url, data);
+  },
+  getDetailPulisher(id) {
+    const url = "/pulisher/" + id;
+    return axiosClient.get(url);
+  },
+  getListPulisher(data) {
+    const url = "/pulisher/search";
+    if (!data.page || !data.limit) {
+      data.limit = 10;
+      data.page = 1;
+    }
+    return axiosClient.post(url, data);
+  },
+  deletePulisher(id) {
+    const url = "/pulisher/" + id;
+    return axiosClient.delete(url);
+  },
+  searchPulisher(name) {
+    const params = {
+      name: name.target.value,
+    };
+    const url = "/pulisher/searchByName";
+    return axiosClient.get(url, { params });
+  },
+
   /*Danh sách api product */
 
   createProduct(data) {

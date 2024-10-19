@@ -10,6 +10,7 @@ import Sidebar from "../components/layout/sidebar/sidebar";
 import LoadingScreen from "../components/loading/loadingScreen";
 import PrivateRoute from "../components/PrivateRoute";
 import PublicRoute from "../components/PublicRoute";
+import PulisherList from "../pages/PulisherList/pulisher";
 
 const { Content } = Layout;
 
@@ -183,6 +184,11 @@ const RouterURL = withRouter(({ location }) => {
                 <AuthorList />
               </Suspense>
             </PrivateRoute>
+            <PrivateRoute exact path="/pulisher-list">
+              <Suspense fallback={<LoadingScreen />}>
+                <PulisherList />
+              </Suspense>
+            </PrivateRoute>
             <PrivateRoute exact path="/news-list">
               <Suspense fallback={<LoadingScreen />}>
                 <NewsList />
@@ -250,6 +256,9 @@ const RouterURL = withRouter(({ location }) => {
           <Route exact path="/author-list">
             <DefaultContainer />
           </Route>
+          <Route exact path="/pulisher-list">
+            <DefaultContainer />
+          </Route>
           <Route exact path="/profile">
             <DefaultContainer />
           </Route>
@@ -257,9 +266,6 @@ const RouterURL = withRouter(({ location }) => {
             <DefaultContainer />
           </Route>
           <Route exact path="/order-details/:id">
-            <DefaultContainer />
-          </Route>
-          <Route exact path="/color-list">
             <DefaultContainer />
           </Route>
 

@@ -13,6 +13,10 @@ import {
   ShoppingCartOutlined,
   FormOutlined,
   NotificationOutlined,
+  EditOutlined,
+  CloudUploadOutlined,
+  UnorderedListOutlined,
+  FolderOutlined,
 } from "@ant-design/icons";
 
 const { SubMenu } = Menu;
@@ -29,17 +33,26 @@ function Sidebar() {
       link: "/product-list",
       icon: <FormOutlined />,
     },
+  ];
+
+  const categorySubMenu = [
     {
       key: "category-list",
       title: "Danh mục sản phẩm",
       link: "/category-list",
-      icon: <ShoppingOutlined />,
+      icon: <FolderOutlined />,
     },
     {
       key: "author-list",
       title: "Tác giả",
       link: "/author-list",
-      icon: <ShoppingOutlined />,
+      icon: <EditOutlined />,
+    },
+    {
+      key: "pulisher-list",
+      title: "Nhà xuất bản",
+      link: "/pulisher-list",
+      icon: <CloudUploadOutlined />,
     },
   ];
 
@@ -67,10 +80,11 @@ function Sidebar() {
       <Menu
         mode="inline"
         selectedKeys={location.pathname.split("/")}
-        defaultOpenKeys={["account"]}
+        defaultOpenKeys={["product-categories"]}
         style={{ height: "100%", borderRight: 0, backgroundColor: "#FFFFFF" }}
         theme="light"
       >
+        {/* Danh sách sản phẩm */}
         {menuSidebarAdmin.map((map) => (
           <Menu.Item
             onClick={() => navigate(map.link, map.key)}
@@ -81,6 +95,23 @@ function Sidebar() {
             {map.title}
           </Menu.Item>
         ))}
+
+        {/* Dropdown for category-related items */}
+        <SubMenu
+          key="product-categories"
+          icon={<UnorderedListOutlined />}
+          title="Quản lý danh mục"
+        >
+          {categorySubMenu.map((map) => (
+            <Menu.Item
+              onClick={() => navigate(map.link, map.key)}
+              key={map.key}
+              icon={map.icon}
+            >
+              {map.title}
+            </Menu.Item>
+          ))}
+        </SubMenu>
       </Menu>
     </Sider>
   );

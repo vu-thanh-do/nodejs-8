@@ -11,7 +11,7 @@ const ProductSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    promotion: {
+    salePrice: {
       type: Number,
       default: 0,
     },
@@ -19,7 +19,7 @@ const ProductSchema = new mongoose.Schema(
       type: Number,
       require: true,
     },
-    quantity: {
+    stock: {
       type: Number,
       require: true,
     },
@@ -61,16 +61,16 @@ const ProductSchema = new mongoose.Schema(
       ref: "Category",
       required: true,
     },
-    // author: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "Author",
-    //   required: true,
-    // },
-    // pulisher: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "Pulisher",
-    //   required: true,
-    // },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Author",
+      required: true,
+    },
+    pulisher: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Pulisher",
+      required: true,
+    },
     // url_book: {
     //   type: String,
     // },

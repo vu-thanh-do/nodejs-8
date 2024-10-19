@@ -46,6 +46,9 @@ const DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
 const ProductList = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategoryList] = useState([]);
+  const [author, setAuthorList] = useState([]);
+  const [pulisher, setPulisherList] = useState([]);
+
   const [openModalCreate, setOpenModalCreate] = useState(false);
   const [openModalUpdate, setOpenModalUpdate] = useState(false);
   const [image, setImage] = useState();
@@ -91,16 +94,16 @@ const ProductList = () => {
             description: description,
             category: values.category,
             image: response.image_url,
-            promotion: values.promotion,
+            salePrice: values.salePrice,
             slide: images,
             year: values.year,
-            quantity: values.quantity,
+            stock: values.stock,
             pages: values.pages,
             weight: values.weight,
             size: values.size,
             form: values.form,
             url_book: bookUrl,
-            manufacturer: values.manufacturer,
+            author: values.author,
             pulisher: values.pulisher,
             status: values.status,
           };
@@ -200,16 +203,16 @@ const ProductList = () => {
               price: values.price,
               category: values.category,
               image: response.image_url,
-              promotion: values.promotion || 0,
+              salePrice: values.salePrice || 0,
               year: values.year,
-              quantity: values.quantity,
+              stock: values.stock,
               pages: values.pages,
               weight: values.weight,
               size: values.size,
               form: values.form,
               status: values.status,
               url_book: bookUrl,
-              manufacturer: values.manufacturer,
+              author: values.author,
               pulisher: values.pulisher,
             };
 
@@ -240,16 +243,16 @@ const ProductList = () => {
           description: description,
           price: values.price,
           category: values.category,
-          promotion: values.promotion || 0,
+          salePrice: values.salePrice || 0,
           year: values.year,
-          quantity: values.quantity,
+          stock: values.stock,
           pages: values.pages,
           weight: values.weight,
           size: values.size,
           form: values.form,
           status: values.status,
           url_book: bookUrl.length > 0 ? bookUrl : "",
-          manufacturer: values.manufacturer,
+          author: values.author,
           pulisher: values.pulisher,
         };
 
@@ -350,16 +353,16 @@ const ProductList = () => {
           name: response.product.name,
           price: response.product.price,
           category: response?.product.category?._id,
+          author: response?.product.author?._id,
+          pulisher: response?.product.pulisher?._id,
           status: response.product.status,
           year: response.product.year,
-          quantity: response.product.quantity,
+          stock: response.product.stock,
           pages: response.product.pages,
           weight: response.product.weight,
           size: response.product.size,
           form: response.product.form,
-          promotion: response.product.promotion || 0,
-          manufacturer: response.product.manufacturer,
-          pulisher: response.product.pulisher,
+          salePrice: response.product.salePrice || 0,
         });
 
         console.log(form2);
@@ -422,12 +425,12 @@ const ProductList = () => {
     },
     {
       title: "Giá giảm",
-      key: "promotion",
-      dataIndex: "promotion",
-      render: (promotion) => (
+      key: "salePrice",
+      dataIndex: "salePrice",
+      render: (salePrice) => (
         <span>
-          <Tag color="red" key={promotion}>
-            {promotion?.toLocaleString("vi", {
+          <Tag color="red" key={salePrice}>
+            {salePrice?.toLocaleString("vi", {
               style: "currency",
               currency: "VND",
             })}
@@ -443,12 +446,12 @@ const ProductList = () => {
 
     {
       title: "Số lượng",
-      key: "quantity",
-      dataIndex: "quantity",
-      render: (quantity) => (
+      key: "stock",
+      dataIndex: "stock",
+      render: (stock) => (
         <span>
-          <Tag color="green" key={quantity}>
-            {quantity}
+          <Tag color="green" key={stock}>
+            {stock}
           </Tag>
         </span>
       ),
@@ -491,15 +494,16 @@ const ProductList = () => {
       render: (res) => <span>{res?.name}</span>,
     },
     {
-      title: "Tác giả",
-      dataIndex: "manufacturer",
-      key: "manufacturer",
-      render: (text) => <a>{text}</a>,
+      title: "Tác giả ",
+      dataIndex: "author",
+      key: "author",
+      render: (res) => <span>{res?.name}</span>,
     },
     {
       title: "Nhà xuất bản",
-      key: "pulisher",
       dataIndex: "pulisher",
+      key: "pulisher",
+      render: (res) => <span>{res?.name}</span>,
     },
     // {
     //   title: "Audio",
@@ -613,13 +617,20 @@ const ProductList = () => {
             setCategoryList(res.data.docs);
             setLoading(false);
           });
-
-        await newsApi.getListColor({ page: 1, limit: 10 }).then((res) => {
-          console.log(res);
-          setTotalList(res.totalDocs);
-          setNewsList(res.data.docs);
-          setLoading(false);
-        });
+        await productApi
+          .getListAuthor({ page: 1, limit: 10000 })
+          .then((res) => {
+            console.log(res);
+            setAuthorList(res.data.docs);
+            setLoading(false);
+          });
+        await productApi
+          .getListPulisher({ page: 1, limit: 10000 })
+          .then((res) => {
+            console.log(res);
+            setPulisherList(res.data.docs);
+            setLoading(false);
+          });
       } catch (error) {
         console.log("Failed to fetch event list:" + error);
       }
@@ -783,7 +794,7 @@ const ProductList = () => {
                   </Form.Item>
 
                   <Form.Item
-                    name="promotion"
+                    name="salePrice"
                     label="Giá giảm"
                     rules={[
                       {
@@ -811,7 +822,7 @@ const ProductList = () => {
                 <Input placeholder="Năm xuất bản" type="number" />
               </Form.Item>
               <Form.Item
-                name="quantity"
+                name="stock"
                 label="Số lượng"
                 rules={[
                   {
@@ -879,32 +890,7 @@ const ProductList = () => {
                   <Select.Option value="Mềm">Mềm</Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item
-                name="manufacturer"
-                label="Tác giả"
-                style={{ marginBottom: 10 }}
-                rules={[
-                  {
-                    required: true,
-                    message: "Vui lòng nhập tác giả!",
-                  },
-                ]}
-              >
-                <Input placeholder="Tác giả" />
-              </Form.Item>
-              <Form.Item
-                name="pulisher"
-                label="Nhà xuất bản"
-                style={{ marginBottom: 10 }}
-                rules={[
-                  {
-                    required: true,
-                    message: "Vui lòng nhập nhà xuất bản!",
-                  },
-                ]}
-              >
-                <Input placeholder="Nhà xuất bản" />
-              </Form.Item>
+
               <Form.Item
                 name="image"
                 label="Ảnh"
@@ -996,6 +982,69 @@ const ProductList = () => {
                   }
                 >
                   {category.map((item, index) => {
+                    return (
+                      <Option value={item._id} key={index}>
+                        {item.name}
+                      </Option>
+                    );
+                  })}
+                </Select>
+              </Form.Item>
+              <Form.Item
+                name="author"
+                label="Author"
+                rules={[
+                  {
+                    required: true,
+                    message: "Vui lòng chọn author!",
+                  },
+                ]}
+                style={{ marginBottom: 10 }}
+              >
+                <Select
+                  style={{ width: "100%" }}
+                  tokenSeparators={[","]}
+                  placeholder="Author"
+                  showSearch
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  {author.map((item, index) => {
+                    return (
+                      <Option value={item._id} key={index}>
+                        {item.name}
+                      </Option>
+                    );
+                  })}
+                </Select>
+              </Form.Item>
+
+              <Form.Item
+                name="pulisher"
+                label="Pulisher"
+                rules={[
+                  {
+                    required: true,
+                    message: "Vui lòng chọn pulisher!",
+                  },
+                ]}
+                style={{ marginBottom: 10 }}
+              >
+                <Select
+                  style={{ width: "100%" }}
+                  tokenSeparators={[","]}
+                  placeholder="Pulisher"
+                  showSearch
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  {pulisher.map((item, index) => {
                     return (
                       <Option value={item._id} key={index}>
                         {item.name}
@@ -1158,7 +1207,7 @@ const ProductList = () => {
                 </Form.Item>
 
                 <Form.Item
-                  name="promotion"
+                  name="salePrice"
                   label="Giá giảm"
                   rules={[
                     {
@@ -1186,7 +1235,7 @@ const ProductList = () => {
               <Input placeholder="Năm xuất bản" type="number" />
             </Form.Item>
             <Form.Item
-              name="quantity"
+              name="stock"
               label="Số lượng"
               rules={[
                 {
@@ -1254,7 +1303,7 @@ const ProductList = () => {
               </Select>
             </Form.Item>
             <Form.Item
-              name="quantity"
+              name="stock"
               label="Số lượng"
               rules={[
                 {
@@ -1265,33 +1314,6 @@ const ProductList = () => {
               style={{ marginBottom: 10 }}
             >
               <Input placeholder="Số lượng" type="number" />
-            </Form.Item>
-            <Form.Item
-              name="manufacturer"
-              label="Tác giả"
-              style={{ marginBottom: 10 }}
-              rules={[
-                {
-                  required: true,
-                  message: "Vui lòng nhập tác giả!",
-                },
-              ]}
-            >
-              <Input placeholder="Tác giả" />
-            </Form.Item>
-
-            <Form.Item
-              name="pulisher"
-              label="Nhà xuất bản"
-              style={{ marginBottom: 10 }}
-              rules={[
-                {
-                  required: true,
-                  message: "Vui lòng nhập nhà xuất bản!",
-                },
-              ]}
-            >
-              <Input placeholder="Nhà xuất bản" />
             </Form.Item>
 
             <Form.Item
@@ -1349,6 +1371,68 @@ const ProductList = () => {
                   return (
                     <Option value={item?._id} key={index}>
                       {item?.name}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              name="author"
+              label="Author"
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng chọn author!",
+                },
+              ]}
+              style={{ marginBottom: 10 }}
+            >
+              <Select
+                style={{ width: "100%" }}
+                tokenSeparators={[","]}
+                placeholder="Author"
+                showSearch
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+              >
+                {author.map((item, index) => {
+                  return (
+                    <Option value={item._id} key={index}>
+                      {item.name}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              name="pulisher"
+              label="Pulisher"
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng chọn pulisher!",
+                },
+              ]}
+              style={{ marginBottom: 10 }}
+            >
+              <Select
+                style={{ width: "100%" }}
+                tokenSeparators={[","]}
+                placeholder="Pulisher"
+                showSearch
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+              >
+                {pulisher.map((item, index) => {
+                  return (
+                    <Option value={item._id} key={index}>
+                      {item.name}
                     </Option>
                   );
                 })}

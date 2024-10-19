@@ -1,5 +1,7 @@
 const ProductModel = require("../models/product");
 const CategoryModel = require("../models/category");
+const AuthorModel = require("../models/author");
+const PulisherModel = require("../models/pulisher");
 const ReviewModel = require("../models/review");
 const OrderModel = require("../models/order");
 const jwt = require("jsonwebtoken");
@@ -38,13 +40,13 @@ const productController = {
     const options = {
       page: page,
       limit: limit,
-      populate: "category",
+      populate: [
+        { path: "category", select: "name" }, // Populate category
+        { path: "author", select: "name" }, // Populate author
+        { path: "pulisher", select: "name" }, // Populate author
+      ],
     };
-    // const options2 = {
-    //   page: page,
-    //   limit: limit,
-    //   populate: "author",
-    // };
+
     try {
       const products = await ProductModel.paginate({}, options);
       res.status(200).json({ data: products });
@@ -68,17 +70,16 @@ const productController = {
       description,
       category,
       image,
-      promotion,
+      salePrice,
       year,
-      quantity,
+      stock,
       slide,
       pages,
       weight,
       size,
       form,
-      // author,
+      author,
       pulisher,
-      manufacturer,
       status,
     } = req.body;
 
@@ -88,17 +89,16 @@ const productController = {
       description,
       category,
       image,
-      promotion,
+      salePrice,
       year,
-      quantity,
+      stock,
       slide,
       pages,
       weight,
       size,
       form,
-      // author,
+      author,
       pulisher,
-      manufacturer,
       status,
     });
 
@@ -108,7 +108,16 @@ const productController = {
       if (!checkCategory) {
         return res.status(400).json({ error: "Invalid category" });
       }
-
+      // Kiểm tra author
+      const checkAuthor = await AuthorModel.findById(author);
+      if (!checkAuthor) {
+        return res.status(400).json({ error: "Invalid author" });
+      }
+      // Kiểm tra pulisher
+      const checkPulisher = await PulisherModel.findById(author);
+      if (!checkPulisher) {
+        return res.status(400).json({ error: "Invalid pulisher" });
+      }
       // Lưu sản phẩm nếu tất cả đều hợp lệ
       const newProduct = await product.save();
       return res.status(200).json(newProduct);
@@ -137,15 +146,14 @@ const productController = {
       description,
       category,
       image,
-      promotion,
+      salePrice,
       year,
-      quantity,
+      stock,
       pages,
       weight,
       size,
       form,
-      // author,
-      manufacturer,
+      author,
       pulisher,
       status,
     } = req.body;
@@ -159,16 +167,15 @@ const productController = {
           description,
           category,
           image,
-          promotion,
+          salePrice,
           year,
-          quantity,
+          stock,
           pages,
           weight,
           size,
           form,
           pulisher,
-          // author,
-          manufacturer,
+          author,
           status,
         },
         { new: true }
@@ -273,8 +280,8 @@ const productController = {
   // Hàm tính cosine similarity giữa hai sản phẩm
   calculateCosineSimilarity: (product1, product2) => {
     // Chuyển đổi các đặc trưng của sản phẩm thành vector
-    const vector1 = [product1.price, product1.quantity]; // Ví dụ: sử dụng giá và số lượng làm đặc trưng
-    const vector2 = [product2.price, product2.quantity];
+    const vector1 = [product1.price, product1.stock]; // Ví dụ: sử dụng giá và số lượng làm đặc trưng
+    const vector2 = [product2.price, product2.stock];
 
     // Tính tổng tích của hai vector
     let dotProduct = 0;
@@ -350,7 +357,11 @@ const productController = {
     const options = {
       page: page,
       limit: limit,
-      populate: "category",
+      populate: [
+        { path: "category", select: "name" }, // Populate category với trường 'name'
+        { path: "author", select: "name" }, // Populate author với trường 'name'
+        { path: "pulisher", select: "name" }, // Populate pulisher với trường 'name'
+      ],
     };
 
     try {

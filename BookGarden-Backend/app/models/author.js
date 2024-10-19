@@ -9,8 +9,7 @@ const AuthorSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default:
-        "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+      required: true,
     },
     bio: {
       type: String,

@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const _const = require("../app/config/constant");
 const Category = require("../app/models/category");
 const Author = require("../app/models/author");
-
+const Pulisher = require("../app/models/pulisher");
 const Product = require("../app/models/product");
 const Order = require("../app/models/order");
 const News = require("../app/models/news");
@@ -52,13 +52,31 @@ module.exports = {
     res.author = author;
     next();
   },
+  getPulisher: async (req, res, next) => {
+    let pulisher;
+    try {
+      pulisher = await Pulisher.findById(req.params.id);
+      if (pulisher == null) {
+        return res.status(404).json({ message: "Cannot find pulisher" });
+      }
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
+    }
+
+    res.pulisher = pulisher;
+    next();
+  },
   getProduct: async (req, res, next) => {
     try {
       const productId = req.params.id;
       console.log("Product ID:", productId);
 
       // Lấy thông tin sản phẩm
-      const product = await Product.findById(productId).populate("category");
+      const product = await Product.findById(productId)
+        .populate("category") // Lấy thông tin chi tiết từ bảng category
+        .populate("author") // Lấy thông tin chi tiết từ bảng author
+        .populate("pulisher"); // Lấy thông tin chi tiết từ bảng pulisher
+
       if (!product) {
         return res.status(404).json({ message: "Cannot find product" });
       }

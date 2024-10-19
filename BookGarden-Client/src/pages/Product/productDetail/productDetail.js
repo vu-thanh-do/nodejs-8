@@ -293,9 +293,18 @@ const ProductDetail = () => {
                   )}
 
                   <div>
-                    <span style={{ fontSize: 15 }}>
-                      Tác giả: {productDetail.manufacturer}
+                    <span
+                      style={{
+                        fontSize: 15,
+                      }}
+                    >
+                      Tác giả:{" "}
+                      {productDetail.author
+                        ? productDetail.author.name
+                        : "Không có thông tin tác giả"}
                     </span>
+
+                    <span></span>
                     {productDetail?.status === "Unavailable" ||
                     productDetail?.status === "Discontinued" ? (
                       <Paragraph className="badge" style={{ marginTop: 10 }}>
@@ -308,32 +317,7 @@ const ProductDetail = () => {
                       </Paragraph>
                     ) : null}
                   </div>
-                  {/* <div class="box-product-promotion">
-                    <div class="box-product-promotion-header">
-                      <p>Ưu đãi</p>
-                    </div>
-                    <div class="box-content-promotion">
-                      <p class="box-product-promotion-number"></p>
-                      <a>
-                        Thu mua sách cũ - Giá thu cao nhất <br />
-                        <br /> Tặng thêm phiếu mua hàng <br />
-                        <br /> Giảm giá cho khách hàng mới
-                      </a>
-                    </div>
-                  </div> */}
 
-                  <div className="color-product">
-                    {productDetail?.color?.map((color) => (
-                      <span
-                        key={color}
-                        style={{ backgroundColor: color }} // Sửa đổi ở đây
-                        className={`dot ${
-                          selectedColor === color ? "active" : ""
-                        }`}
-                        onClick={() => handleClick(color)}
-                      ></span>
-                    ))}
-                  </div>
                   <div className="box_cart_1">
                     <Button
                       type="primary"
