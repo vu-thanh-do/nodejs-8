@@ -1,0 +1,137 @@
+[
+  {
+    "_id": {
+      "$oid": "6713e627681bb48074434dd1"
+    },
+    "name": "Huỳnh Như Phương",
+    "image": "http://localhost:3100/uploads\\1729357351413-61728293.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:02:31.587Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:05:38.141Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713ea73681bb48074434e5b"
+    },
+    "name": "Fujiko Fujio",
+    "image": "http://localhost:3100/uploads\\1729358451686-img_fujiko.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:20:51.726Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:20:51.726Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713eae2681bb48074434e82"
+    },
+    "name": "Aoyama Gōshō",
+    "image": "http://localhost:3100/uploads\\1729358603351-n97804-eJvgBBsH8mdM.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:22:42.364Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:23:23.377Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713ec7d681bb48074434ea0"
+    },
+    "name": "Bảo bình ,  Hải an",
+    "image": "http://localhost:3100/uploads\\1729358973525-bi-mat-cua-trang_134478_1.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:29:33.568Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:29:33.568Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713ed2c681bb48074434ed6"
+    },
+    "name": "Ivan Sergeyevich Turgenev",
+    "image": "http://localhost:3100/uploads\\1729359147985-TurgevevI-foto_(cropped).jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:32:28.009Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:32:28.009Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713edca681bb48074434ef2"
+    },
+    "name": "Hà Mạt Bì",
+    "image": "http://localhost:3100/uploads\\1729359305868-a91636480676453f90d2c4c565579825.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:35:06.089Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:35:06.089Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713ee72681bb48074434f14"
+    },
+    "name": "Takal̲i Śivaśaṅkarapiḷḷa",
+    "image": "http://localhost:3100/uploads\\1729359474245-290743-mua-tom.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:37:54.287Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:37:54.287Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713eedb681bb48074434f34"
+    },
+    "name": "Kimura Kyuichi",
+    "image": "http://localhost:3100/uploads\\1729359579745-20696754.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:39:39.786Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:39:39.786Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6713ef45681bb48074434f4e"
+    },
+    "name": "Hae Min",
+    "image": "http://localhost:3100/uploads\\1729359685909-Nha-su-Hae-Min.jpg",
+    "bio": "ok",
+    "createdAt": {
+      "$date": "2024-10-19T17:41:25.955Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-19T17:41:25.955Z"
+    },
+    "__v": 0
+  }
+]
