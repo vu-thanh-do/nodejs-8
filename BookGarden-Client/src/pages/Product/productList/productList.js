@@ -183,15 +183,15 @@ const ProductList = () => {
                           {!item?.audioUrl && (
                             <div className="price-amount">
                               <React.Fragment>
-                                {item?.promotion === item?.price ? (
+                                {item?.salePrice === item?.price ? (
                                   <Paragraph className="price-product">
-                                    {numberWithCommas(item.promotion)} đ
+                                    {numberWithCommas(item.salePrice)} đ
                                   </Paragraph>
                                 ) : (
                                   <React.Fragment>
                                     <Paragraph className="price-product">
-                                      {item?.promotion &&
-                                        numberWithCommas(item.promotion)}{" "}
+                                      {item?.salePrice &&
+                                        numberWithCommas(item.salePrice)}{" "}
                                       đ
                                     </Paragraph>
                                     <Paragraph className="price-cross">
@@ -220,7 +220,7 @@ const ProductList = () => {
                           <img src={triangleTopRight} alt="Triangle" />
                         </Paragraph>
                       ) : (
-                        item?.promotion !== item?.price && (
+                        item?.salePrice !== item?.price && (
                           <Paragraph
                             className="badge"
                             style={{ position: "absolute", top: 10, left: 9 }}

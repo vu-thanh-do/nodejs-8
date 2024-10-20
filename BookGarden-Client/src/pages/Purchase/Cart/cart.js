@@ -49,12 +49,12 @@ const Cart = () => {
       if (item._id === productId) {
         // Cập nhật số lượng và tính toán tổng tiền
         item.quantity = newQuantity;
-        item.total = item.promotion * newQuantity;
+        item.total = item.promition * newQuantity;
       }
       return item;
     });
     const total = updatedCart.reduce(
-      (acc, item) => acc + item.quantity * item.promotion,
+      (acc, item) => acc + item.quantity * item.salePrice,
       0
     );
     setCartTotal(total);
@@ -97,8 +97,8 @@ const Cart = () => {
     },
     {
       title: "Giá",
-      dataIndex: "promotion",
-      key: "promotion",
+      dataIndex: "salePrice",
+      key: "salePrice",
       render: (text) => (
         <a>
           {text?.toLocaleString("vi", { style: "currency", currency: "VND" })}
@@ -126,7 +126,7 @@ const Cart = () => {
       render: (text, record) => (
         <div>
           <div className="groupButton">
-            {(record?.promotion * record?.quantity).toLocaleString("vi", {
+            {(record?.salePrice * record?.quantity).toLocaleString("vi", {
               style: "currency",
               currency: "VND",
             })}
@@ -149,7 +149,7 @@ const Cart = () => {
     const cartLength = localStorage.getItem("cartLength") || 0;
     setCartLength(parseInt(cartLength));
     const total = cart.reduce(
-      (acc, item) => acc + item.quantity * item.promotion,
+      (acc, item) => acc + item.quantity * item.salePrice,
       0
     );
     setCartTotal(total);
