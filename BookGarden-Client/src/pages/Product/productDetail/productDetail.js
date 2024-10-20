@@ -268,9 +268,9 @@ const ProductDetail = () => {
                   bordered={false}
                   style={{ width: "50%" }}
                 >
-                  {productDetail?.promotion === productDetail?.price ? (
+                  {productDetail?.salePrice === productDetail?.price ? (
                     <div className="price_product">
-                      {productDetail?.promotion?.toLocaleString("vi", {
+                      {productDetail?.salePrice?.toLocaleString("vi", {
                         style: "currency",
                         currency: "VND",
                       })}
@@ -278,7 +278,7 @@ const ProductDetail = () => {
                   ) : (
                     <div>
                       <div className="price_product">
-                        {productDetail?.promotion?.toLocaleString("vi", {
+                        {productDetail?.salePrice?.toLocaleString("vi", {
                           style: "currency",
                           currency: "VND",
                         })}
@@ -595,9 +595,9 @@ const ProductDetail = () => {
                       </Paragraph>
                       <div className="price-amount">
                         <Paragraph className="price-product">
-                          {numberWithCommas(item.price - item.promotion)} đ
+                          {numberWithCommas(item.price - item.salePrice)} đ
                         </Paragraph>
-                        {item.promotion !== 0 && (
+                        {item.salePrice !== 0 && (
                           <Paragraph className="price-cross">
                             {numberWithCommas(item.price)} đ
                           </Paragraph>
