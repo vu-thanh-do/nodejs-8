@@ -238,7 +238,7 @@ const Cart = () => {
                       />
                       <Button
                         style={{ marginTop: 16 }}
-                        // onClick={() => handlePay()}
+                        onClick={() => handlePay()}
                         disabled={productDetail.length === 0} // Nếu giỏ hàng trống, vô hiệu hóa button
                       >
                         Thanh toán ngay
