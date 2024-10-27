@@ -101,7 +101,9 @@ const Pay = () => {
         console.log(formatData);
         await axiosClient.post("/order", formatData).then((response) => {
           console.log(response);
-          if (response.error === "Insufficient quantity for one or more products.") {
+          if (
+            response.error === "Insufficient stock for one or more products."
+          ) {
             return notification["error"]({
               message: `Thông báo`,
               description: "Sản phẩm đã hết hàng!",
@@ -176,7 +178,7 @@ const Pay = () => {
         },
       });
 
-      console.log(response)
+      console.log(response);
 
       if (response) {
         const local = localStorage.getItem("user");
@@ -258,14 +260,19 @@ const Pay = () => {
         console.log(cart);
 
         const transformedData = cart.map(
-          ({ _id: product, quantity, promotion, price }) => ({ product, quantity, promotion,price })
+          ({ _id: product, stock, salePrice, price }) => ({
+            product,
+            stock,
+            salePrice,
+            price,
+          })
         );
         let totalPrice = 0;
 
         for (let i = 0; i < transformedData.length; i++) {
           let product = transformedData[i];
           console.log(product);
-          let price = product.promotion * product.quantity;
+          let price = product.salePrice * product.stock;
           totalPrice += price;
         }
 
@@ -333,7 +340,7 @@ const Pay = () => {
                     hasFeedback
                     style={{ marginBottom: 10 }}
                   >
-                    <Input  placeholder="Tên" />
+                    <Input placeholder="Tên" />
                   </Form.Item>
 
                   <Form.Item
@@ -351,7 +358,7 @@ const Pay = () => {
                     hasFeedback
                     style={{ marginBottom: 10 }}
                   >
-                    <Input  placeholder="Số điện thoại" />
+                    <Input placeholder="Số điện thoại" />
                   </Form.Item>
 
                   <Form.Item

@@ -32,7 +32,7 @@ const orderController = {
 
   createOrder: async (req, res) => {
     try {
-      const insufficientQuantityProducts = [];
+      const insufficientStockProducts = [];
 
       const order = new OrderModel({
         user: req.body.userId,
@@ -46,28 +46,28 @@ const orderController = {
 
       for (const productItem of req.body.products) {
         const productId = productItem.product;
-        const quantity = productItem.quantity;
+        const stock = productItem.stock;
 
         // Find the product in the database
         const product = await Product.findById(productId);
 
-        if (!product || product.quantity < quantity) {
-          insufficientQuantityProducts.push({
+        if (!product || product.stock < stock) {
+          insufficientStockProducts.push({
             productId,
-            quantity: product ? product.quantity : 0,
+            stock: product ? product.stock : 0,
           });
         }
 
-        if (insufficientQuantityProducts.length > 0) {
+        if (insufficientStockProducts.length > 0) {
           return res.status(200).json({
-            error: "Insufficient quantity for one or more products.",
-            insufficientQuantityProducts,
+            error: "Insufficient stock for one or more products.",
+            insufficientStockProducts,
           });
         }
 
-        // Update the product quantity
+        // Update the product stock
         if (product) {
-          product.quantity -= quantity;
+          product.stock -= stock;
           await product.save();
         }
       }

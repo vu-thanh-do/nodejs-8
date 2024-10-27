@@ -41,8 +41,6 @@ const ProductDetail = () => {
   const [visible2, setVisible2] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-  const [colorProduct, setColorProduct] = useState("");
-  const [selectedColor, setSelectedColor] = useState(null);
 
   const viewBookOnline = (url) => {
     window.location.href = url;
@@ -143,13 +141,6 @@ const ProductDetail = () => {
   const handleCommentChange = (e) => {
     setComment(e.target.value);
   };
-
-  function handleClick(color) {
-    // Xử lý logic khi click vào điểm màu
-    console.log("Selected color:", color);
-    setColorProduct(color);
-    setSelectedColor(color);
-  }
 
   const handleReviewSubmit = async () => {
     // Tạo payload để gửi đến API
@@ -254,11 +245,11 @@ const ProductDetail = () => {
                 ) : (
                   <Card className="card_image" bordered={false}>
                     <img src={productDetail.image} />
-                    <div className="promotion"></div>
+                    <div className="saleprice"></div>
                   </Card>
                 )}
               </Col>
-              <Col span={16}>
+              <Col className="card_detail">
                 <div className="price">
                   <h1 className="product_name">{productDetail.name}</h1>
                   <Rate disabled value={avgRating} className="rate" />
@@ -268,9 +259,9 @@ const ProductDetail = () => {
                   bordered={false}
                   style={{ width: "50%" }}
                 >
-                  {productDetail?.promotion === productDetail?.price ? (
+                  {productDetail?.salePrice === productDetail?.price ? (
                     <div className="price_product">
-                      {productDetail?.promotion?.toLocaleString("vi", {
+                      {productDetail?.salePrice?.toLocaleString("vi", {
                         style: "currency",
                         currency: "VND",
                       })}
@@ -278,12 +269,12 @@ const ProductDetail = () => {
                   ) : (
                     <div>
                       <div className="price_product">
-                        {productDetail?.promotion?.toLocaleString("vi", {
+                        {productDetail?.salePrice?.toLocaleString("vi", {
                           style: "currency",
                           currency: "VND",
                         })}
                       </div>
-                      <div className="promotion_product">
+                      <div className="saleprice_product">
                         {productDetail?.price?.toLocaleString("vi", {
                           style: "currency",
                           currency: "VND",
@@ -292,19 +283,123 @@ const ProductDetail = () => {
                     </div>
                   )}
 
-                  <div>
+                  <div style={{ marginBottom: 10 }}>
                     <span
                       style={{
-                        fontSize: 15,
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
                       }}
                     >
-                      Tác giả:{" "}
-                      {productDetail.author
-                        ? productDetail.author.name
-                        : "Không có thông tin tác giả"}
+                      Tác giả:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.author
+                          ? productDetail.author.name
+                          : "Không có thông tin tác giả"}
+                      </span>
                     </span>
 
-                    <span></span>
+                    <span
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
+                      }}
+                    >
+                      Nhà xuất bản:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.pulisher
+                          ? productDetail.pulisher.name
+                          : "Không có thông tin NXB"}
+                      </span>
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
+                      }}
+                    >
+                      Năm xuất bản:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.year}
+                      </span>
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
+                      }}
+                    >
+                      Số lượng:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.stock}
+                      </span>
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
+                      }}
+                    >
+                      Số trang:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.pages}
+                      </span>
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
+                      }}
+                    >
+                      Trọng lượng:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.weight}
+                      </span>
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
+                      }}
+                    >
+                      Kích thước:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.size}
+                      </span>
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        display: "block",
+                        marginBottom: 5,
+                      }}
+                    >
+                      Hình thức:
+                      <span style={{ fontWeight: "normal", marginLeft: 5 }}>
+                        {productDetail.form}
+                      </span>
+                    </span>
+
                     {productDetail?.status === "Unavailable" ||
                     productDetail?.status === "Discontinued" ? (
                       <Paragraph className="badge" style={{ marginTop: 10 }}>
@@ -318,23 +413,20 @@ const ProductDetail = () => {
                     ) : null}
                   </div>
 
-                  <div className="box_cart_1">
-                    <Button
-                      type="primary"
-                      className="by"
-                      size={"large"}
-                      // onClick={() => paymentCard(productDetail)}
+                  <div className="flex gap-4 pt-[20px] ">
+                    <button
+                      className={` bg-red-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-transform duration-200 hover:bg-red-700 hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:shadow-none`}
+                      onClick={() => paymentCard(productDetail)}
                       disabled={
                         productDetail?.status === "Unavailable" ||
                         productDetail?.status === "Discontinued"
                       }
                     >
                       Mua ngay
-                    </Button>
-                    <Button
-                      type="primary"
-                      className="cart"
-                      size={"large"}
+                    </button>
+
+                    <button
+                      className={` bg-yellow-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-transform duration-200 hover:bg-yellow-600 hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:shadow-none`}
                       onClick={() => addCart(productDetail)}
                       disabled={
                         productDetail?.status === "Unavailable" ||
@@ -342,20 +434,21 @@ const ProductDetail = () => {
                       }
                     >
                       Thêm vào giỏ
-                    </Button>
+                    </button>
                   </div>
                 </Card>
               </Col>
             </Row>
-            <div className="describe">
-              <div className="title_total">
+            <div className="pt-12 mb-12">
+              <div className=" text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-red-600">
                 Giới thiệu sách "{productDetail.name}"
               </div>
               <div
-                className="describe_detail_description"
+                className=" w-full p-6 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out text-base leading-relaxed text-gray-700"
                 dangerouslySetInnerHTML={{ __html: productDetail.description }}
               ></div>
             </div>
+
             {showAudioPlayer && (
               <div className="audio-player-container">
                 <AudioPlayer
@@ -595,9 +688,9 @@ const ProductDetail = () => {
                       </Paragraph>
                       <div className="price-amount">
                         <Paragraph className="price-product">
-                          {numberWithCommas(item.price - item.promotion)} đ
+                          {numberWithCommas(item.price - item.salePrice)} đ
                         </Paragraph>
-                        {item.promotion !== 0 && (
+                        {item.salePrice !== 0 && (
                           <Paragraph className="price-cross">
                             {numberWithCommas(item.price)} đ
                           </Paragraph>

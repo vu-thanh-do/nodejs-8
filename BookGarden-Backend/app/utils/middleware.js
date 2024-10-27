@@ -139,7 +139,7 @@ module.exports = {
         .populate("user", "username") // Lấy thông tin user và chỉ lấy trường username
         .populate({
           path: "products.product",
-          select: "name quantity image", // Chọn các trường name, quantity và image của sản phẩm
+          select: "name stock image", // Chọn các trường name, stock và image của sản phẩm
         }); // Lấy thông tin products và chỉ lấy trường name của product
 
       if (!order) {
@@ -150,7 +150,7 @@ module.exports = {
       const userName = order.user ? order.user.username : null;
       const products = order.products.map((product) => ({
         name: product.product.name,
-        quantity: product.quantity,
+        stock: product.stock,
         image: product.product.image,
         price: product.price,
       }));

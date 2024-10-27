@@ -213,15 +213,15 @@ const Home = () => {
                       </Paragraph>
                       <div className="price-amount">
                         <React.Fragment>
-                          {item?.promotion === item?.price ? (
+                          {item?.salePrice === item?.price ? (
                             <Paragraph className="price-product">
-                              {numberWithCommas(item.promotion)} đ
+                              {numberWithCommas(item.salePrice)} đ
                             </Paragraph>
                           ) : (
                             <React.Fragment>
                               <Paragraph className="price-product">
-                                {item?.promotion &&
-                                  numberWithCommas(item.promotion)}{" "}
+                                {item?.salePrice &&
+                                  numberWithCommas(item.salePrice)}{" "}
                                 đ
                               </Paragraph>
                               <Paragraph className="price-cross">
@@ -247,7 +247,7 @@ const Home = () => {
                       <img src={triangleTopRight} alt="Triangle" />
                     </Paragraph>
                   ) : (
-                    item?.promotion !== item?.price && (
+                    item?.salePrice !== item?.price && (
                       <Paragraph
                         className="badge"
                         style={{ position: "absolute", top: 10, left: 9 }}
@@ -266,7 +266,6 @@ const Home = () => {
             </Row>
           </div>
         </div>
-        <div></div>
 
         <section class="py-10 bg-white sm:py-16 lg:py-24">
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -375,15 +374,15 @@ const Home = () => {
                       </Paragraph>
                       <div className="price-amount">
                         <React.Fragment>
-                          {item?.promotion === item?.price ? (
+                          {item?.salePrice === item?.price ? (
                             <Paragraph className="price-product">
-                              {numberWithCommas(item.promotion)} đ
+                              {numberWithCommas(item.salePrice)} đ
                             </Paragraph>
                           ) : (
                             <React.Fragment>
                               <Paragraph className="price-product">
-                                {item?.promotion &&
-                                  numberWithCommas(item.promotion)}{" "}
+                                {item?.salePrice &&
+                                  numberWithCommas(item.salePrice)}{" "}
                                 đ
                               </Paragraph>
                               <Paragraph className="price-cross">
@@ -409,7 +408,7 @@ const Home = () => {
                       <img src={triangleTopRight} alt="Triangle" />
                     </Paragraph>
                   ) : (
-                    item?.promotion !== item?.price && (
+                    item?.salePrice !== item?.price && (
                       <Paragraph
                         className="badge"
                         style={{ position: "absolute", top: 10, left: 9 }}
@@ -474,15 +473,15 @@ const Home = () => {
                       </Paragraph>
                       <div className="price-amount">
                         <React.Fragment>
-                          {item?.promotion === item?.price ? (
+                          {item?.salePrice === item?.price ? (
                             <Paragraph className="price-product">
-                              {numberWithCommas(item.promotion)} đ
+                              {numberWithCommas(item.salePrice)} đ
                             </Paragraph>
                           ) : (
                             <React.Fragment>
                               <Paragraph className="price-product">
-                                {item?.promotion &&
-                                  numberWithCommas(item.promotion)}{" "}
+                                {item?.salePrice &&
+                                  numberWithCommas(item.salePrice)}{" "}
                                 đ
                               </Paragraph>
                               <Paragraph className="price-cross">
@@ -508,7 +507,7 @@ const Home = () => {
                       <img src={triangleTopRight} alt="Triangle" />
                     </Paragraph>
                   ) : (
-                    item?.promotion !== item?.price && (
+                    item?.salePrice !== item?.price && (
                       <Paragraph
                         className="badge"
                         style={{ position: "absolute", top: 10, left: 9 }}

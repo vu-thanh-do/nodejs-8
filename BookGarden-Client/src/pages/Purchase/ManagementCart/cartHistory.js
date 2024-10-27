@@ -1,8 +1,13 @@
 import {
-  Breadcrumb, Button, Card, Divider,
+  Breadcrumb,
+  Button,
+  Card,
+  Divider,
   Modal,
-  Spin, Table, Tag,
-  notification
+  Spin,
+  Table,
+  Tag,
+  notification,
 } from "antd";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -18,52 +23,46 @@ const CartHistory = () => {
   let { id } = useParams();
   const history = useHistory();
 
-
   const handleCancelOrder = (order) => {
     console.log(order);
     Modal.confirm({
-      title: 'Xác nhận hủy đơn hàng',
-      content: 'Bạn có chắc muốn hủy đơn hàng này?',
-      okText: 'Xác nhận',
-      cancelText: 'Hủy',
+      title: "Xác nhận hủy đơn hàng",
+      content: "Bạn có chắc muốn hủy đơn hàng này?",
+      okText: "Xác nhận",
+      cancelText: "Hủy",
       onOk() {
         handleUpdateOrder(order._id);
       },
     });
   };
 
-
   const handleUpdateOrder = async (id) => {
     setLoading(true);
     try {
       const categoryList = {
-        "description": "Khách hàng hủy đơn hàng!",
-        "status": "rejected"
-      }
-      await axiosClient.put("/order/" + id, categoryList).then(response => {
+        description: "Khách hàng hủy đơn hàng!",
+        status: "rejected",
+      };
+      await axiosClient.put("/order/" + id, categoryList).then((response) => {
         if (response === undefined) {
           notification["error"]({
             message: `Thông báo`,
-            description:
-              'Cập nhật thất bại',
+            description: "Cập nhật thất bại",
           });
-        }
-        else {
+        } else {
           notification["success"]({
             message: `Thông báo`,
-            description:
-              'Cập nhật thành công',
+            description: "Cập nhật thành công",
           });
         }
-      })
+      });
 
       handleList();
       setLoading(false);
-
     } catch (error) {
       throw error;
     }
-  }
+  };
 
   const columns = [
     {
@@ -83,31 +82,26 @@ const CartHistory = () => {
               </div>
               <h3 className="product-name-1">{item.product?.name}</h3>
               <div className="product-price">
-                Giá gốc: {item?.product?.price?.toLocaleString("vi", {
+                Giá gốc:{" "}
+                {item?.product?.price?.toLocaleString("vi", {
                   style: "currency",
                   currency: "VND",
                 })}
               </div>
-              <div className="product-quantity">
-                Số lượng: {item?.quantity}
-              </div>
+              <div className="product-stock">Số lượng: {item?.stock}</div>
               <div className="product-total">
-                Tổng tiền: {(item?.product?.price * item.quantity).toLocaleString("vi", {
+                Tổng tiền:{" "}
+                {(item?.product?.price * item.stock).toLocaleString("vi", {
                   style: "currency",
                   currency: "VND",
                 })}
               </div>
-              {/* <div className="product-total">
-                {item?.product?.audioUrl ? <a href={item?.product?.audioUrl} target="_blank" rel="noopener noreferrer">Nghe audio</a> : null}
-              </div> */}
-
               {index !== products.length - 1 && <Divider />}
             </div>
           ))}
         </div>
       ),
     },
-
 
     {
       title: "Tổng đơn hàng",
@@ -172,14 +166,14 @@ const CartHistory = () => {
       ),
     },
     {
-      title: 'Hủy đơn hàng',
-      dataIndex: 'order',
-      key: 'order',
+      title: "Hủy đơn hàng",
+      dataIndex: "order",
+      key: "order",
       render: (text, record) => (
         <Button
           type="danger"
           onClick={() => handleCancelOrder(record)}
-          disabled={record.status !== 'pending'}
+          disabled={record.status !== "pending"}
         >
           Hủy đơn hàng
         </Button>
@@ -199,7 +193,7 @@ const CartHistory = () => {
         console.log("Failed to fetch event detail:" + error);
       }
     })();
-  }
+  };
 
   useEffect(() => {
     handleList();
@@ -222,7 +216,6 @@ const CartHistory = () => {
             </div>
             <hr></hr>
             <div className="container" style={{ marginBottom: 30 }}>
-
               <br></br>
               <Card>
                 <Table

@@ -40,21 +40,21 @@ const Cart = () => {
     setCartLength(0);
   };
 
-  const updateQuantity = (productId, newQuantity) => {
+  const updateStock = (productId, newStock) => {
     // Tìm kiếm sản phẩm trong giỏ hàng
-    if (newQuantity === 0) {
+    if (newStock === 0) {
       return handleDelete(productId);
     }
     const updatedCart = productDetail.map((item) => {
       if (item._id === productId) {
         // Cập nhật số lượng và tính toán tổng tiền
-        item.quantity = newQuantity;
-        item.total = item.promotion * newQuantity;
+        item.stock = newStock;
+        item.total = item.salePrice * newStock;
       }
       return item;
     });
     const total = updatedCart.reduce(
-      (acc, item) => acc + item.quantity * item.promotion,
+      (acc, item) => acc + item.stock * item.salePrice,
       0
     );
     setCartTotal(total);
@@ -97,28 +97,29 @@ const Cart = () => {
     },
     {
       title: "Giá",
-      dataIndex: "promotion",
-      key: "promotion",
+      dataIndex: "salePrice",
+      key: "salePrice",
       render: (text) => (
-        <a>
+        <a style={{ color: "red" }}>
           {text?.toLocaleString("vi", { style: "currency", currency: "VND" })}
         </a>
       ),
     },
     {
       title: "Số lượng",
-      dataIndex: "quantity",
-      key: "quantity",
+      dataIndex: "stock",
+      key: "stock",
       render: (text, record) => (
         <InputNumber
           min={0}
-          defaultValue={text}
+          defaultValue={text || 1} // Đặt giá trị mặc định là 1 nếu `text` là undefined hoặc null
           onChange={(value) => {
-            updateQuantity(record._id, value);
+            updateStock(record._id, value);
           }}
         />
       ),
     },
+
     {
       title: "Thành tiền",
       dataIndex: "totalPrice",
@@ -126,10 +127,12 @@ const Cart = () => {
       render: (text, record) => (
         <div>
           <div className="groupButton">
-            {(record?.promotion * record?.quantity).toLocaleString("vi", {
-              style: "currency",
-              currency: "VND",
-            })}
+            <a style={{ color: "green" }}>
+              {(record?.salePrice * record?.stock).toLocaleString("vi", {
+                style: "currency",
+                currency: "VND",
+              })}
+            </a>
           </div>
         </div>
       ),
@@ -149,7 +152,7 @@ const Cart = () => {
     const cartLength = localStorage.getItem("cartLength") || 0;
     setCartLength(parseInt(cartLength));
     const total = cart.reduce(
-      (acc, item) => acc + item.quantity * item.promotion,
+      (acc, item) => acc + item.stock * item.salePrice,
       0
     );
     setCartTotal(total);
@@ -200,31 +203,7 @@ const Cart = () => {
                     dataSource={productDetail}
                     pagination={false}
                   />
-                  <br></br>
-                  {/* <Divider orientation="left">Chính sách</Divider> */}
-                  {/* <Row justify="start">
-                    <Col>
-                      <ol>
-                        <li>
-                          Sản phẩm chuẩn chất lượng, đúng với hình ảnh và video
-                          mà shop cung cấp với giá cả tốt trên thị trường.
-                        </li>
-                        <li>
-                          Dịch vụ khách hàng chu đáo, nhiệt tình, tận tâm.
-                        </li>
-                        <li>
-                          Đổi trả sản phẩm nếu có lỗi từ nhà sản xuất theo quy
-                          định của nhà sách:<br></br>- Sản phẩm phải còn nguyên,
-                          chưa qua sử dụng, giặt tẩy, không bị bẩn hoặc bị hư
-                          hỏng bởi các tác nhân bên ngoài. <br></br>- Sản phẩm
-                          hư hỏng do vận chuyển hoặc do nhà sản xuất.
-                          <br></br>- Không đủ số lượng, không đủ bộ như trong
-                          đơn hàng.
-                        </li>
-                      </ol>
-                    </Col>
-                  </Row> */}
-                  <br></br>
+
                   <Divider orientation="right">
                     <p>Thanh toán</p>
                   </Divider>
@@ -238,7 +217,7 @@ const Cart = () => {
                       />
                       <Button
                         style={{ marginTop: 16 }}
-                        // onClick={() => handlePay()}
+                        onClick={() => handlePay()}
                         disabled={productDetail.length === 0} // Nếu giỏ hàng trống, vô hiệu hóa button
                       >
                         Thanh toán ngay

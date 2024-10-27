@@ -114,7 +114,7 @@ const productController = {
         return res.status(400).json({ error: "Invalid author" });
       }
       // Kiểm tra pulisher
-      const checkPulisher = await PulisherModel.findById(author);
+      const checkPulisher = await PulisherModel.findById(pulisher);
       if (!checkPulisher) {
         return res.status(400).json({ error: "Invalid pulisher" });
       }

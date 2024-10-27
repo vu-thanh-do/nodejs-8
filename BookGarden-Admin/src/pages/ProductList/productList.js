@@ -737,11 +737,6 @@ const ProductList = () => {
             scrollToFirstError
           >
             <Spin spinning={loading}>
-              {/* <Form.Item name="showPromotion" style={{ marginBottom: 10 }}>
-                <Checkbox onChange={handleShowPromotionChange}>
-                  Sách nói?
-                </Checkbox>
-              </Form.Item> */}
               <Form.Item
                 name="name"
                 label="Tên"
@@ -876,18 +871,18 @@ const ProductList = () => {
               </Form.Item>
               <Form.Item
                 name="form"
-                label="Bìa"
+                label="Hình thức"
                 rules={[
                   {
                     required: true,
-                    message: "Vui lòng nhập bìa",
+                    message: "Vui lòng chọn hình thức",
                   },
                 ]}
                 style={{ marginBottom: 10 }}
               >
                 <Select placeholder="Chọn form">
-                  <Select.Option value="Cứng">Cứng</Select.Option>
-                  <Select.Option value="Mềm">Mềm</Select.Option>
+                  <Select.Option value="Bìa cứng">Bìa cứng</Select.Option>
+                  <Select.Option value="Bìa mềm">Bìa mềm</Select.Option>
                 </Select>
               </Form.Item>
 
@@ -910,20 +905,6 @@ const ProductList = () => {
                   accept="image/png, image/jpeg"
                 />
               </Form.Item>
-
-              {/* <Form.Item
-                name="audioUrl"
-                label="Audio URL"
-                style={{ marginBottom: 10 }}
-              >
-                <input
-                  type="file"
-                  onChange={handleChangeAudioUrl}
-                  id="audioUrl"
-                  name="audioUrl"
-                  accept="audio/mpeg, audio/wav, audio/ogg, audio/mp3"
-                />
-              </Form.Item> */}
 
               <Form.Item
                 name="images"
@@ -1001,25 +982,15 @@ const ProductList = () => {
                 ]}
                 style={{ marginBottom: 10 }}
               >
-                <Select
-                  style={{ width: "100%" }}
-                  tokenSeparators={[","]}
-                  placeholder="Author"
-                  showSearch
-                  filterOption={(input, option) =>
-                    option.children
-                      .toLowerCase()
-                      .indexOf(input.toLowerCase()) >= 0
-                  }
-                >
+                <Checkbox.Group>
                   {author.map((item, index) => {
                     return (
-                      <Option value={item._id} key={index}>
+                      <Checkbox value={item._id} key={index}>
                         {item.name}
-                      </Option>
+                      </Checkbox>
                     );
                   })}
-                </Select>
+                </Checkbox.Group>
               </Form.Item>
 
               <Form.Item
@@ -1288,32 +1259,19 @@ const ProductList = () => {
             </Form.Item>
             <Form.Item
               name="form"
-              label="Bìa"
+              label="Hình thức"
               rules={[
                 {
                   required: true,
-                  message: "Vui lòng nhập bìa",
+                  message: "Vui lòng chọn hình thức",
                 },
               ]}
               style={{ marginBottom: 10 }}
             >
               <Select placeholder="Chọn form">
-                <Select.Option value="Cứng">Cứng</Select.Option>
-                <Select.Option value="Mềm">Mềm</Select.Option>
+                <Select.Option value="Bìa cứng">Bìa cứng</Select.Option>
+                <Select.Option value="Bìa mềm">Bìa mềm</Select.Option>
               </Select>
-            </Form.Item>
-            <Form.Item
-              name="stock"
-              label="Số lượng"
-              rules={[
-                {
-                  required: true,
-                  message: "Vui lòng nhập Số lượng",
-                },
-              ]}
-              style={{ marginBottom: 10 }}
-            >
-              <Input placeholder="Số lượng" type="number" />
             </Form.Item>
 
             <Form.Item
@@ -1329,6 +1287,7 @@ const ProductList = () => {
                 accept="image/png, image/jpeg"
               />
             </Form.Item>
+
             <Form.Item
               name="images"
               label="Hình ảnh slide"
@@ -1388,24 +1347,15 @@ const ProductList = () => {
               ]}
               style={{ marginBottom: 10 }}
             >
-              <Select
-                style={{ width: "100%" }}
-                tokenSeparators={[","]}
-                placeholder="Author"
-                showSearch
-                filterOption={(input, option) =>
-                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
-                  0
-                }
-              >
+              <Checkbox.Group>
                 {author.map((item, index) => {
                   return (
-                    <Option value={item._id} key={index}>
+                    <Checkbox value={item._id} key={index}>
                       {item.name}
-                    </Option>
+                    </Checkbox>
                   );
                 })}
-              </Select>
+              </Checkbox.Group>
             </Form.Item>
 
             <Form.Item

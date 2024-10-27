@@ -47,9 +47,6 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    manufacturer: {
-      type: String,
-    },
     pulisher: {
       type: String,
     },

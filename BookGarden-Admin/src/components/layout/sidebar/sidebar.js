@@ -33,6 +33,18 @@ function Sidebar() {
       link: "/product-list",
       icon: <FormOutlined />,
     },
+    {
+      key: "order-list",
+      title: "Quản lý đơn hàng",
+      link: "/order-list",
+      icon: <ShoppingCartOutlined />,
+    },
+    {
+      key: "account-management",
+      title: "Quản Lý Tài Khoản",
+      link: "/account-management",
+      icon: <UserOutlined />,
+    },
   ];
 
   const categorySubMenu = [
