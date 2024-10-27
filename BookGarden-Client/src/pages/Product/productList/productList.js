@@ -180,27 +180,30 @@ const ProductList = () => {
                           >
                             {item.name}
                           </Paragraph>
-                          <div className="price-amount">
-                            <React.Fragment>
-                              {item?.salePrice === item?.price ? (
-                                <Paragraph className="price-product">
-                                  {numberWithCommas(item.salePrice)} đ
-                                </Paragraph>
-                              ) : (
-                                <React.Fragment>
+                          {!item?.audioUrl && (
+                            <div className="price-amount">
+                              <React.Fragment>
+                                {item?.salePrice === item?.price ? (
                                   <Paragraph className="price-product">
-                                    {item?.salePrice &&
-                                      numberWithCommas(item.salePrice)}{" "}
-                                    đ
+                                    {numberWithCommas(item.salePrice)} đ
                                   </Paragraph>
-                                  <Paragraph className="price-cross">
-                                    {item.price && numberWithCommas(item.price)}{" "}
-                                    đ
-                                  </Paragraph>
-                                </React.Fragment>
-                              )}
-                            </React.Fragment>
-                          </div>
+                                ) : (
+                                  <React.Fragment>
+                                    <Paragraph className="price-product">
+                                      {item?.salePrice &&
+                                        numberWithCommas(item.salePrice)}{" "}
+                                      đ
+                                    </Paragraph>
+                                    <Paragraph className="price-cross">
+                                      {item.price &&
+                                        numberWithCommas(item.price)}{" "}
+                                      đ
+                                    </Paragraph>
+                                  </React.Fragment>
+                                )}
+                              </React.Fragment>
+                            </div>
+                          )}
                         </div>
                       </div>
                       {item?.status === "Unavailable" ||
