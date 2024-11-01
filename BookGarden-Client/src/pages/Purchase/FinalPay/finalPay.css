@@ -10,6 +10,7 @@
 }
 
 .card_image img {
+    
     display: flex;
     justify-content: center;
     width: 70%;

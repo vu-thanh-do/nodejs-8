@@ -224,6 +224,7 @@ const Cart = () => {
                       </ol>
                     </Col>
                   </Row> */}
+
                   <br></br>
                   <Divider orientation="right">
                     <p>Thanh toán </p>
@@ -253,6 +254,7 @@ const Cart = () => {
         </Spin>
       </div>
     </div>
+    
   );
 };
 
