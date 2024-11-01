@@ -226,7 +226,7 @@ const Cart = () => {
                   </Row> */}
                   <br></br>
                   <Divider orientation="right">
-                    <p>Thanh toán</p>
+                    <p>Thanh toán </p>
                   </Divider>
                   <Row justify="end">
                     <Col>
