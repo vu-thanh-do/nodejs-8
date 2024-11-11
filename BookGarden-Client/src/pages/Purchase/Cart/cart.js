@@ -22,8 +22,8 @@ const { Content } = Layout;
 const Cart = () => {
   const [productDetail, setProductDetail] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [cartLength, setCartLength] = useState();
-  const [cartTotal, setCartTotal] = useState();
+  const [cartLength, setCartLength] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
   const [form] = Form.useForm();
   let { id } = useParams();
   const history = useHistory();
@@ -41,13 +41,11 @@ const Cart = () => {
   };
 
   const updateStock = (productId, newStock) => {
-    // Tìm kiếm sản phẩm trong giỏ hàng
     if (newStock === 0) {
       return handleDelete(productId);
     }
     const updatedCart = productDetail.map((item) => {
       if (item._id === productId) {
-        // Cập nhật số lượng và tính toán tổng tiền
         item.stock = newStock;
         item.total = item.salePrice * newStock;
       }
@@ -63,15 +61,13 @@ const Cart = () => {
   };
 
   const handleDelete = (productId) => {
-    const updatedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const filteredCart = updatedCart.filter(
+    const updatedCart = productDetail.filter(
       (product) => product._id !== productId
     );
-    localStorage.setItem("cart", JSON.stringify(filteredCart));
-    localStorage.setItem("cartLength", filteredCart.length);
-    setProductDetail(filteredCart);
-    setCartLength(filteredCart.length);
-    window.location.reload();
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    localStorage.setItem("cartLength", updatedCart.length);
+    setProductDetail(updatedCart);
+    setCartLength(updatedCart.length);
   };
 
   const columns = [
@@ -112,14 +108,13 @@ const Cart = () => {
       render: (text, record) => (
         <InputNumber
           min={0}
-          defaultValue={text || 1} // Đặt giá trị mặc định là 1 nếu `text` là undefined hoặc null
+          defaultValue={text > 0 ? text : 1} // Luôn hiển thị giá trị mặc định là 1 nếu text là 0 hoặc undefined
           onChange={(value) => {
             updateStock(record._id, value);
           }}
         />
       ),
     },
-
     {
       title: "Thành tiền",
       dataIndex: "totalPrice",
@@ -128,7 +123,7 @@ const Cart = () => {
         <div>
           <div className="groupButton">
             <a style={{ color: "green" }}>
-              {(record?.salePrice * record?.stock).toLocaleString("vi", {
+              {(record.salePrice * record.stock).toLocaleString("vi", {
                 style: "currency",
                 currency: "VND",
               })}
@@ -147,10 +142,18 @@ const Cart = () => {
   ];
 
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart = (JSON.parse(localStorage.getItem("cart")) || []).map(
+      (item) => ({
+        ...item,
+        stock: 1, // Đặt `stock` thành 1 mặc định khi hiển thị trong giỏ hàng
+      })
+    );
+
     setProductDetail(cart);
-    const cartLength = localStorage.getItem("cartLength") || 0;
-    setCartLength(parseInt(cartLength));
+
+    const cartLength = cart.length;
+    setCartLength(cartLength);
+
     const total = cart.reduce(
       (acc, item) => acc + item.stock * item.salePrice,
       0
@@ -160,19 +163,18 @@ const Cart = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Thêm vào component của bạn
   const handleRowClick = (record) => {
     history.push("/product-detail/" + record._id);
   };
 
   const handleNavigateToHome = () => {
-    history.push("/"); // Chuyển hướng về trang home
+    history.push("/");
   };
 
   return (
     <div>
-      <div class="py-5">
-        <Spin spinning={false}>
+      <div className="py-5">
+        <Spin spinning={loading}>
           <Card className="container">
             <div className="box_cart">
               <Layout className="box_cart">
@@ -183,8 +185,8 @@ const Cart = () => {
                       <span> Tiếp tục mua sắm</span>
                     </Breadcrumb.Item>
                   </Breadcrumb>
-                  <hr></hr>
-                  <br></br>
+                  <hr />
+                  <br />
                   <Row>
                     <Col span={12}>
                       <h4>
@@ -192,18 +194,22 @@ const Cart = () => {
                       </h4>
                     </Col>
                     <Col span={12}>
-                      <Button type="default" danger style={{ float: "right" }}>
-                        <span onClick={() => deleteCart()}>Xóa tất cả</span>
+                      <Button
+                        type="default"
+                        danger
+                        style={{ float: "right" }}
+                        onClick={deleteCart}
+                      >
+                        Xóa tất cả
                       </Button>
                     </Col>
                   </Row>
-                  <br></br>
+                  <br />
                   <Table
                     columns={columns}
                     dataSource={productDetail}
                     pagination={false}
                   />
-
                   <Divider orientation="right">
                     <p>Thanh toán</p>
                   </Divider>
@@ -212,13 +218,12 @@ const Cart = () => {
                       <h6>Tổng {cartLength} sản phẩm</h6>
                       <Statistic
                         title="Tổng tiền"
-                        value={`${Math.round(cartTotal).toFixed(0)}`}
-                        precision={0}
+                        value={cartTotal.toLocaleString("vi-VN")}
                       />
                       <Button
                         style={{ marginTop: 16 }}
-                        onClick={() => handlePay()}
-                        disabled={productDetail.length === 0} // Nếu giỏ hàng trống, vô hiệu hóa button
+                        onClick={handlePay}
+                        disabled={productDetail.length === 0}
                       >
                         Thanh toán ngay
                         <CreditCardOutlined style={{ fontSize: "20px" }} />

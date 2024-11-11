@@ -95,7 +95,7 @@ const ProductList = () => {
             category: values.category,
             image: response.image_url,
             salePrice: values.salePrice,
-            slide: images,
+            // slide: images,
             year: values.year,
             stock: values.stock,
             pages: values.pages,
@@ -906,7 +906,7 @@ const ProductList = () => {
                 />
               </Form.Item>
 
-              <Form.Item
+              {/* <Form.Item
                 name="images"
                 label="Hình ảnh slide"
                 style={{ marginBottom: 10 }}
@@ -921,7 +921,7 @@ const ProductList = () => {
                 >
                   <Button icon={<UploadOutlined />}>Tải lên</Button>
                 </Upload>
-              </Form.Item>
+              </Form.Item> */}
 
               {/* <Form.Item
                 name="url_book"
@@ -972,25 +972,35 @@ const ProductList = () => {
                 </Select>
               </Form.Item>
               <Form.Item
-                name="author"
+                name="Tác giả"
                 label="Author"
                 rules={[
                   {
                     required: true,
-                    message: "Vui lòng chọn author!",
+                    message: "Vui lòng chọn tác giả!",
                   },
                 ]}
                 style={{ marginBottom: 10 }}
               >
-                <Checkbox.Group>
+                <Select
+                  style={{ width: "100%" }}
+                  tokenSeparators={[","]}
+                  placeholder="Author"
+                  showSearch
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
                   {author.map((item, index) => {
                     return (
-                      <Checkbox value={item._id} key={index}>
+                      <Option value={item._id} key={index}>
                         {item.name}
-                      </Checkbox>
+                      </Option>
                     );
                   })}
-                </Checkbox.Group>
+                </Select>
               </Form.Item>
 
               <Form.Item
@@ -1288,7 +1298,7 @@ const ProductList = () => {
               />
             </Form.Item>
 
-            <Form.Item
+            {/* <Form.Item
               name="images"
               label="Hình ảnh slide"
               style={{ marginBottom: 10 }}
@@ -1303,7 +1313,7 @@ const ProductList = () => {
               >
                 <Button icon={<UploadOutlined />}>Tải lên</Button>
               </Upload>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               name="category"
@@ -1338,24 +1348,33 @@ const ProductList = () => {
 
             <Form.Item
               name="author"
-              label="Author"
+              label="Tác giả"
               rules={[
                 {
                   required: true,
-                  message: "Vui lòng chọn author!",
+                  message: "Vui lòng chọn tác giả!",
                 },
               ]}
               style={{ marginBottom: 10 }}
             >
-              <Checkbox.Group>
+              <Select
+                style={{ width: "100%" }}
+                tokenSeparators={[","]}
+                placeholder="Author"
+                showSearch
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+              >
                 {author.map((item, index) => {
                   return (
-                    <Checkbox value={item._id} key={index}>
+                    <Option value={item._id} key={index}>
                       {item.name}
-                    </Checkbox>
+                    </Option>
                   );
                 })}
-              </Checkbox.Group>
+              </Select>
             </Form.Item>
 
             <Form.Item

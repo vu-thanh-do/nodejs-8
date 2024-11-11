@@ -33,17 +33,19 @@ const FinalPay = () => {
           phone: response.user.phone,
         });
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const transformedData = cart.map(({ _id: product, stock, price }) => ({
-          product,
-          stock,
-          price,
-        }));
+        const transformedData = cart.map(
+          ({ _id: product, stock, salePrice }) => ({
+            product,
+            stock,
+            salePrice,
+          })
+        );
         let totalPrice = 0;
 
         for (let i = 0; i < transformedData.length; i++) {
           let product = transformedData[i];
-          let price = product.price * product.stock;
-          totalPrice += price;
+          let salePrice = product.salePrice * product.stock;
+          totalPrice += salePrice;
         }
 
         setOrderTotal(totalPrice);
@@ -94,15 +96,15 @@ const FinalPay = () => {
               <Result
                 status="success"
                 title="Đặt hàng thành công!"
-                subTitle="Bạn có thể xem lịch sử đặt hàng ở quản lý đơn hàng."
+                // subTitle="Bạn có thể xem lịch sử đặt hàng ở quản lý đơn hàng."
                 extra={[
-                  <Button
-                    type="primary"
+                  <button
                     key="console"
                     onClick={() => handleFinal()}
+                    className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg text-lg"
                   >
                     Hoàn thành
-                  </Button>,
+                  </button>,
                 ]}
               />
             </div>

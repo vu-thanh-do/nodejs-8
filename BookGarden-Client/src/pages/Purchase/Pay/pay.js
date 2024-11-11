@@ -401,7 +401,7 @@ const Pay = () => {
                   >
                     <Radio.Group>
                       <Radio value={"cod"}>COD</Radio>
-                      <Radio value={"paypal"}>PAYPAL</Radio>
+                      {/* <Radio value={"paypal"}>PAYPAL</Radio> */}
                       {/* <Radio value={2}>B</Radio> */}
                     </Radio.Group>
                   </Form.Item>

@@ -449,18 +449,7 @@ const ProductDetail = () => {
               ></div>
             </div>
 
-            {showAudioPlayer && (
-              <div className="audio-player-container">
-                <AudioPlayer
-                  ref={audioRef}
-                  autoPlay
-                  src={productDetail.audioUrl}
-                  onPause={() => setIsPlaying(false)}
-                  onPlay={() => setIsPlaying(true)}
-                />
-              </div>
-            )}
-            <Row gutter={12} style={{ marginTop: 20 }}>
+            {/* <Row gutter={12} style={{ marginTop: 20 }}>
               <Col span={16}>
                 <Card className="card_total" bordered={false}>
                   <div className="card_number">
@@ -503,7 +492,6 @@ const ProductDetail = () => {
                                   <span className="review-count">
                                     {reviewsCount[4] || 0}
                                   </span>
-                                  {/* <div class="total_comment">16 đánh giá</div> */}
                                 </div>
                                 <div className="progress_comment">
                                   <div class="is-active">
@@ -522,7 +510,6 @@ const ProductDetail = () => {
                                   <span className="review-count">
                                     {reviewsCount[3] || 0}
                                   </span>
-                                  {/* <div class="total_comment">16 đánh giá</div> */}
                                 </div>
                                 <div className="progress_comment">
                                   <div class="is-active">
@@ -541,7 +528,6 @@ const ProductDetail = () => {
                                   <span className="review-count">
                                     {reviewsCount[2] || 0}
                                   </span>
-                                  {/* <div class="total_comment">16 đánh giá</div> */}
                                 </div>
                                 <div className="progress_comment">
                                   <div class="is-active">
@@ -560,7 +546,6 @@ const ProductDetail = () => {
                                   <span className="review-count">
                                     {reviewsCount[1] || 0}
                                   </span>
-                                  {/* <div class="total_comment">16 đánh giá</div> */}
                                 </div>
                                 <div className="progress_comment">
                                   <div class="is-active">
@@ -579,7 +564,6 @@ const ProductDetail = () => {
                                   <span className="review-count">
                                     {reviewsCount[0] || 0}
                                   </span>
-                                  {/* <div class="total_comment">16 đánh giá</div> */}
                                 </div>
                               </Col>
                             </Row>
@@ -648,8 +632,7 @@ const ProductDetail = () => {
                   </div>
                 </Card>
               </Col>
-            </Row>
-            <div></div>
+            </Row> */}
 
             <div className="price" style={{ marginTop: 40 }}>
               <h1 className="product_name">Sản phẩm bạn có thể quan tâm</h1>

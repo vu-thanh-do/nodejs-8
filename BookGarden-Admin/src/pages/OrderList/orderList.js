@@ -5,127 +5,63 @@ import {
   Row,
   Typography,
   Spin,
-  Button,
-  Card,
-  Badge,
-  Empty,
   Input,
-  Space,
-  Form,
-  Pagination,
-  Modal,
-  Popconfirm,
+  Button,
   notification,
-  BackTop,
-  Tag,
   Breadcrumb,
   Select,
   Table,
+  Form,
 } from "antd";
 import {
-  AppstoreAddOutlined,
-  QrcodeOutlined,
-  DeleteOutlined,
-  PlusOutlined,
-  EyeOutlined,
-  ExclamationCircleOutlined,
-  SearchOutlined,
-  CalendarOutlined,
-  UserOutlined,
-  TeamOutlined,
   HomeOutlined,
-  HistoryOutlined,
   ShoppingCartOutlined,
-  FormOutlined,
-  TagOutlined,
-  EditOutlined,
+  EyeOutlined,
 } from "@ant-design/icons";
-import eventApi from "../../apis/eventApi";
 import orderApi from "../../apis/orderApi";
 import { useHistory } from "react-router-dom";
-import { DateTime } from "../../utils/dateTime";
-import ProductList from "../ProductList/productList";
 import axiosClient from "../../apis/axiosClient";
 import { PageHeader } from "@ant-design/pro-layout";
 const { Option } = Select;
-const { confirm } = Modal;
-const DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
 const { Title } = Typography;
 
 const OrderList = () => {
   const [order, setOrder] = useState([]);
-  const [openModalCreate, setOpenModalCreate] = useState(false);
-  const [openModalUpdate, setOpenModalUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const [form] = Form.useForm();
-  const [form2] = Form.useForm();
-  const [id, setId] = useState();
-
   const history = useHistory();
 
-  const handleOkUser = async (values) => {
+  const handleUpdateStatus = async (value, record) => {
     setLoading(true);
     try {
       const categoryList = {
-        name: values.name,
+        status: value,
       };
-      await axiosClient.post("/category", categoryList).then((response) => {
-        if (response === undefined) {
-          notification["error"]({
-            message: `Thông báo`,
-            description: "Tạo danh mục thất bại",
-          });
-        } else {
-          notification["success"]({
-            message: `Thông báo`,
-            description: "Tạo danh mục thành công",
-          });
-          setOpenModalCreate(false);
-          handleCategoryList();
-        }
-      });
+      await axiosClient
+        .put(`/order/${record._id}`, categoryList)
+        .then((response) => {
+          if (response === undefined) {
+            notification["error"]({
+              message: `Thông báo`,
+              description: "Cập nhật trạng thái thất bại",
+            });
+          } else {
+            notification["success"]({
+              message: `Thông báo`,
+              description: "Cập nhật trạng thái thành công",
+            });
+            setOrder((prevOrder) =>
+              prevOrder.map((o) =>
+                o._id === record._id ? { ...o, status: value } : o
+              )
+            );
+          }
+        });
       setLoading(false);
     } catch (error) {
-      throw error;
-    }
-  };
-
-  const handleUpdateOrder = async (values) => {
-    console.log(values);
-    setLoading(true);
-    try {
-      const categoryList = {
-        description: values.description,
-        status: values.status,
-      };
-      await axiosClient.put("/order/" + id, categoryList).then((response) => {
-        if (response === undefined) {
-          notification["error"]({
-            message: `Thông báo`,
-            description: "Cập nhật thất bại",
-          });
-        } else {
-          notification["success"]({
-            message: `Thông báo`,
-            description: "Cập nhật thành công",
-          });
-          setOpenModalUpdate(false);
-          handleCategoryList();
-        }
-      });
+      console.error("Failed to update order status:", error);
       setLoading(false);
-    } catch (error) {
-      throw error;
     }
-  };
-
-  const handleCancel = (type) => {
-    if (type === "create") {
-      setOpenModalCreate(false);
-    } else {
-      setOpenModalUpdate(false);
-    }
-    console.log("Clicked cancel button");
   };
 
   const handleCategoryList = async () => {
@@ -139,54 +75,6 @@ const OrderList = () => {
     }
   };
 
-  const handleDeleteCategory = async (id) => {
-    setLoading(true);
-    try {
-      await orderApi.deleteOrder(id).then((response) => {
-        if (response === undefined) {
-          notification["error"]({
-            message: `Thông báo`,
-            description: "Xóa danh mục thất bại",
-          });
-          setLoading(false);
-        } else {
-          notification["success"]({
-            message: `Thông báo`,
-            description: "Xóa danh mục thành công",
-          });
-          handleCategoryList();
-          setLoading(false);
-        }
-      });
-    } catch (error) {
-      console.log("Failed to fetch event list:" + error);
-    }
-  };
-
-  const handleEditOrder = (id) => {
-    setOpenModalUpdate(true);
-    (async () => {
-      try {
-        const response = await orderApi.getDetailOrder(id);
-        console.log(response);
-        setId(id);
-        form2.setFieldsValue({
-          status: response.status,
-          address: response.address,
-          description: response.description,
-          orderTotal: response.orderTotal,
-          products: response.products,
-          user: response.user,
-          billing: response.billing,
-        });
-        console.log(form2);
-        setLoading(false);
-      } catch (error) {
-        throw error;
-      }
-    })();
-  };
-
   const handleFilter = async (name) => {
     try {
       const res = await orderApi.searchOrder(name);
@@ -194,6 +82,10 @@ const OrderList = () => {
     } catch (error) {
       console.log("search to fetch category list:" + error);
     }
+  };
+
+  const handleViewOrder = (orderId) => {
+    history.push(`/order-details/${orderId}`);
   };
 
   const columns = [
@@ -206,19 +98,19 @@ const OrderList = () => {
       title: "Tên",
       dataIndex: "user",
       key: "user",
-      render: (text, record) => <a>{text?.username}</a>,
+      render: (text) => <a>{text?.username}</a>,
     },
     {
       title: "Email",
       dataIndex: "user",
       key: "user",
-      render: (text, record) => <a>{text?.email}</a>,
+      render: (text) => <a>{text?.email}</a>,
     },
     {
       title: "Số điện thoại",
       dataIndex: "user",
       key: "user",
-      render: (text, record) => <a>{text?.phone}</a>,
+      render: (text) => <a>{text?.phone}</a>,
     },
     {
       title: "Tổng tiền",
@@ -244,31 +136,34 @@ const OrderList = () => {
       title: "Trạng thái",
       key: "status",
       dataIndex: "status",
-      render: (slugs) => (
-        <span>
-          {slugs === "rejected" ? (
-            <Tag style={{ width: 160, textAlign: "center" }} color="red">
-              Đã hủy
-            </Tag>
-          ) : slugs === "approved" ? (
-            <Tag
-              style={{ width: 160, textAlign: "center" }}
-              color="geekblue"
-              key={slugs}
-            >
-              Vận chuyển
-            </Tag>
-          ) : slugs === "final" ? (
-            <Tag color="green" style={{ width: 160, textAlign: "center" }}>
-              {" "}
-              Đã giao - Đã thanh toán
-            </Tag>
-          ) : (
-            <Tag color="blue" style={{ width: 160, textAlign: "center" }}>
-              Đợi xác nhận
-            </Tag>
-          )}
-        </span>
+      render: (status, record) => (
+        <Select
+          value={status}
+          onChange={(value) => handleUpdateStatus(value, record)}
+          style={{ width: 160 }}
+        >
+          <Option value="pending" disabled={status !== "pending"}>
+            Đợi xác nhận
+          </Option>
+          <Option value="confirmed" disabled={status !== "pending"}>
+            Đã xác nhận
+          </Option>
+          <Option value="shipping" disabled={status !== "confirmed"}>
+            Đang vận chuyển
+          </Option>
+          <Option value="delivered_unpaid" disabled={status !== "shipping"}>
+            Đã giao
+          </Option>
+          <Option value="final" disabled={status !== "delivered_unpaid"}>
+            Đã thanh toán
+          </Option>
+          <Option value="returned" disabled={status !== "final"}>
+            Đã hoàn trả
+          </Option>
+          <Option value="rejected" disabled={status !== "pending"}>
+            Đã hủy
+          </Option>
+        </Select>
       ),
     },
     {
@@ -277,46 +172,32 @@ const OrderList = () => {
       key: "description",
     },
     {
-      title: "Action",
+      title: "Hành động",
       key: "action",
-      render: (text, record) => (
-        <div>
-          <Row>
-            <div
-              style={{ display: "flex", gap: "10px", flexDirection: "column" }}
-            >
-              <Button
-                size="small"
-                icon={<EyeOutlined />}
-                style={{ width: 150, borderRadius: 15, height: 30 }}
-                onClick={() => handleViewOrder(record._id)}
-              >
-                Xem
-              </Button>
-              <Button
-                size="small"
-                icon={<EditOutlined />}
-                style={{ width: 150, borderRadius: 15, height: 30 }}
-                onClick={() => handleEditOrder(record._id)}
-              >
-                Chỉnh sửa
-              </Button>
-            </div>
-          </Row>
-        </div>
+      render: (_, record) => (
+        <Button
+          size="small"
+          icon={<EyeOutlined />}
+          style={{
+            width: 150,
+            borderRadius: 5,
+            height: 30,
+            marginTop: 5,
+            backgroundColor: "#3399ff",
+          }}
+          type="primary"
+          onClick={() => handleViewOrder(record._id)}
+        >
+          {"Xem"}
+        </Button>
       ),
     },
   ];
-
-  const handleViewOrder = (orderId) => {
-    history.push(`/order-details/${orderId}`);
-  };
 
   useEffect(() => {
     (async () => {
       try {
         await orderApi.getListOrder({ page: 1, limit: 10000 }).then((res) => {
-          console.log(res);
           setOrder(res.data.docs);
           setLoading(false);
         });
@@ -325,6 +206,7 @@ const OrderList = () => {
       }
     })();
   }, []);
+
   return (
     <div>
       <Spin spinning={loading}>
@@ -353,13 +235,6 @@ const OrderList = () => {
                       style={{ width: 300 }}
                     />
                   </Col>
-                  <Col span="6">
-                    <Row justify="end">
-                      <Space>
-                        {/* <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo đơn hàng</Button> */}
-                      </Space>
-                    </Row>
-                  </Col>
                 </Row>
               </PageHeader>
             </div>
@@ -374,140 +249,6 @@ const OrderList = () => {
             />
           </div>
         </div>
-
-        <Modal
-          title="Tạo danh mục mới"
-          visible={openModalCreate}
-          style={{ top: 100 }}
-          onOk={() => {
-            form
-              .validateFields()
-              .then((values) => {
-                form.resetFields();
-                handleOkUser(values);
-              })
-              .catch((info) => {
-                console.log("Validate Failed:", info);
-              });
-          }}
-          onCancel={() => handleCancel("create")}
-          okText="Hoàn thành"
-          cancelText="Hủy"
-          width={600}
-        >
-          <Form
-            form={form}
-            name="eventCreate"
-            layout="vertical"
-            initialValues={{
-              residence: ["zhejiang", "hangzhou", "xihu"],
-              prefix: "86",
-            }}
-            scrollToFirstError
-          >
-            <Form.Item
-              name="name"
-              label="Tên"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your sender name!",
-                },
-              ]}
-              style={{ marginBottom: 10 }}
-            >
-              <Input placeholder="Tên" />
-            </Form.Item>
-            <Form.Item
-              name="description"
-              label="Mô tả"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your subject!",
-                },
-              ]}
-              style={{ marginBottom: 10 }}
-            >
-              <Input placeholder="Mô tả" />
-            </Form.Item>
-
-            <Form.Item
-              name="slug"
-              label="Slug"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your content!",
-                },
-              ]}
-              style={{ marginBottom: 10 }}
-            >
-              <Input placeholder="Slug" />
-            </Form.Item>
-          </Form>
-        </Modal>
-
-        <Modal
-          title="Cập nhật đơn hàng"
-          visible={openModalUpdate}
-          style={{ top: 100 }}
-          onOk={() => {
-            form2
-              .validateFields()
-              .then((values) => {
-                form2.resetFields();
-                handleUpdateOrder(values);
-              })
-              .catch((info) => {
-                console.log("Validate Failed:", info);
-              });
-          }}
-          onCancel={handleCancel}
-          okText="Hoàn thành"
-          cancelText="Hủy"
-          width={600}
-        >
-          <Form
-            form={form2}
-            name="eventCreate"
-            layout="vertical"
-            initialValues={{
-              residence: ["zhejiang", "hangzhou", "xihu"],
-              prefix: "86",
-            }}
-            scrollToFirstError
-          >
-            <Form.Item
-              name="status"
-              label="Trạng thái"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your sender name!",
-                },
-              ]}
-              style={{ marginBottom: 10 }}
-            >
-              <Select>
-                <Option value="final">Đã giao - Đã thanh toán</Option>
-                <Option value="approved">Đang vận chuyển</Option>
-                <Option value="pending">Đợi xác nhận</Option>
-                <Option value="rejected">Đã hủy</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              name="description"
-              label="Mô tả"
-              style={{ marginBottom: 10 }}
-            >
-              <Input.TextArea rows={4} placeholder="Lưu ý" />
-            </Form.Item>
-          </Form>
-        </Modal>
-
-        {/* <Pagination style={{ textAlign: "center", marginBottom: 20 }} current={currentPage} defaultCurrent={1} total={total} onChange={handlePage}></Pagination> */}
-        <BackTop style={{ textAlign: "right" }} />
       </Spin>
     </div>
   );

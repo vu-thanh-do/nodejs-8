@@ -124,7 +124,7 @@ const Login = () => {
           </Form.Item>
           <Form.Item>
             <a
-              onClick={showForgotPasswordModal}
+              // onClick={showForgotPasswordModal}
               className="text-blue-500 hover:text-blue-700 hover:underline"
             >
               Quên mật khẩu?

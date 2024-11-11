@@ -392,7 +392,7 @@ const OrderDetail = () => {
                                 Số lượng: {product.stock}
                               </span>
                               <div className="product-price">
-                                Đơn giá: {product.price}
+                                Đơn giá: {product.salePrice * product.stock}
                               </div>
                             </div>
                           </div>

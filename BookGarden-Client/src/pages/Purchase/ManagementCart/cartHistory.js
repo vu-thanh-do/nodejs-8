@@ -66,32 +66,32 @@ const CartHistory = () => {
 
   const columns = [
     {
-      title: "Thông tin sản phẩm",
+      title: <div className="text-center">Thông tin sản phẩm</div>,
       dataIndex: "products",
       key: "productInfo",
       render: (products) => (
-        <div>
+        <div className="">
           {products.map((item, index) => (
             <div key={index} className="product-info">
-              <div key={index} className="product-item">
+              <div className="product-item ">
                 <img
                   src={item.product?.image}
                   alt={item.product?.name}
-                  className="product-image"
+                  className="product-image "
                 />
               </div>
               <h3 className="product-name-1">{item.product?.name}</h3>
               <div className="product-price">
-                Giá gốc:{" "}
-                {item?.product?.price?.toLocaleString("vi", {
+                Giá gốc:
+                {item?.product?.salePrice?.toLocaleString("vi", {
                   style: "currency",
                   currency: "VND",
                 })}
               </div>
               <div className="product-stock">Số lượng: {item?.stock}</div>
               <div className="product-total">
-                Tổng tiền:{" "}
-                {(item?.product?.price * item.stock).toLocaleString("vi", {
+                Tổng tiền:
+                {(item?.product?.salePrice * item.stock).toLocaleString("vi", {
                   style: "currency",
                   currency: "VND",
                 })}
@@ -104,11 +104,11 @@ const CartHistory = () => {
     },
 
     {
-      title: "Tổng đơn hàng",
+      title: <div className="text-center">Tổng đơn hàng</div>,
       dataIndex: "orderTotal",
       key: "orderTotal",
       render: (products) => (
-        <div>
+        <div className="text-center">
           {products?.toLocaleString("vi", {
             style: "currency",
             currency: "VND",
@@ -116,67 +116,89 @@ const CartHistory = () => {
         </div>
       ),
     },
+
     {
-      title: "Địa chỉ",
+      title: <div className="text-center">Địa chỉ</div>,
       dataIndex: "address",
       key: "address",
+      render: (address) => <div className="text-center">{address}</div>,
     },
+
     {
-      title: "Hình thức thanh toán",
+      title: <div className="text-center">Hình thức thanh toán</div>,
       dataIndex: "billing",
       key: "billing",
+      render: (billing) => <div className="text-center">{billing}</div>,
     },
+
     {
-      title: "Trạng thái",
+      title: <div className="text-center">Trạng thái</div>,
       dataIndex: "status",
       key: "status",
       render: (slugs) => (
-        <span>
+        <span className="flex justify-center items-center w-full text-center">
           {slugs === "rejected" ? (
-            <Tag style={{ width: 150, textAlign: "center" }} color="red">
+            <div className="status bg-red-500 text-white py-1 px-4 rounded-full font-semibold">
               Đã hủy
-            </Tag>
-          ) : slugs === "approved" ? (
-            <Tag
-              style={{ width: 150, textAlign: "center" }}
-              color="geekblue"
-              key={slugs}
-            >
-              Vận chuyển
-            </Tag>
+            </div>
+          ) : slugs === "shipping" ? (
+            <div className="status bg-blue-500 text-white py-1 px-4 rounded-full font-semibold">
+              Đang vận chuyển
+            </div>
+          ) : slugs === "delivered_unpaid" ? (
+            <div className="status bg-green-500 text-white py-1 px-4 rounded-full font-semibold">
+              Đã giao
+            </div>
           ) : slugs === "final" ? (
-            <Tag color="green" style={{ width: 150, textAlign: "center" }}>
-              Đã giao - Đã thanh toán
-            </Tag>
+            <div className="status bg-indigo-500 text-white py-1 px-4 rounded-full font-semibold">
+              Đã thanh toán
+            </div>
+          ) : slugs === "returned" ? (
+            <div className="status bg-orange-500 text-white py-1 px-4 rounded-full font-semibold">
+              Đã hoàn trả
+            </div>
+          ) : slugs === "confirmed" ? (
+            <div className="status bg-blue-600 text-white py-1 px-4 rounded-full font-semibold">
+              Đã xác nhận
+            </div>
           ) : (
-            <Tag color="blue" style={{ width: 150, textAlign: "center" }}>
+            <div className="status bg-gray-500 text-white py-1 px-4 rounded-full font-semibold">
               Đợi xác nhận
-            </Tag>
+            </div>
           )}
         </span>
       ),
     },
 
     {
-      title: "Ngày đặt",
+      title: <div className="text-center">Ngày đặt</div>,
       dataIndex: "createdAt",
       key: "createdAt",
       render: (createdAt) => (
-        <span>{moment(createdAt).format("DD/MM/YYYY HH:mm")}</span>
+        <span className="text-center">
+          {moment(createdAt).format("DD/MM/YYYY HH:mm")}
+        </span>
       ),
     },
+
     {
-      title: "Hủy đơn hàng",
+      title: <div className="text-center">Action</div>,
       dataIndex: "order",
       key: "order",
       render: (text, record) => (
-        <Button
-          type="danger"
-          onClick={() => handleCancelOrder(record)}
-          disabled={record.status !== "pending"}
-        >
-          Hủy đơn hàng
-        </Button>
+        <div className="text-center">
+          <button
+            className={`px-4 py-2 text-white font-semibold rounded ${
+              record.status === "pending"
+                ? "bg-red-500 hover:bg-red-600"
+                : "bg-gray-300 cursor-not-allowed"
+            }`}
+            onClick={() => handleCancelOrder(record)}
+            disabled={record.status !== "pending"}
+          >
+            Hủy đơn hàng
+          </button>
+        </div>
       ),
     },
   ];

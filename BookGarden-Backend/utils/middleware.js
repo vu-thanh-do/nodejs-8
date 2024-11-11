@@ -156,7 +156,7 @@ module.exports = {
         name: product.product.name,
         stock: product.stock,
         image: product.product.image,
-        price: product.price,
+        salePrice: product.salePrice,
       }));
 
       const result = {

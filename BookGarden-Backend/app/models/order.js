@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema(
           required: true,
         },
         stock: { type: Number, required: true },
-        price: { type: Number, required: true },
+        salePrice: { type: Number, required: true },
       },
     ],
     orderTotal: {
@@ -31,9 +31,18 @@ const orderSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "approved", "rejected", "final"],
+      enum: [
+        "pending",
+        "confirmed",
+        "shipping",
+        "delivered_unpaid",
+        "final",
+        "returned",
+        "rejected",
+      ],
       default: "pending",
     },
+
     description: {
       type: String,
       default: "",

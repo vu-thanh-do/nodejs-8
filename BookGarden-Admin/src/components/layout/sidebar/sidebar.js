@@ -28,6 +28,12 @@ function Sidebar() {
 
   const menuSidebarAdmin = [
     {
+      key: "account-management",
+      title: "Quản Lý Tài Khoản",
+      link: "/account-management",
+      icon: <UserOutlined />,
+    },
+    {
       key: "product-list",
       title: "Danh sách sản phẩm",
       link: "/product-list",
@@ -38,12 +44,6 @@ function Sidebar() {
       title: "Quản lý đơn hàng",
       link: "/order-list",
       icon: <ShoppingCartOutlined />,
-    },
-    {
-      key: "account-management",
-      title: "Quản Lý Tài Khoản",
-      link: "/account-management",
-      icon: <UserOutlined />,
     },
   ];
 
