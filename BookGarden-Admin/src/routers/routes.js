@@ -141,7 +141,7 @@ const RouterURL = withRouter(({ location }) => {
               marginTop: 50,
             }}
           >
-            <PrivateRoute exact path="/dash-board">
+            <PrivateRoute exact path="/dashboard">
               <Suspense fallback={<LoadingScreen />}>
                 <DashBoard />
               </Suspense>
@@ -240,7 +240,7 @@ const RouterURL = withRouter(({ location }) => {
           <Route exact path="/reset-password/:id">
             <LoginContainer />
           </Route>
-          <Route exact path="/dash-board">
+          <Route exact path="/dashboard">
             <DefaultContainer />
           </Route>
           <Route exact path="/contact-list">

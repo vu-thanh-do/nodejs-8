@@ -145,13 +145,13 @@ const CartHistory = () => {
             <div className="status bg-blue-500 text-white py-1 px-4 rounded-full font-semibold">
               Đang vận chuyển
             </div>
-          ) : slugs === "delivered_unpaid" ? (
+          ) : slugs === "delivered" ? (
             <div className="status bg-green-500 text-white py-1 px-4 rounded-full font-semibold">
               Đã giao
             </div>
           ) : slugs === "final" ? (
             <div className="status bg-indigo-500 text-white py-1 px-4 rounded-full font-semibold">
-              Đã thanh toán
+              Hoàn thành
             </div>
           ) : slugs === "returned" ? (
             <div className="status bg-orange-500 text-white py-1 px-4 rounded-full font-semibold">

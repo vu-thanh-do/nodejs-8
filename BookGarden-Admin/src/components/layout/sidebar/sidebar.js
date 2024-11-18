@@ -28,6 +28,12 @@ function Sidebar() {
 
   const menuSidebarAdmin = [
     {
+      key: "dashboard",
+      title: "Dashboard",
+      link: "/dashboard",
+      icon: <DashboardOutlined />,
+    },
+    {
       key: "account-management",
       title: "Quản Lý Tài Khoản",
       link: "/account-management",
@@ -35,7 +41,7 @@ function Sidebar() {
     },
     {
       key: "product-list",
-      title: "Danh sách sản phẩm",
+      title: "Quản lý sản phẩm",
       link: "/product-list",
       icon: <FormOutlined />,
     },

@@ -20,19 +20,9 @@ import {
   Form,
   Input,
   Select,
-  message,
   Radio,
 } from "antd";
-import {
-  HistoryOutlined,
-  AuditOutlined,
-  CloseOutlined,
-  UserOutlined,
-  MehOutlined,
-  TeamOutlined,
-  HomeOutlined,
-  LeftSquareOutlined,
-} from "@ant-design/icons";
+import { LeftSquareOutlined } from "@ant-design/icons";
 
 import Slider from "react-slick";
 
@@ -441,7 +431,7 @@ const Pay = () => {
           onOk={handleModalConfirm}
           onCancel={() => setShowModal(false)}
         >
-          <p>Bạn có chắc chắn muốn xác nhận thanh toán?</p>
+          <p>Bạn có chắc chắn muốn xác nhận thanh toán ?</p>
         </Modal>
       </Spin>
     </div>

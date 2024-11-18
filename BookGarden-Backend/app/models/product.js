@@ -68,12 +68,6 @@ const ProductSchema = new mongoose.Schema(
       ref: "Pulisher",
       required: true,
     },
-    // url_book: {
-    //   type: String,
-    // },
-    // audioUrl: {
-    //   type: String,
-    // },
     status: {
       type: String,
       enum: ["Available", "Unvailable"],
