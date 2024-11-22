@@ -12,6 +12,7 @@ import Cart from "../pages/Purchase/Cart/cart";
 import Pay from "../pages/Purchase/Pay/pay";
 import CartHistory from "../pages/Purchase/ManagementCart/cartHistory";
 import Contact from "../pages/Contact/contact";
+import Complaint from "../pages/Complaint/Complaint";
 
 import { Layout } from "antd";
 import { withRouter } from "react-router";
@@ -29,27 +30,32 @@ const RouterURL = withRouter(({ location }) => {
       <Layout style={{ minHeight: "100vh" }}>
         <Layout style={{ display: "flex" }}>
           <Header />
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <PrivateRoute exact path="/event-detail/:id">
-            <ProductDetail />
-          </PrivateRoute>
-          <PrivateRoute exact path="/profile">
-            <Profile />
-          </PrivateRoute>
-          <PrivateRoute exact path="/pay">
-            <Pay />
-          </PrivateRoute>
-          <PrivateRoute exact path="/final-pay">
-            <FinalPay />
-          </PrivateRoute>
-          <PrivateRoute exact path="/cart-history">
-            <CartHistory />
-          </PrivateRoute>
-          <PrivateRoute exact path="/product-list/:id">
-            <ProductList />
-          </PrivateRoute>
+          <Switch>
+            <Route exact path="/home">
+              <Home />
+            </Route>
+            <PrivateRoute exact path="/event-detail/:id">
+              <ProductDetail />
+            </PrivateRoute>
+            <PrivateRoute exact path="/profile">
+              <Profile />
+            </PrivateRoute>
+            <PrivateRoute exact path="/pay">
+              <Pay />
+            </PrivateRoute>
+            <PrivateRoute exact path="/final-pay">
+              <FinalPay />
+            </PrivateRoute>
+            <PrivateRoute exact path="/cart-history">
+              <CartHistory />
+            </PrivateRoute>
+            <PrivateRoute exact path="/product-list/:id">
+              <ProductList />
+            </PrivateRoute>
+            <PrivateRoute exact path="/complaint/:id">
+              <Complaint />
+            </PrivateRoute>
+          </Switch>
           <Layout>
             <Footer />
           </Layout>
@@ -58,35 +64,41 @@ const RouterURL = withRouter(({ location }) => {
     </div>
   );
 
+
   const PublicContainer = () => (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
         <Layout style={{ display: "flex" }}>
           <Header />
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/product-detail/:id">
-            <ProductDetail />
-          </Route>
-          <Route exact path="/cart">
-            <Cart />
-          </Route>
-          <Route exact path="/contact">
-            <Contact />
-          </Route>
-          <Route exact path="/news">
-            <News />
-          </Route>
-          <Route exact path="/news/:id">
-            <NewsDetail />
-          </Route>
-          <Route exact path="/product-list/:id">
-            <ProductList />
-          </Route>
-          <Route exact path="/reset-password/:id">
-            <ResetPassword />
-          </Route>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/product-detail/:id">
+              <ProductDetail />
+            </Route>
+            <Route exact path="/cart">
+              <Cart />
+            </Route>
+            <Route exact path="/contact">
+              <Contact />
+            </Route>
+            <Route exact path="/news">
+              <News />
+            </Route>
+            <Route exact path="/news/:id">
+              <NewsDetail />
+            </Route>
+            <Route exact path="/product-list/:id">
+              <ProductList />
+            </Route>
+            <Route exact path="/reset-password/:id">
+              <ResetPassword />
+            </Route>
+            <Route exact path="/complaint/:id">
+                <Complaint />
+            </Route>
+          </Switch>
           <Layout>
             <Footer />
           </Layout>
@@ -94,6 +106,7 @@ const RouterURL = withRouter(({ location }) => {
       </Layout>
     </div>
   );
+
 
   const LoginContainer = () => (
     <div>
@@ -114,32 +127,66 @@ const RouterURL = withRouter(({ location }) => {
   );
 
   return (
-    <Router>
-      <Switch>
-        {/* Các route công khai, không yêu cầu đăng nhập */}
-        <Route exact path="/" component={PublicContainer} />
-        <Route exact path="/product-detail/:id" component={PublicContainer} />
-        <Route exact path="/cart" component={PublicContainer} />
-        <Route exact path="/contact" component={PublicContainer} />
-        <Route exact path="/news" component={PublicContainer} />
-        <Route exact path="/news/:id" component={PublicContainer} />
-        <Route exact path="/product-list/:id" component={PublicContainer} />
-        {/* Route reset password riêng biệt */}
-        <Route exact path="/reset-password/:id" component={ResetPassword} />
-
-        {/* Các route yêu cầu đăng nhập */}
-        <Route exact path="/login" component={LoginContainer} />
-        <Route exact path="/register" component={LoginContainer} />
-        <Route exact path="/pay" component={PrivateContainer} />
-        <Route exact path="/home" component={PrivateContainer} />
-        <Route exact path="/profile" component={PrivateContainer} />
-        <Route exact path="/final-pay" component={PrivateContainer} />
-        <Route exact path="/cart-history" component={PrivateContainer} />
-
-        {/* Route NotFound cho các đường dẫn không tồn tại */}
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/product-detail/:id">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/cart">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/contact">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/login">
+            <LoginContainer />
+          </Route>
+          <Route exact path="/register">
+            <LoginContainer />
+          </Route>
+          <Route exact path="/pay">
+            <PrivateContainer />
+          </Route>
+          <Route exact path="/home">
+            <PrivateContainer />
+          </Route>
+          <Route exact path="/profile">
+            <PrivateContainer />
+          </Route>
+          <Route exact path="/final-pay">
+            <PrivateContainer />
+          </Route>
+          <Route exact path="/cart-history">
+            <PrivateContainer />
+          </Route>
+          <Route exact path="/product-list/:id">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/news">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/news/:id">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/reset-password/:id">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/complaint">
+            <PublicContainer />
+          </Route>
+          <Route exact path="/complaint/:id">
+              <PublicContainer />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 });
 

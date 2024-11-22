@@ -151,11 +151,11 @@ const OrderList = () => {
           <Option value="shipping" disabled={status !== "confirmed"}>
             Đang vận chuyển
           </Option>
-          <Option value="delivered" disabled={status !== "shipping"}>
+          <Option value="delivered_unpaid" disabled={status !== "shipping"}>
             Đã giao
           </Option>
-          <Option value="final" disabled={status !== "delivered"}>
-            Hoàn thành
+          <Option value="final" disabled={status !== "delivered_unpaid"}>
+            Giao hàng thành công
           </Option>
           <Option value="returned" disabled={status !== "final"}>
             Đã hoàn trả
@@ -166,7 +166,11 @@ const OrderList = () => {
         </Select>
       ),
     },
-
+    {
+      title: "Mô tả",
+      dataIndex: "description",
+      key: "description",
+    },
     {
       title: "Hành động",
       key: "action",

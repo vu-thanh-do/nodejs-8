@@ -20,9 +20,9 @@ import "./cartHistory.css";
 const CartHistory = () => {
   const [orderList, setOrderList] = useState([]);
   const [loading, setLoading] = useState(true);
-  let { id } = useParams();
+  const { id } = useParams();
   const history = useHistory();
-
+  
   const handleCancelOrder = (order) => {
     console.log(order);
     Modal.confirm({
@@ -145,13 +145,13 @@ const CartHistory = () => {
             <div className="status bg-blue-500 text-white py-1 px-4 rounded-full font-semibold">
               Đang vận chuyển
             </div>
-          ) : slugs === "delivered" ? (
+          ) : slugs === "delivered_unpaid" ? (
             <div className="status bg-green-500 text-white py-1 px-4 rounded-full font-semibold">
               Đã giao
             </div>
           ) : slugs === "final" ? (
             <div className="status bg-indigo-500 text-white py-1 px-4 rounded-full font-semibold">
-              Hoàn thành
+              Giao hàng thành công
             </div>
           ) : slugs === "returned" ? (
             <div className="status bg-orange-500 text-white py-1 px-4 rounded-full font-semibold">
@@ -188,16 +188,22 @@ const CartHistory = () => {
       render: (text, record) => (
         <div className="text-center">
           <button
-            className={`px-4 py-2 text-white font-semibold rounded ${
-              record.status === "pending"
-                ? "bg-red-500 hover:bg-red-600"
-                : "bg-gray-300 cursor-not-allowed"
-            }`}
+            className={`px-4 py-2 text-white font-semibold rounded ${record.status === "pending"
+              ? "bg-red-500 hover:bg-red-600"
+              : "bg-gray-300 cursor-not-allowed"
+              }`}
             onClick={() => handleCancelOrder(record)}
             disabled={record.status !== "pending"}
           >
             Hủy đơn hàng
           </button>
+          <button
+            className="px-4 py-2 text-white font-semibold rounded bg-yellow-500 hover:bg-yellow-600 mt-3"
+            onClick={() => history.push(`/complaint/${record._id}`)}
+          >
+            Khiếu nại/Hoàn hàng
+          </button>
+
         </div>
       ),
     },
