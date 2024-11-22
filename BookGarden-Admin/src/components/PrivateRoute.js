@@ -11,6 +11,7 @@ const PrivateRoute = ({ children, ...rest }) => {
         }
     }
 
+    
     return (
         <Route
             {...rest}
