@@ -211,7 +211,7 @@ const Cart = () => {
                     pagination={false}
                   />
                   <Divider orientation="right">
-                    <p>Thanh toán</p>
+                    <p>Thanh toán </p>
                   </Divider>
                   <Row justify="end">
                     <Col>
@@ -237,6 +237,7 @@ const Cart = () => {
         </Spin>
       </div>
     </div>
+    
   );
 };
 
