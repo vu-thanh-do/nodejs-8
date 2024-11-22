@@ -2,6 +2,7 @@ const orderController = require("../controllers/orderController");
 const router = require("express").Router();
 const middleware = require("../../utils/middleware");
 
+// Các route khác
 router.post("/search", middleware.checkLogin, orderController.getAllOrder);
 router.get(
   "/searchByName",
@@ -9,7 +10,6 @@ router.get(
   orderController.searchOrderByName
 );
 router.get("/user", middleware.checkLogin, orderController.getOrderByUser);
-
 router.get(
   "/:id",
   middleware.checkLogin,

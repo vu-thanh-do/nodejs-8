@@ -1,135 +1,119 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { Form, Input, Button, Alert, notification } from "antd";
+import axiosClient from "../../apis/axiosClient";
 import "./resetPassword.css";
-import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Divider, Alert,notification } from 'antd';
-import backgroundLogin from "../../assets/image/background-login.png";
-import { useParams } from "react-router-dom";
-import axiosClient from '../../apis/axiosClient';
 
 const ResetPassword = () => {
+  const [isError, setError] = useState(false);
+  let history = useHistory();
+  let { id } = useParams();
 
-    const [isLogin, setLogin] = useState(false);
-
-    let history = useHistory();
-    let { id } = useParams();
-
-    const onFinish = async (values) => {
-        const resetPassWord = {
-                token: id,
-                newPassword: values.password 
-        }
-        axiosClient.post("/user/reset-password", resetPassWord)
-            .then(function (response) {
-                if (response === undefined) {
-                    notification["success"]({
-                        message: `Thông báo`,
-                        description:
-                            'Cập nhật mật khẩu thất bại',
-
-                    });
-                }
-                else {
-                    notification["success"]({
-                        message: `Thông báo`,
-                        description:
-                            'Cập nhật mật khẩu thành công',
-
-                    });
-                    history.push("/login");
-                }
-            })
-            .catch(error => {
-                console.log("password error" + error)
-            });
+  const onFinish = async (values) => {
+    const resetPassWord = {
+      token: id,
+      newPassword: values.password,
+    };
+    try {
+      const response = await axiosClient.post(
+        "/user/reset-password",
+        resetPassWord
+      );
+      if (response) {
+        notification.success({
+          message: "Thành công",
+          description: "Mật khẩu đã được thay đổi!",
+        });
+        history.push("/login");
+      } else {
+        throw new Error("Cập nhật thất bại");
+      }
+    } catch (error) {
+      setError(true);
+      notification.error({
+        message: "Thất bại",
+        description: "Không thể thay đổi mật khẩu!",
+      });
     }
-    useEffect(() => {
+  };
 
-    }, [])
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-500 to-green-600">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
+        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">
+          Đặt Lại Mật Khẩu
+        </h2>
+        <p className="text-center text-gray-600 mb-6">
+          Vui lòng nhập mật khẩu mới của bạn.
+        </p>
 
-    return (
-        <div className="imageBackground">
-            <div id="formContainer" >
-                <div id="form-Login">
-                    <div className="formContentLeft"
-                    >
-                        <img className="formImg" src={backgroundLogin} alt='spaceship' />
-                    </div>
-                    <Form
-                        style={{ width: 340, marginBottom: 8 }}
-                        name="normal_login"
-                        className="loginform"
-                        initialValues={{
-                            remember: true,
-                        }}
-                        onFinish={onFinish}
-                    >
-                        <Form.Item style={{ marginBottom: 3, marginTop: 65 }}>
-                            <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">Insight Book!</Divider>
-                        </Form.Item>
-                        <Form.Item style={{ marginBottom: 16, textAlign: "center" }}>
-                            <p className="text">Thay đổi mật khẩu</p>
-                        </Form.Item>
-                        <>
-                            {isLogin === true ?
-                                <Form.Item style={{ marginBottom: 16 }}>
-                                    <Alert
-                                        message="Error changing password"
-                                        type="error"
-                                        showIcon
-                                    />
+        {isError && (
+          <Alert
+            message="Lỗi"
+            description="Không thể thay đổi mật khẩu. Vui lòng thử lại."
+            type="error"
+            showIcon
+            style={{ marginBottom: "16px" }}
+          />
+        )}
 
-                                </Form.Item>
-                                : ""}
-                        </>
-                        <Form.Item
-                            name="password"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng nhập mật khẩu!',
-                                },
-                            ]}
-                            hasFeedback
-                        >
-                            <Input.Password placeholder="Mật khẩu" />
-                        </Form.Item>
+        <Form
+          name="reset_password"
+          layout="vertical"
+          onFinish={onFinish}
+          className="reset-password-form"
+        >
+          <Form.Item
+            name="password"
+            label="Mật khẩu mới"
+            rules={[
+              { required: true, message: "Vui lòng nhập mật khẩu mới!" },
+              { min: 6, message: "Mật khẩu phải có ít nhất 6 ký tự!" },
+            ]}
+          >
+            <Input.Password
+              placeholder="Nhập mật khẩu mới"
+              className="px-4 py-2 border border-gray-300 rounded-md"
+            />
+          </Form.Item>
 
-                        <Form.Item
-                            name="confirm"
-                            dependencies={['password']}
-                            hasFeedback
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng nhập lại mật khẩu!',
-                                },
-                                ({ getFieldValue }) => ({
-                                    validator(_, value) {
-                                        if (!value || getFieldValue('password') === value) {
-                                            return Promise.resolve();
-                                        }
+          <Form.Item
+            name="confirm"
+            label="Xác nhận mật khẩu"
+            dependencies={["password"]}
+            hasFeedback
+            rules={[
+              { required: true, message: "Vui lòng nhập lại mật khẩu!" },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error("Hai mật khẩu không khớp!"));
+                },
+              }),
+            ]}
+          >
+            <Input.Password
+              placeholder="Xác nhận mật khẩu mới"
+              className="px-4 py-2 border border-gray-300 rounded-md"
+            />
+          </Form.Item>
 
-                                        return Promise.reject(new Error('Hai mật khẩu bạn nhập không khớp!'));
-                                    },
-                                }),
-                            ]}
-                        >
-                            <Input.Password placeholder="Nhập lại mật khẩu" />
-                        </Form.Item>
-
-                        <Form.Item style={{ width: '100%', marginTop: 20 }}>
-                            <Button className="button" type="primary" htmlType="submit"  >
-                                SUBMIT
-                        </Button>
-                        </Form.Item>
-                    </Form>
-                </div>
-            </div>
-        </div>
-    );
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              className="bg-blue-600 text-white  rounded-md hover:bg-blue-700"
+            >
+              Đặt Lại Mật Khẩu
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </div>
+  );
 };
 
 export default ResetPassword;
-
-
-

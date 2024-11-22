@@ -20,19 +20,9 @@ import {
   Form,
   Input,
   Select,
-  message,
   Radio,
 } from "antd";
-import {
-  HistoryOutlined,
-  AuditOutlined,
-  CloseOutlined,
-  UserOutlined,
-  MehOutlined,
-  TeamOutlined,
-  HomeOutlined,
-  LeftSquareOutlined,
-} from "@ant-design/icons";
+import { LeftSquareOutlined } from "@ant-design/icons";
 
 import Slider from "react-slick";
 
@@ -101,7 +91,9 @@ const Pay = () => {
         console.log(formatData);
         await axiosClient.post("/order", formatData).then((response) => {
           console.log(response);
-          if (response.error === "Insufficient quantity for one or more products.") {
+          if (
+            response.error === "Insufficient stock for one or more products."
+          ) {
             return notification["error"]({
               message: `Thông báo`,
               description: "Sản phẩm đã hết hàng!",
@@ -176,7 +168,7 @@ const Pay = () => {
         },
       });
 
-      console.log(response)
+      console.log(response);
 
       if (response) {
         const local = localStorage.getItem("user");
@@ -258,14 +250,19 @@ const Pay = () => {
         console.log(cart);
 
         const transformedData = cart.map(
-          ({ _id: product, quantity, promotion, price }) => ({ product, quantity, promotion,price })
+          ({ _id: product, stock, salePrice, price }) => ({
+            product,
+            stock,
+            salePrice,
+            price,
+          })
         );
         let totalPrice = 0;
 
         for (let i = 0; i < transformedData.length; i++) {
           let product = transformedData[i];
           console.log(product);
-          let price = product.promotion * product.quantity;
+          let price = product.salePrice * product.stock;
           totalPrice += price;
         }
 
@@ -333,7 +330,7 @@ const Pay = () => {
                     hasFeedback
                     style={{ marginBottom: 10 }}
                   >
-                    <Input  placeholder="Tên" />
+                    <Input placeholder="Tên" />
                   </Form.Item>
 
                   <Form.Item
@@ -351,7 +348,7 @@ const Pay = () => {
                     hasFeedback
                     style={{ marginBottom: 10 }}
                   >
-                    <Input  placeholder="Số điện thoại" />
+                    <Input placeholder="Số điện thoại" />
                   </Form.Item>
 
                   <Form.Item
@@ -394,7 +391,7 @@ const Pay = () => {
                   >
                     <Radio.Group>
                       <Radio value={"cod"}>COD</Radio>
-                      <Radio value={"paypal"}>PAYPAL</Radio>
+                      {/* <Radio value={"paypal"}>PAYPAL</Radio> */}
                       {/* <Radio value={2}>B</Radio> */}
                     </Radio.Group>
                   </Form.Item>
@@ -434,7 +431,7 @@ const Pay = () => {
           onOk={handleModalConfirm}
           onCancel={() => setShowModal(false)}
         >
-          <p>Bạn có chắc chắn muốn xác nhận thanh toán?</p>
+          <p>Bạn có chắc chắn muốn xác nhận thanh toán ?</p>
         </Modal>
       </Spin>
     </div>

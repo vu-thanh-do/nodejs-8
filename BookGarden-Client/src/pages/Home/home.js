@@ -266,7 +266,6 @@ const Home = () => {
             </Row>
           </div>
         </div>
-        <div></div>
 
         <section class="py-10 bg-white sm:py-16 lg:py-24">
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">

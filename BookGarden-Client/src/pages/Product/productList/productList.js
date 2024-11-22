@@ -95,7 +95,7 @@ const ProductList = () => {
               </Breadcrumb>
             </div>
             <hr></hr>
-            <div className="container box">
+            {/* <div className="container box">
               {categories.map((category) => (
                 <div
                   key={category.id}
@@ -105,7 +105,7 @@ const ProductList = () => {
                   <div className="menu-category-1">{category.name}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
             {/* <div className="container">
                     <Button type="primary" onClick={() => handleSearchClick()}>
                         Search theo giá sản phẩm
@@ -230,20 +230,6 @@ const ProductList = () => {
                           </Paragraph>
                         )
                       )}
-
-                      {item?.audioUrl ? (
-                        <Paragraph
-                          className="badge"
-                          style={{ position: "absolute", top: 10, left: 9 }}
-                        >
-                          {item?.audioUrl ? (
-                            <span>Sách nói</span>
-                          ) : (
-                            <span>Giảm giá</span>
-                          )}
-                          <img src={triangleTopRight} alt="Triangle" />
-                        </Paragraph>
-                      ) : null}
                     </List.Item>
                   )}
                 ></List>

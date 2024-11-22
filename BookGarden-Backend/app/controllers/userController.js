@@ -159,19 +159,19 @@ const userController = {
       await user.save();
 
       const transporter = nodemailer.createTransport({
-        host: "smtp-relay.brevo.com",
-        port: "587",
+        service: "gmail",
+
         auth: {
-          user: "h5studiogl@gmail.com",
-          pass: "fScdnZ4WmEDqjBA1",
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
         },
       });
 
       const mailOptions = {
-        from: "coms@gmail.com",
+        from: process.env.EMAIL_USER,
         to: user.email,
         subject: "Reset Password",
-        text: `To reset your password, click on the following link: http://localhost:3500/reset-password/${token}`,
+        html: `Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu của bạn. Vui lòng nhấn vào <a href="http://localhost:3500/reset-password/${token}">Reset Password</a> để đặt lại mật khẩu mới.`,
       };
 
       transporter.sendMail(mailOptions, (error, info) => {

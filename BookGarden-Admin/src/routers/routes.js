@@ -10,7 +10,6 @@ import Sidebar from "../components/layout/sidebar/sidebar";
 import LoadingScreen from "../components/loading/loadingScreen";
 import PrivateRoute from "../components/PrivateRoute";
 import PublicRoute from "../components/PublicRoute";
-import PulisherList from "../pages/PulisherList/pulisher";
 
 const { Content } = Layout;
 
@@ -51,6 +50,12 @@ const CategoryList = lazy(() => {
 const AuthorList = lazy(() => {
   return Promise.all([
     import("../pages/AuthorList/authorList"),
+    new Promise((resolve) => setTimeout(resolve, 0)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+const PulisherList = lazy(() => {
+  return Promise.all([
+    import("../pages/PulisherList/pulisher"),
     new Promise((resolve) => setTimeout(resolve, 0)),
   ]).then(([moduleExports]) => moduleExports);
 });
@@ -136,7 +141,7 @@ const RouterURL = withRouter(({ location }) => {
               marginTop: 50,
             }}
           >
-            <PrivateRoute exact path="/dash-board">
+            <PrivateRoute exact path="/dashboard">
               <Suspense fallback={<LoadingScreen />}>
                 <DashBoard />
               </Suspense>
@@ -235,7 +240,7 @@ const RouterURL = withRouter(({ location }) => {
           <Route exact path="/reset-password/:id">
             <LoginContainer />
           </Route>
-          <Route exact path="/dash-board">
+          <Route exact path="/dashboard">
             <DefaultContainer />
           </Route>
           <Route exact path="/contact-list">

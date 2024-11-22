@@ -22,11 +22,7 @@ import {
   ShoppingTwoTone,
 } from "@ant-design/icons";
 import statisticApi from "../../apis/statistic";
-import { useHistory } from "react-router-dom";
-import { DateTime } from "../../utils/dateTime";
-import axiosClient from "../../apis/axiosClient";
 import orderApi from "../../apis/orderApi";
-
 import {
   AreaChart,
   Area,
@@ -36,22 +32,37 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const { confirm } = Modal;
 const DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
-const { Title } = Typography;
 
 const DashBoard = () => {
-  const [order, setOrder] = useState([]);
+  const [orders, setOrder] = useState([]);
   const [statisticList, setStatisticList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [total, setTotalList] = useState();
   const [data, setData] = useState(null);
 
-  const history = useHistory();
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        // Gọi thống kê tổng
+        const statisticRes = await statisticApi.getTotal();
+        setStatisticList(statisticRes.data);
+        setData(statisticRes.data.data);
 
-  function NoData() {
-    return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />;
-  }
+        // Gọi đơn hàng mới nhất
+        const orderRes = await orderApi.getListOrder({ page: 1, limit: 15 });
+        const sortedOrders = orderRes.data.docs.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        setOrder(sortedOrders);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   const columns = [
     {
@@ -60,66 +71,50 @@ const DashBoard = () => {
       render: (text, record, index) => index + 1,
     },
     {
-      title: "Tên",
+      title: "Tên khách hàng",
       dataIndex: "user",
-      key: "user",
-      render: (text, record) => <a>{text.username}</a>,
+      key: "username",
+      render: (user) => user?.username || "Không rõ",
     },
     {
       title: "Email",
       dataIndex: "user",
-      key: "user",
-      render: (text, record) => <a>{text.email}</a>,
+      key: "email",
+      render: (user) => user?.email || "Không rõ",
     },
     {
       title: "Tổng tiền",
       dataIndex: "orderTotal",
       key: "orderTotal",
-      render: (text) => <a>{text}</a>,
+      render: (orderTotal) =>
+        orderTotal
+          ? orderTotal.toLocaleString("vi", {
+              style: "currency",
+              currency: "VND",
+            })
+          : "0 VND",
     },
     {
       title: "Hình thức thanh toán",
       dataIndex: "billing",
       key: "billing",
+      render: (billing) => billing || "Không rõ",
     },
     {
       title: "Trạng thái",
       key: "status",
       dataIndex: "status",
-      render: (slugs) => (
-        <span>
-          <Tag color="geekblue" key={slugs}>
-            {slugs?.toUpperCase()}
-          </Tag>
-        </span>
+      render: (status) => (
+        <Tag color={status === "completed" ? "green" : "blue"} key={status}>
+          {status?.toUpperCase() || "Chưa xác định"}
+        </Tag>
       ),
     },
   ];
 
-  useEffect(() => {
-    (async () => {
-      try {
-        await statisticApi.getTotal().then((res) => {
-          console.log(res);
-          setTotalList(res);
-          setStatisticList(res.data);
-          setData(res.data.data);
-          setLoading(false);
-        });
-        await orderApi.getListOrder({ page: 1, limit: 6 }).then((res) => {
-          console.log(res);
-          setTotalList(res.totalDocs);
-          setOrder(res.data.docs);
-          setLoading(false);
-        });
-      } catch (error) {
-        console.log("Failed to fetch event list:" + error);
-      }
-    })();
-  }, []);
   return (
     <div>
-      <Spin spinning={false}>
+      <Spin spinning={loading}>
         <div className="container">
           <div style={{ marginTop: 20 }}>
             <Breadcrumb>
@@ -133,6 +128,7 @@ const DashBoard = () => {
             </Breadcrumb>
           </div>
           <Row gutter={12} style={{ marginTop: 20 }}>
+            {/* Thẻ card thống kê */}
             <Col span={6}>
               <Card className="card_total" bordered={false}>
                 <div className="card_number">
@@ -156,7 +152,7 @@ const DashBoard = () => {
                 <div className="card_number">
                   <div>
                     <div className="number_total">
-                      {statisticList.productTotal}
+                      {statisticList.productTotal || 0}
                     </div>
                     <div className="title_total">Số sản phẩm</div>
                   </div>
@@ -171,7 +167,7 @@ const DashBoard = () => {
                 <div className="card_number">
                   <div>
                     <div className="number_total">
-                      {statisticList.categoryTotal}
+                      {statisticList.categoryTotal || 0}
                     </div>
                     <div className="title_total">Số danh mục</div>
                   </div>
@@ -188,7 +184,7 @@ const DashBoard = () => {
                     <div className="number_total">
                       {statisticList.orderTotal}
                     </div>
-                    <div className="title_total">Số đặt hàng</div>
+                    <div className="title_total">Số đơn hàng</div>
                   </div>
                   <div>
                     <ShoppingTwoTone style={{ fontSize: 48 }} />
@@ -197,56 +193,58 @@ const DashBoard = () => {
               </Card>
             </Col>
           </Row>
-          <Row gutter={12}>
-            <Col span={12}>
+          <Col span={20}>
+            <div className="chart">
               <div className="chart">
                 <div className="title">Thống kê đơn hàng trong 12 tháng</div>
                 <ResponsiveContainer width="100%" aspect={2 / 1}>
                   <AreaChart
-                    width={730}
-                    height={250}
                     data={data}
-                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
                   >
+                    {/* Gradient màu */}
                     <defs>
                       <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
                         <stop
                           offset="5%"
-                          stopColor="#8884d8"
+                          stopColor="#00c6ff"
                           stopOpacity={0.8}
                         />
                         <stop
                           offset="95%"
-                          stopColor="#8884d8"
+                          stopColor="#0072ff"
                           stopOpacity={0}
                         />
                       </linearGradient>
                     </defs>
-                    <XAxis dataKey="name" stroke="gray" />
-                    <CartesianGrid
-                      strokeDasharray="3 3"
-                      className="chartGrid"
-                    />
+
+                    {/* Lưới và trục */}
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                    <XAxis dataKey="name" stroke="#555" />
                     <Tooltip />
                     <Area
                       type="monotone"
                       dataKey="Total"
-                      stroke="#8884d8"
+                      stroke="#0072ff"
+                      strokeWidth={2}
                       fillOpacity={1}
                       fill="url(#total)"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
-            </Col>
-            <Col span={12}>
+            </div>
+          </Col>
+          <Row>
+            <Col span={20}>
               <div className="chart">
                 <div className="title">Đơn hàng mới nhất</div>
                 <div style={{ marginTop: 10 }}>
                   <Table
                     columns={columns}
+                    dataSource={orders}
                     pagination={{ position: ["bottomCenter"] }}
-                    dataSource={order}
+                    locale={{ emptyText: <Empty /> }}
                   />
                 </div>
               </div>

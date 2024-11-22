@@ -154,9 +154,9 @@ module.exports = {
       const userName = order.user ? order.user.username : null;
       const products = order.products.map((product) => ({
         name: product.product.name,
-        quantity: product.quantity,
+        stock: product.stock,
         image: product.product.image,
-        price: product.price,
+        salePrice: product.salePrice,
       }));
 
       const result = {

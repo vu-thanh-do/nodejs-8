@@ -95,7 +95,7 @@ const ProductList = () => {
             category: values.category,
             image: response.image_url,
             salePrice: values.salePrice,
-            slide: images,
+            // slide: images,
             year: values.year,
             stock: values.stock,
             pages: values.pages,
@@ -737,11 +737,6 @@ const ProductList = () => {
             scrollToFirstError
           >
             <Spin spinning={loading}>
-              {/* <Form.Item name="showPromotion" style={{ marginBottom: 10 }}>
-                <Checkbox onChange={handleShowPromotionChange}>
-                  Sách nói?
-                </Checkbox>
-              </Form.Item> */}
               <Form.Item
                 name="name"
                 label="Tên"
@@ -876,18 +871,18 @@ const ProductList = () => {
               </Form.Item>
               <Form.Item
                 name="form"
-                label="Bìa"
+                label="Hình thức"
                 rules={[
                   {
                     required: true,
-                    message: "Vui lòng nhập bìa",
+                    message: "Vui lòng chọn hình thức",
                   },
                 ]}
                 style={{ marginBottom: 10 }}
               >
                 <Select placeholder="Chọn form">
-                  <Select.Option value="Cứng">Cứng</Select.Option>
-                  <Select.Option value="Mềm">Mềm</Select.Option>
+                  <Select.Option value="Bìa cứng">Bìa cứng</Select.Option>
+                  <Select.Option value="Bìa mềm">Bìa mềm</Select.Option>
                 </Select>
               </Form.Item>
 
@@ -912,20 +907,6 @@ const ProductList = () => {
               </Form.Item>
 
               {/* <Form.Item
-                name="audioUrl"
-                label="Audio URL"
-                style={{ marginBottom: 10 }}
-              >
-                <input
-                  type="file"
-                  onChange={handleChangeAudioUrl}
-                  id="audioUrl"
-                  name="audioUrl"
-                  accept="audio/mpeg, audio/wav, audio/ogg, audio/mp3"
-                />
-              </Form.Item> */}
-
-              <Form.Item
                 name="images"
                 label="Hình ảnh slide"
                 style={{ marginBottom: 10 }}
@@ -940,7 +921,7 @@ const ProductList = () => {
                 >
                   <Button icon={<UploadOutlined />}>Tải lên</Button>
                 </Upload>
-              </Form.Item>
+              </Form.Item> */}
 
               {/* <Form.Item
                 name="url_book"
@@ -991,12 +972,12 @@ const ProductList = () => {
                 </Select>
               </Form.Item>
               <Form.Item
-                name="author"
+                name="Tác giả"
                 label="Author"
                 rules={[
                   {
                     required: true,
-                    message: "Vui lòng chọn author!",
+                    message: "Vui lòng chọn tác giả!",
                   },
                 ]}
                 style={{ marginBottom: 10 }}
@@ -1288,32 +1269,19 @@ const ProductList = () => {
             </Form.Item>
             <Form.Item
               name="form"
-              label="Bìa"
+              label="Hình thức"
               rules={[
                 {
                   required: true,
-                  message: "Vui lòng nhập bìa",
+                  message: "Vui lòng chọn hình thức",
                 },
               ]}
               style={{ marginBottom: 10 }}
             >
               <Select placeholder="Chọn form">
-                <Select.Option value="Cứng">Cứng</Select.Option>
-                <Select.Option value="Mềm">Mềm</Select.Option>
+                <Select.Option value="Bìa cứng">Bìa cứng</Select.Option>
+                <Select.Option value="Bìa mềm">Bìa mềm</Select.Option>
               </Select>
-            </Form.Item>
-            <Form.Item
-              name="stock"
-              label="Số lượng"
-              rules={[
-                {
-                  required: true,
-                  message: "Vui lòng nhập Số lượng",
-                },
-              ]}
-              style={{ marginBottom: 10 }}
-            >
-              <Input placeholder="Số lượng" type="number" />
             </Form.Item>
 
             <Form.Item
@@ -1329,7 +1297,8 @@ const ProductList = () => {
                 accept="image/png, image/jpeg"
               />
             </Form.Item>
-            <Form.Item
+
+            {/* <Form.Item
               name="images"
               label="Hình ảnh slide"
               style={{ marginBottom: 10 }}
@@ -1344,7 +1313,7 @@ const ProductList = () => {
               >
                 <Button icon={<UploadOutlined />}>Tải lên</Button>
               </Upload>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               name="category"
@@ -1379,11 +1348,11 @@ const ProductList = () => {
 
             <Form.Item
               name="author"
-              label="Author"
+              label="Tác giả"
               rules={[
                 {
                   required: true,
-                  message: "Vui lòng chọn author!",
+                  message: "Vui lòng chọn tác giả!",
                 },
               ]}
               style={{ marginBottom: 10 }}

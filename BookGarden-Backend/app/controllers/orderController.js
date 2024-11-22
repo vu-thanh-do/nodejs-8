@@ -2,6 +2,9 @@ const OrderModel = require("../models/order");
 const _const = require("../config/constant");
 const jwt = require("jsonwebtoken");
 const Product = require("../models/product");
+const User = require("../models/user");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 const orderController = {
   getAllOrder: async (req, res) => {
@@ -32,8 +35,9 @@ const orderController = {
 
   createOrder: async (req, res) => {
     try {
-      const insufficientQuantityProducts = [];
+      const insufficientStockProducts = [];
 
+      // Tạo đơn hàng mới
       const order = new OrderModel({
         user: req.body.userId,
         products: req.body.products,
@@ -44,38 +48,82 @@ const orderController = {
         status: req.body.status,
       });
 
+      // Kiểm tra tồn kho sản phẩm
       for (const productItem of req.body.products) {
         const productId = productItem.product;
-        const quantity = productItem.quantity;
+        const stock = productItem.stock;
 
-        // Find the product in the database
+        // Tìm sản phẩm trong cơ sở dữ liệu
         const product = await Product.findById(productId);
 
-        if (!product || product.quantity < quantity) {
-          insufficientQuantityProducts.push({
+        if (!product || product.stock < stock) {
+          insufficientStockProducts.push({
             productId,
-            quantity: product ? product.quantity : 0,
+            stock: product ? product.stock : 0,
           });
         }
 
-        if (insufficientQuantityProducts.length > 0) {
+        if (insufficientStockProducts.length > 0) {
           return res.status(200).json({
-            error: "Insufficient quantity for one or more products.",
-            insufficientQuantityProducts,
+            error: "Insufficient stock for one or more products.",
+            insufficientStockProducts,
           });
         }
 
-        // Update the product quantity
+        // Cập nhật tồn kho sản phẩm
         if (product) {
-          product.quantity -= quantity;
+          product.stock -= stock;
           await product.save();
         }
       }
 
       const orderList = await order.save();
+
+      // Lấy thông tin người dùng
+      const user = await User.findById(req.body.userId);
+      if (!user || !user.email) {
+        return res.status(400).json({ message: "User email not found" });
+      }
+
+      // Soạn email thông báo
+      const emailContent = `
+        Xin chào ${user.username || "Khách hàng"},
+
+        Đơn hàng của bạn đã được đặt thành công! Chi tiết đơn hàng:
+
+        - Tổng giá trị: ${req.body.orderTotal}
+        - Địa chỉ giao hàng: ${req.body.address}
+        - Phương thức thanh toán: ${req.body.billing}
+
+        Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi!
+
+        Trân trọng,
+        Đội ngũ cửa hàng
+      `;
+
+      // Cấu hình Nodemailer
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL_USER, // Đọc email từ biến môi trường
+          pass: process.env.EMAIL_PASS, // Đọc mật khẩu từ biến môi trường
+        },
+      });
+
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: user.email,
+        subject: "Xác nhận đặt hàng thành công",
+        text: emailContent,
+      };
+
+      // Gửi email
+      await transporter.sendMail(mailOptions);
+
+      // Trả về phản hồi thành công
       res.status(200).json(orderList);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -94,27 +142,64 @@ const orderController = {
 
   updateOrder: async (req, res) => {
     const id = req.params.id;
-    const {
-      user,
-      products,
-      address,
-      orderTotal,
-      billing,
-      description,
-      status,
-    } = req.body;
+    const { status, description, address } = req.body;
 
     try {
-      const orderList = await OrderModel.findByIdAndUpdate(
+      // Cập nhật trạng thái đơn hàng
+      const order = await OrderModel.findByIdAndUpdate(
         id,
         { status, description, address },
         { new: true }
-      );
-      if (!orderList) {
+      ).populate("user"); // Lấy thông tin người dùng liên quan
+
+      if (!order) {
         return res.status(404).json({ message: "Order not found" });
       }
-      res.status(200).json(orderList);
+
+      // Lấy thông tin người dùng
+      const user = order.user;
+      if (!user || !user.email) {
+        return res.status(400).json({ message: "User email not found" });
+      }
+
+      // Soạn nội dung email thông báo
+      const emailContent = `
+        Xin chào ${user.username || "Khách hàng"},
+        
+        Đơn hàng của bạn đã được cập nhật trạng thái mới:
+        
+        - Mã đơn hàng: ${order._id}
+        - Trạng thái hiện tại: ${status}
+        
+        Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.
+        
+        Trân trọng,
+        BookGarden
+      `;
+
+      // Cấu hình Nodemailer
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL_USER, // Đọc email từ biến môi trường
+          pass: process.env.EMAIL_PASS, // Đọc mật khẩu từ biến môi trường
+        },
+      });
+
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: user.email,
+        subject: "Cập nhật trạng thái đơn hàng",
+        text: emailContent,
+      };
+
+      // Gửi email
+      await transporter.sendMail(mailOptions);
+
+      // Trả về phản hồi thành công
+      res.status(200).json(order);
     } catch (err) {
+      console.error("Error updating order:", err.message);
       res.status(500).json(err);
     }
   },

@@ -156,12 +156,16 @@ const Login = () => {
         visible={forgotPasswordModalVisible}
         onCancel={handleForgotPasswordCancel}
         footer={[
-          <Button key="back" onClick={handleForgotPasswordCancel}>
+          <Button
+            key="back"
+            onClick={handleForgotPasswordCancel}
+            className="rounded-md"
+          >
             Hủy
           </Button>,
           <Button
             key="submit"
-            type="primary"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md"
             onClick={handleForgotPasswordSubmit}
           >
             Gửi đường dẫn đổi mật khẩu

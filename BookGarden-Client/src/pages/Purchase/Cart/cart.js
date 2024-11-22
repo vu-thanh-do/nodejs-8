@@ -22,8 +22,8 @@ const { Content } = Layout;
 const Cart = () => {
   const [productDetail, setProductDetail] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [cartLength, setCartLength] = useState();
-  const [cartTotal, setCartTotal] = useState();
+  const [cartLength, setCartLength] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
   const [form] = Form.useForm();
   let { id } = useParams();
   const history = useHistory();
@@ -40,21 +40,19 @@ const Cart = () => {
     setCartLength(0);
   };
 
-  const updateQuantity = (productId, newQuantity) => {
-    // Tìm kiếm sản phẩm trong giỏ hàng
-    if (newQuantity === 0) {
+  const updateStock = (productId, newStock) => {
+    if (newStock === 0) {
       return handleDelete(productId);
     }
     const updatedCart = productDetail.map((item) => {
       if (item._id === productId) {
-        // Cập nhật số lượng và tính toán tổng tiền
-        item.quantity = newQuantity;
-        item.total = item.promition * newQuantity;
+        item.stock = newStock;
+        item.total = item.salePrice * newStock;
       }
       return item;
     });
     const total = updatedCart.reduce(
-      (acc, item) => acc + item.quantity * item.salePrice,
+      (acc, item) => acc + item.stock * item.salePrice,
       0
     );
     setCartTotal(total);
@@ -63,15 +61,13 @@ const Cart = () => {
   };
 
   const handleDelete = (productId) => {
-    const updatedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const filteredCart = updatedCart.filter(
+    const updatedCart = productDetail.filter(
       (product) => product._id !== productId
     );
-    localStorage.setItem("cart", JSON.stringify(filteredCart));
-    localStorage.setItem("cartLength", filteredCart.length);
-    setProductDetail(filteredCart);
-    setCartLength(filteredCart.length);
-    window.location.reload();
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    localStorage.setItem("cartLength", updatedCart.length);
+    setProductDetail(updatedCart);
+    setCartLength(updatedCart.length);
   };
 
   const columns = [
@@ -100,21 +96,21 @@ const Cart = () => {
       dataIndex: "salePrice",
       key: "salePrice",
       render: (text) => (
-        <a>
+        <a style={{ color: "red" }}>
           {text?.toLocaleString("vi", { style: "currency", currency: "VND" })}
         </a>
       ),
     },
     {
       title: "Số lượng",
-      dataIndex: "quantity",
-      key: "quantity",
+      dataIndex: "stock",
+      key: "stock",
       render: (text, record) => (
         <InputNumber
           min={0}
-          defaultValue={text}
+          defaultValue={text > 0 ? text : 1} // Luôn hiển thị giá trị mặc định là 1 nếu text là 0 hoặc undefined
           onChange={(value) => {
-            updateQuantity(record._id, value);
+            updateStock(record._id, value);
           }}
         />
       ),
@@ -126,10 +122,12 @@ const Cart = () => {
       render: (text, record) => (
         <div>
           <div className="groupButton">
-            {(record?.salePrice * record?.quantity).toLocaleString("vi", {
-              style: "currency",
-              currency: "VND",
-            })}
+            <a style={{ color: "green" }}>
+              {(record.salePrice * record.stock).toLocaleString("vi", {
+                style: "currency",
+                currency: "VND",
+              })}
+            </a>
           </div>
         </div>
       ),
@@ -144,12 +142,20 @@ const Cart = () => {
   ];
 
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart = (JSON.parse(localStorage.getItem("cart")) || []).map(
+      (item) => ({
+        ...item,
+        stock: 1, // Đặt `stock` thành 1 mặc định khi hiển thị trong giỏ hàng
+      })
+    );
+
     setProductDetail(cart);
-    const cartLength = localStorage.getItem("cartLength") || 0;
-    setCartLength(parseInt(cartLength));
+
+    const cartLength = cart.length;
+    setCartLength(cartLength);
+
     const total = cart.reduce(
-      (acc, item) => acc + item.quantity * item.salePrice,
+      (acc, item) => acc + item.stock * item.salePrice,
       0
     );
     setCartTotal(total);
@@ -157,19 +163,18 @@ const Cart = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Thêm vào component của bạn
   const handleRowClick = (record) => {
     history.push("/product-detail/" + record._id);
   };
 
   const handleNavigateToHome = () => {
-    history.push("/"); // Chuyển hướng về trang home
+    history.push("/");
   };
 
   return (
     <div>
-      <div class="py-5">
-        <Spin spinning={false}>
+      <div className="py-5">
+        <Spin spinning={loading}>
           <Card className="container">
             <div className="box_cart">
               <Layout className="box_cart">
@@ -180,8 +185,8 @@ const Cart = () => {
                       <span> Tiếp tục mua sắm</span>
                     </Breadcrumb.Item>
                   </Breadcrumb>
-                  <hr></hr>
-                  <br></br>
+                  <hr />
+                  <br />
                   <Row>
                     <Col span={12}>
                       <h4>
@@ -189,43 +194,22 @@ const Cart = () => {
                       </h4>
                     </Col>
                     <Col span={12}>
-                      <Button type="default" danger style={{ float: "right" }}>
-                        <span onClick={() => deleteCart()}>Xóa tất cả</span>
+                      <Button
+                        type="default"
+                        danger
+                        style={{ float: "right" }}
+                        onClick={deleteCart}
+                      >
+                        Xóa tất cả
                       </Button>
                     </Col>
                   </Row>
-                  <br></br>
+                  <br />
                   <Table
                     columns={columns}
                     dataSource={productDetail}
                     pagination={false}
                   />
-                  <br></br>
-                  {/* <Divider orientation="left">Chính sách</Divider> */}
-                  {/* <Row justify="start">
-                    <Col>
-                      <ol>
-                        <li>
-                          Sản phẩm chuẩn chất lượng, đúng với hình ảnh và video
-                          mà shop cung cấp với giá cả tốt trên thị trường.
-                        </li>
-                        <li>
-                          Dịch vụ khách hàng chu đáo, nhiệt tình, tận tâm.
-                        </li>
-                        <li>
-                          Đổi trả sản phẩm nếu có lỗi từ nhà sản xuất theo quy
-                          định của nhà sách:<br></br>- Sản phẩm phải còn nguyên,
-                          chưa qua sử dụng, giặt tẩy, không bị bẩn hoặc bị hư
-                          hỏng bởi các tác nhân bên ngoài. <br></br>- Sản phẩm
-                          hư hỏng do vận chuyển hoặc do nhà sản xuất.
-                          <br></br>- Không đủ số lượng, không đủ bộ như trong
-                          đơn hàng.
-                        </li>
-                      </ol>
-                    </Col>
-                  </Row> */}
-
-                  <br></br>
                   <Divider orientation="right">
                     <p>Thanh toán </p>
                   </Divider>
@@ -234,13 +218,12 @@ const Cart = () => {
                       <h6>Tổng {cartLength} sản phẩm</h6>
                       <Statistic
                         title="Tổng tiền"
-                        value={`${Math.round(cartTotal).toFixed(0)}`}
-                        precision={0}
+                        value={cartTotal.toLocaleString("vi-VN")}
                       />
                       <Button
                         style={{ marginTop: 16 }}
-                        onClick={() => handlePay()}
-                        disabled={productDetail.length === 0} // Nếu giỏ hàng trống, vô hiệu hóa button
+                        onClick={handlePay}
+                        disabled={productDetail.length === 0}
                       >
                         Thanh toán ngay
                         <CreditCardOutlined style={{ fontSize: "20px" }} />

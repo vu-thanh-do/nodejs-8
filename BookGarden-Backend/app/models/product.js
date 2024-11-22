@@ -47,9 +47,6 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    manufacturer: {
-      type: String,
-    },
     pulisher: {
       type: String,
     },
@@ -71,12 +68,6 @@ const ProductSchema = new mongoose.Schema(
       ref: "Pulisher",
       required: true,
     },
-    // url_book: {
-    //   type: String,
-    // },
-    // audioUrl: {
-    //   type: String,
-    // },
     status: {
       type: String,
       enum: ["Available", "Unvailable"],
