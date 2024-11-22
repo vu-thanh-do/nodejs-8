@@ -20,7 +20,6 @@ const upload = multer({ storage: storage });
 
 router.post(
   "/",
-  verifyToken.checkLogin,
   upload.single("image"),
   uploadFileController.uploadFile
 );

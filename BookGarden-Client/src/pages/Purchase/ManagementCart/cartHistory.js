@@ -22,7 +22,7 @@ const CartHistory = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const history = useHistory();
-  
+
   const handleCancelOrder = (order) => {
     console.log(order);
     Modal.confirm({
@@ -188,22 +188,24 @@ const CartHistory = () => {
       render: (text, record) => (
         <div className="text-center">
           <button
-            className={`px-4 py-2 text-white font-semibold rounded ${record.status === "pending"
-              ? "bg-red-500 hover:bg-red-600"
-              : "bg-gray-300 cursor-not-allowed"
-              }`}
+            className={`px-4 py-2 text-white font-semibold rounded ${
+              record.status === "pending"
+                ? "bg-red-500 hover:bg-red-600"
+                : "bg-gray-300 cursor-not-allowed"
+            }`}
             onClick={() => handleCancelOrder(record)}
             disabled={record.status !== "pending"}
           >
             Hủy đơn hàng
           </button>
-          <button
-            className="px-4 py-2 text-white font-semibold rounded bg-yellow-500 hover:bg-yellow-600 mt-3"
-            onClick={() => history.push(`/complaint/${record._id}`)}
-          >
-            Khiếu nại/Hoàn hàng
-          </button>
-
+          {record.status == "final" && (
+            <button
+              className="px-4 py-2 text-white font-semibold rounded bg-yellow-500 hover:bg-yellow-600 mt-3"
+              onClick={() => history.push(`/complaint/${record._id}`)}
+            >
+              Khiếu nại/Hoàn hàng
+            </button>
+          )}
         </div>
       ),
     },

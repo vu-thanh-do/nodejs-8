@@ -25,6 +25,7 @@ import {
 import { LeftSquareOutlined } from "@ant-design/icons";
 
 import Slider from "react-slick";
+import axios from "axios";
 
 const { Meta } = Card;
 const { Option } = Select;
@@ -49,7 +50,7 @@ const Pay = () => {
   let { id } = useParams();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
-
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const hideModal = () => {
     setVisible(false);
   };
@@ -227,7 +228,10 @@ const Pay = () => {
     form.resetFields();
     history.push("/cart");
   };
-
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
   useEffect(() => {
     (async () => {
       try {
@@ -277,7 +281,120 @@ const Pay = () => {
     })();
     window.scrollTo(0, 0);
   }, []);
+  const [tinh, setTinh] = useState([]); // Danh sách tỉnh
+  const [huyen, setHuyen] = useState([]); // Danh sách huyện
+  const [xa, setXa] = useState([]); // Danh sách xã
+  const [idXa, setIdXa] = useState(null);
+  const [idHuyen2, setIdHuyen] = useState(null);
 
+  const fetchTinh = async () => {
+    try {
+      const response = await axios.get(
+        "https://online-gateway.ghn.vn/shiip/public-api/master-data/province",
+        {
+          headers: {
+            token: "11acfacb-a8a1-11ef-a094-f28ffa88cdab",
+          },
+        }
+      );
+      console.log(response, "response");
+      setTinh(response.data.data);
+    } catch (error) {
+      console.error("Lỗi khi tải tỉnh:", error);
+    }
+  };
+  const onGetPrice = (idx) => {
+    setIdXa(idx);
+    fetchPrice();
+  };
+  const fetchHuyen = async (idTinh) => {
+    try {
+      setLoading(true);
+
+      const response = await axios.get(
+        "https://online-gateway.ghn.vn/shiip/public-api/master-data/district",
+        {
+          params: {
+            province_id: idTinh,
+          },
+          headers: {
+            token: "11acfacb-a8a1-11ef-a094-f28ffa88cdab",
+          },
+        }
+      );
+      setHuyen(response.data.data);
+      setXa([]); // Reset xã khi chọn tỉnh mới
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchXa = async (idHuyen) => {
+    try {
+      setLoading(true);
+      setIdHuyen(idHuyen);
+
+      const response = await axios.get(
+        "https://online-gateway.ghn.vn/shiip/public-api/master-data/ward",
+        {
+          params: {
+            district_id: idHuyen,
+          },
+          headers: {
+            token: "11acfacb-a8a1-11ef-a094-f28ffa88cdab",
+          },
+        }
+      );
+      setXa(response.data.data);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchPrice = async () => {
+    try {
+      setLoading(true);
+      const dataPayload = {
+        service_type_id: 5,
+        from_district_id: 1442,
+        from_ward_code: "21211",
+        to_district_id: idHuyen2,
+        to_ward_code: idXa,
+        height: 20,
+        length: 30,
+        weight: 3000,
+        width: 40,
+        insurance_value: 0,
+        coupon: null,
+        items: [
+          {
+            name: "TEST1",
+            quantity: 1,
+            height: 200,
+            weight: 1000,
+            length: 200,
+            width: 200,
+          },
+        ],
+      };
+      const response = await axios.post(
+        "https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee",
+        dataPayload,
+        {
+          headers: {
+            token: "11acfacb-a8a1-11ef-a094-f28ffa88cdab",
+            shop_id: "5472459",
+          },
+        }
+      );
+      // setXa(response.data.data);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchTinh();
+  }, []);
   return (
     <div class="py-5">
       <Spin spinning={false}>
@@ -352,8 +469,20 @@ const Pay = () => {
                   </Form.Item>
 
                   <Form.Item
+                    name="total"
+                    label="Tổng tiền"
+                    hasFeedback
+                    style={{ marginBottom: 10 }}
+                  >
+                    <Input
+                      defaultValue={totalPrice || 0}
+                      placeholder="Số điện thoại"
+                    />
+                  </Form.Item>
+
+                  <Form.Item
                     name="address"
-                    label="Địa chỉ"
+                    label=" Tỉnh/Thành"
                     hasFeedback
                     rules={[
                       {
@@ -365,7 +494,89 @@ const Pay = () => {
                     ]}
                     style={{ marginBottom: 15 }}
                   >
-                    <Input placeholder="Địa chỉ" />
+                    {/* <Input placeholder="Địa chỉ" /> */}
+                    <div className="mb-4">
+                      <Select
+                        placeholder="Chọn Tỉnh/Thành"
+                        className="w-full"
+                        allowClear
+                        onChange={(e) => fetchHuyen(e)}
+                      >
+                        {tinh.map((item) => {
+                          return (
+                            <Option
+                              style={{ color: "black" }}
+                              className="text-black"
+                              key={item.ProvinceID}
+                              value={item.ProvinceID}
+                            >
+                              <p style={{ color: "black" }}>
+                                {item.ProvinceName}
+                              </p>
+                            </Option>
+                          );
+                        })}
+                      </Select>
+                    </div>
+                  </Form.Item>
+                  <Form.Item
+                    name="address2"
+                    label="Quận/Huyện"
+                    hasFeedback
+                    rules={[
+                      {
+                        required: true,
+                        message: "Vui lòng nhập địa chỉ",
+                      },
+                    ]}
+                    style={{ marginBottom: 15 }}
+                  >
+                    <div className="mb-4">
+                      <Select
+                        placeholder="Chọn Quận/Huyện"
+                        className="w-full"
+                        allowClear
+                        onChange={(e) => fetchXa(e)}
+                        disabled={!huyen.length}
+                      >
+                        {huyen.map((item) => (
+                          <Option key={item.DistrictID} value={item.DistrictID}>
+                            {item.DistrictName}
+                          </Option>
+                        ))}
+                      </Select>
+                    </div>
+                  </Form.Item>
+                  <Form.Item
+                    name="address3"
+                    label="Xã/Phường"
+                    hasFeedback
+                    rules={[
+                      {
+                        required: true,
+                        message: "Vui lòng nhập địa chỉ",
+                      },
+                    ]}
+                    style={{ marginBottom: 15 }}
+                  >
+                    <div className="mb-4">
+                      <Select
+                        placeholder="Chọn Xã/Phường"
+                        className="w-full"
+                        allowClear
+                        onChange={(e) => {
+                          onGetPrice(e);
+                          alert(e)
+                        }}
+                        disabled={!xa.length}
+                      >
+                        {xa.map((item) => (
+                          <Option key={item.WardCode} value={item.WardCode}>
+                            {item.WardName}
+                          </Option>
+                        ))}
+                      </Select>
+                    </div>
                   </Form.Item>
 
                   <Form.Item

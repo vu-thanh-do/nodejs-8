@@ -22,6 +22,7 @@ const orderRoute = require("./app/routers/order");
 const statisticalRoute = require("./app/routers/statistical");
 const paymentRoute = require("./app/routers/paypal");
 const contactRoute = require("./app/routers/contact");
+const complaintModel = require("./app/models/complaintModel");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -50,7 +51,25 @@ app.use("/api/payment", paymentRoute);
 app.use("/api/contacts", contactRoute);
 app.use("/uploads", express.static("uploads"));
 // sendEmailNotification();
-
+app.get('/api/complaint/:id', async (req, res) => {
+  try {
+    const complaint = await complaintModel.findOne({ orderId: req.params.orderId });
+    if (!complaint) {
+      return res.status(404).json({ message: 'Không tìm thấy khiếu nại với đơn hàng này' });
+    }
+    res.json(complaint);
+  } catch (error) {
+    res.status(500).json({ message: 'Lỗi khi lấy dữ liệu khiếu nại' });
+  }
+});
+app.post('/api/create-complaint', async (req, res) => {
+  try {
+    const complaint = await complaintModel.create(req.body);
+   return res.json(complaint);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 const PORT = process.env.PORT || _CONST.PORT;
 
 app.listen(PORT, () => {

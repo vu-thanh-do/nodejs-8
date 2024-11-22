@@ -10,10 +10,14 @@ router.get(
   orderController.searchOrderByName
 );
 router.get("/user", middleware.checkLogin, orderController.getOrderByUser);
+// router.get(
+//   "/:id",
+//   middleware.checkLogin,
+//   middleware.getOrder,
+//   orderController.getOrderById
+// );
 router.get(
   "/:id",
-  middleware.checkLogin,
-  middleware.getOrder,
   orderController.getOrderById
 );
 router.post("/", middleware.checkLogin, orderController.createOrder);

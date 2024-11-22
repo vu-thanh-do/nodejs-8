@@ -12,7 +12,6 @@ import Cart from "../pages/Purchase/Cart/cart";
 import Pay from "../pages/Purchase/Pay/pay";
 import CartHistory from "../pages/Purchase/ManagementCart/cartHistory";
 import Contact from "../pages/Contact/contact";
-import Complaint from "../pages/Complaint/Complaint";
 
 import { Layout } from "antd";
 import { withRouter } from "react-router";
@@ -23,6 +22,7 @@ import ProductList from "../pages/Product/productList/productList";
 import News from "../pages/News/news";
 import NewsDetail from "../pages/NewsDetai/newsDetai";
 import ResetPassword from "../pages/ResetPassword/resetPassword";
+import Complaint from "../pages/Complaint/complaint";
 
 const RouterURL = withRouter(({ location }) => {
   const PrivateContainer = () => (
