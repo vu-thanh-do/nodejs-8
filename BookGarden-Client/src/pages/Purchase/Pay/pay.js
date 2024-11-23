@@ -54,8 +54,10 @@ const Pay = () => {
   const hideModal = () => {
     setVisible(false);
   };
+  const [totalFee, setTotalFee] = useState(0);
 
   const accountCreate = async (values) => {
+    console.log(values, "values");
     if (values.billing === "paypal") {
       localStorage.setItem("description", values.description);
       localStorage.setItem("address", values.address);
@@ -303,9 +305,9 @@ const Pay = () => {
       console.error("Lỗi khi tải tỉnh:", error);
     }
   };
-  const onGetPrice = (idx) => {
-    setIdXa(idx);
-    fetchPrice();
+  const onGetPrice = async (idx) => {
+    // setIdXa(idx);
+    await fetchPrice(idx);
   };
   const fetchHuyen = async (idTinh) => {
     try {
@@ -351,7 +353,7 @@ const Pay = () => {
     }
   };
 
-  const fetchPrice = async () => {
+  const fetchPrice = async (cc) => {
     try {
       setLoading(true);
       const dataPayload = {
@@ -359,21 +361,21 @@ const Pay = () => {
         from_district_id: 1442,
         from_ward_code: "21211",
         to_district_id: idHuyen2,
-        to_ward_code: idXa,
-        height: 20,
-        length: 30,
-        weight: 3000,
-        width: 40,
+        to_ward_code: cc,
+        height: 1,
+        length: 1,
+        weight: 1,
+        width: 1,
         insurance_value: 0,
         coupon: null,
         items: [
           {
             name: "TEST1",
             quantity: 1,
-            height: 200,
-            weight: 1000,
-            length: 200,
-            width: 200,
+            height: 1,
+            weight: 1,
+            length: 1,
+            width: 1,
           },
         ],
       };
@@ -387,6 +389,8 @@ const Pay = () => {
           },
         }
       );
+      console.log(response?.data?.data?.total, "responseresponseresponse");
+      setTotalFee(response?.data?.data?.total);
       // setXa(response.data.data);
     } finally {
       setLoading(false);
@@ -481,17 +485,9 @@ const Pay = () => {
                   </Form.Item>
 
                   <Form.Item
-                    name="address"
+                    name="address5"
                     label=" Tỉnh/Thành"
                     hasFeedback
-                    rules={[
-                      {
-                        required: true,
-                        message: "Vui lòng nhập địa chỉ",
-                      },
-                      // { max: 20, message: 'Password maximum 20 characters.' },
-                      // { min: 6, message: 'Password at least 6 characters.' },
-                    ]}
                     style={{ marginBottom: 15 }}
                   >
                     {/* <Input placeholder="Địa chỉ" /> */}
@@ -523,12 +519,6 @@ const Pay = () => {
                     name="address2"
                     label="Quận/Huyện"
                     hasFeedback
-                    rules={[
-                      {
-                        required: true,
-                        message: "Vui lòng nhập địa chỉ",
-                      },
-                    ]}
                     style={{ marginBottom: 15 }}
                   >
                     <div className="mb-4">
@@ -551,12 +541,6 @@ const Pay = () => {
                     name="address3"
                     label="Xã/Phường"
                     hasFeedback
-                    rules={[
-                      {
-                        required: true,
-                        message: "Vui lòng nhập địa chỉ",
-                      },
-                    ]}
                     style={{ marginBottom: 15 }}
                   >
                     <div className="mb-4">
@@ -566,7 +550,6 @@ const Pay = () => {
                         allowClear
                         onChange={(e) => {
                           onGetPrice(e);
-                          alert(e)
                         }}
                         disabled={!xa.length}
                       >
@@ -579,6 +562,19 @@ const Pay = () => {
                     </div>
                   </Form.Item>
 
+                  <p>Phí ship</p>
+                  <p className="font-bold text-black text-xl">
+                    {" "}
+                    {totalFee?.toLocaleString()} VND
+                  </p>
+                  <Form.Item
+                    name="address"
+                    label=" Nhập chi tiết số nhà , ngách ngõ "
+                    hasFeedback
+                    style={{ marginBottom: 15 }}
+                  >
+                    <Input placeholder="Chi tiết Địa chỉ" />
+                  </Form.Item>
                   <Form.Item
                     name="description"
                     label="Lưu ý cho đơn hàng"

@@ -15,6 +15,10 @@ const complaintSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: "pending",
+  },
   image: [String],
   createdAt: {
     type: Date,
