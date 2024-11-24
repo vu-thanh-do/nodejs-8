@@ -11,7 +11,7 @@ import {
 } from "antd";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import axiosClient from "../../../apis/axiosClient";
 import eventApi from "../../../apis/eventApi";
 import productApi from "../../../apis/productApi";
@@ -22,7 +22,9 @@ const CartHistory = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const history = useHistory();
-
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const complaints = searchParams.get("complaints");
   const handleCancelOrder = (order) => {
     console.log(order);
     Modal.confirm({
@@ -210,7 +212,95 @@ const CartHistory = () => {
       ),
     },
   ];
+  const columnsComplain = [
+    {
+      title: <div className="text-center">Thông tin sản phẩm</div>,
+      dataIndex: "products",
+      key: "productInfo",
+      render: (products) => (
+        <div className="">
+          {products.map((item, index) => (
+            <div key={index} className="product-info">
+              <div className="product-item ">
+                <img
+                  src={item.product?.image}
+                  alt={item.product?.name}
+                  className="product-image "
+                />
+              </div>
+              <h3 className="product-name-1">{item.product?.name}</h3>
+              <div className="product-price">
+                Giá gốc:
+                {item?.product?.salePrice?.toLocaleString("vi", {
+                  style: "currency",
+                  currency: "VND",
+                })}
+              </div>
+              <div className="product-stock">Số lượng: {item?.stock}</div>
+              <div className="product-total">
+                Tổng tiền:
+                {(item?.product?.salePrice * item.stock).toLocaleString("vi", {
+                  style: "currency",
+                  currency: "VND",
+                })}
+              </div>
+              {index !== products.length - 1 && <Divider />}
+            </div>
+          ))}
+        </div>
+      ),
+    },
 
+    {
+      title: <div className="text-center">Tổng đơn hàng</div>,
+      dataIndex: "orderTotal",
+      key: "orderTotal",
+      render: (products) => (
+        <div className="text-center">
+          {products?.toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          })}
+        </div>
+      ),
+    },
+
+    {
+      title: <div className="text-center">Địa chỉ</div>,
+      dataIndex: "address",
+      key: "address",
+      render: (address) => <div className="text-center">{address}</div>,
+    },
+
+    {
+      title: <div className="text-center">Hình thức thanh toán</div>,
+      dataIndex: "billing",
+      key: "billing",
+      render: (billing) => <div className="text-center">{billing}</div>,
+    },
+
+    {
+      title: <div className="text-center">Trạng thái</div>,
+      dataIndex: "status",
+      key: "status",
+      render: (slugs) => (
+        <span className="flex justify-center items-center w-full text-center">
+          Đã hoàn thành khiếu nại
+        </span>
+      ),
+    },
+
+    {
+      title: <div className="text-center">Ngày đặt</div>,
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (createdAt) => (
+        <span className="text-center">
+          {moment(createdAt).format("DD/MM/YYYY HH:mm")}
+        </span>
+      ),
+    },
+  ];
   const handleList = () => {
     (async () => {
       try {
@@ -240,7 +330,9 @@ const CartHistory = () => {
                   <span>Trang chủ</span>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item href="">
-                  <span>Quản lý đơn hàng </span>
+                  <span>
+                    {complaints ? "Quản lý khiếu nại" : "Quản lý đơn hàng"}{" "}
+                  </span>
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>
@@ -249,8 +341,16 @@ const CartHistory = () => {
               <br></br>
               <Card>
                 <Table
-                  columns={columns}
-                  dataSource={orderList.data}
+                  columns={complaints ? columnsComplain : columns}
+                  dataSource={
+                    complaints
+                      ? orderList.data?.filter(
+                          (ic) => ic.status == "finalcomplaint"
+                        )
+                      : orderList.data?.filter(
+                          (ic) => ic.status != "finalcomplaint"
+                        )
+                  }
                   rowKey="_id"
                   pagination={{ position: ["bottomCenter"] }}
                 />

@@ -24,6 +24,8 @@ const statisticalRoute = require("./app/routers/statistical");
 const paymentRoute = require("./app/routers/paypal");
 const contactRoute = require("./app/routers/contact");
 const complaintModel = require("./app/models/complaintModel");
+const { request } = require("http");
+const order = require("./app/models/order");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -102,6 +104,19 @@ app.get("/api/update-complaint/:id", async (req, res) => {
         new: true,
       }
     );
+    if (req.query.status === "final") {
+      await order.findByIdAndUpdate(
+        data.orderId,
+        {
+          $set: {
+            status: "finalcomplaint",
+          },
+        },
+        {
+          new: true,
+        }
+      );
+    }
     const emailContent = `
         Xin chào ${"Khách hàng"},
 

@@ -39,6 +39,7 @@ const orderSchema = new mongoose.Schema(
         "final",
         "returned",
         "rejected",
+        "finalcomplaint",
       ],
       default: "pending",
     },

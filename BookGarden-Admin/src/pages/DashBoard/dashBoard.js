@@ -152,7 +152,7 @@ const DashBoard = () => {
                 <div className="card_number">
                   <div>
                     <div className="number_total">
-                      {statisticList.productTotal || 0}
+                      {statisticList?.productTotal || 0}
                     </div>
                     <div className="title_total">Số sản phẩm</div>
                   </div>
