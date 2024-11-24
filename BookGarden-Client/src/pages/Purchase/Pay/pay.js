@@ -88,7 +88,7 @@ const Pay = () => {
           description: values.description,
           status: "pending",
           products: productDetail,
-          orderTotal: orderTotal,
+          orderTotal: Number(totalPrice) + Number(totalFee),
         };
 
         console.log(formatData);
@@ -184,7 +184,7 @@ const Pay = () => {
           description: description,
           status: "pending",
           products: productDetail,
-          orderTotal: orderTotal,
+          orderTotal: Number(totalPrice) + Number(totalFee),
         };
 
         console.log(formatData);
@@ -231,7 +231,7 @@ const Pay = () => {
     history.push("/cart");
   };
   const totalPrice = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.salePrice * item.quantity,
     0
   );
   useEffect(() => {
@@ -357,7 +357,7 @@ const Pay = () => {
     try {
       setLoading(true);
       const dataPayload = {
-        service_type_id: 5,
+        service_type_id: 2,
         from_district_id: 1442,
         from_ward_code: "21211",
         to_district_id: idHuyen2,
@@ -473,18 +473,6 @@ const Pay = () => {
                   </Form.Item>
 
                   <Form.Item
-                    name="total"
-                    label="Tổng tiền"
-                    hasFeedback
-                    style={{ marginBottom: 10 }}
-                  >
-                    <Input
-                      defaultValue={totalPrice || 0}
-                      placeholder="Số điện thoại"
-                    />
-                  </Form.Item>
-
-                  <Form.Item
                     name="address5"
                     label=" Tỉnh/Thành"
                     hasFeedback
@@ -567,6 +555,30 @@ const Pay = () => {
                     {" "}
                     {totalFee?.toLocaleString()} VND
                   </p>
+                  <p>Tổng tiền ( bao gồm phí ship)</p>
+                  <p className="font-bold text-black text-xl">
+                    {" "}
+                    {(
+                      Number(totalPrice) + Number(totalFee)
+                    )?.toLocaleString()}{" "}
+                    VND
+                  </p>
+                  {/* <Form.Item
+                    name="total"
+                    label="Tổng tiền ( bao gồm phí ship)"
+                    hasFeedback
+                    style={{ marginBottom: 10 }}
+                  >
+                    <Input
+                      disabled
+                      defaultValue={
+                        totalFee != 0
+                          ? Number(totalPrice) + Number(totalFee)
+                          : 0
+                      }
+                      placeholder="Số điện thoại"
+                    />
+                  </Form.Item> */}
                   <Form.Item
                     name="address"
                     label=" Nhập chi tiết số nhà , ngách ngõ "

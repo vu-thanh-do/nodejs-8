@@ -134,7 +134,7 @@ const DashBoard = () => {
                 <div className="card_number">
                   <div>
                     <div className="number_total">
-                      {statisticList.totalIncome?.toLocaleString("vi", {
+                      {statisticList?.totalIncome?.toLocaleString("vi", {
                         style: "currency",
                         currency: "VND",
                       })}
