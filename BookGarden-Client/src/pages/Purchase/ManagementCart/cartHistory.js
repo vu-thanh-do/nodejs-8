@@ -283,11 +283,19 @@ const CartHistory = () => {
       title: <div className="text-center">Trạng thái</div>,
       dataIndex: "status",
       key: "status",
-      render: (slugs) => (
-        <span className="flex justify-center items-center w-full text-center">
-          Đã hoàn thành khiếu nại
-        </span>
-      ),
+      render: (slugs) => {
+        const checkStatus = {
+          finalcomplaint: "đã hoàn thành",
+          pendingcomplaint: "đang chờ",
+          acceptcomplaint: "đã duyệt",
+          refundcomplaint: "đang hoàn trả",
+        };
+        return (
+          <span className="flex justify-center items-center w-full text-center">
+            {checkStatus[slugs]}
+          </span>
+        );
+      },
     },
 
     {
@@ -345,10 +353,18 @@ const CartHistory = () => {
                   dataSource={
                     complaints
                       ? orderList.data?.filter(
-                          (ic) => ic.status == "finalcomplaint"
+                          (ic) =>
+                            ic.status == "finalcomplaint" ||
+                            ic.status == "pendingcomplaint" ||
+                            ic.status == "acceptcomplaint" ||
+                            ic.status == "refundcomplaint"
                         )
                       : orderList.data?.filter(
-                          (ic) => ic.status != "finalcomplaint"
+                          (ic) =>
+                            ic.status != "finalcomplaint" &&
+                            ic.status != "pendingcomplaint" &&
+                            ic.status != "acceptcomplaint" &&
+                            ic.status != "refundcomplaint"
                         )
                   }
                   rowKey="_id"

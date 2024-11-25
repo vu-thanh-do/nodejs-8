@@ -278,7 +278,15 @@ const Complaint = () => {
       title: "Trạng thái",
       dataIndex: "status",
       key: "status",
-      render: (image) => <p>{image}</p>,
+      render: (image) =>{
+        const checkStatus = {
+          finalcomplaint: "đã hoàn thành",
+          pendingcomplaint: "đang chờ",
+          acceptcomplaint: "đã duyệt",
+          refundcomplaint: "đang hoàn trả",
+        };
+        return  <p>{checkStatus[image]}</p>
+      },
     },
     {
       title: "Tên khách hàng",
@@ -296,7 +304,15 @@ const Complaint = () => {
       title: "Lý do",
       dataIndex: "reason",
       key: "reason",
-      render: (text) => <a>{text}</a>,
+      render: (text) => {
+        const checkStatus = {
+          "wrong-item":"Giao sai hàng",
+          "damaged":"Sản phẩm bị hư hỏng",
+          "other":"Khác",
+
+        }
+        return <a>{checkStatus[text]}</a>
+      },
     },
     {
       title: "Chi tiết",
@@ -312,7 +328,7 @@ const Complaint = () => {
         <a>
           {text?.map((itc) => (
             <>
-              <img src={itc} /> <br />
+              <img className="!w-[100px]" src={itc} /> <br />
             </>
           ))}
         </a>
@@ -325,6 +341,19 @@ const Complaint = () => {
       width: "20%",
       render: (text, record) => {
         console.log(record, "record");
+        const statusFlow = {
+          pendingcomplaint: ["acceptcomplaint"],
+          acceptcomplaint: ["refundcomplaint", "finalcomplaint"],
+          refundcomplaint: ["finalcomplaint"],
+          finalcomplaint: [],
+        };
+        const validNextStatuses = statusFlow[record.status] || [];
+        const allStatuses = [
+          { value: "pendingcomplaint", label: "đang chờ" },
+          { value: "acceptcomplaint", label: "đã duyệt" },
+          { value: "refundcomplaint", label: "đang hoàn trả" },
+          { value: "finalcomplaint", label: "đã hoàn thành" },
+        ];
         return (
           <div className="">
             <Select
@@ -337,18 +366,16 @@ const Complaint = () => {
               }}
               style={{ width: 160 }}
             >
-              <Select.Option value={"pending"} className="w-[120px]">
-                đang chờ
-              </Select.Option>
-              <Select.Option value={"accept"} className="w-[120px]">
-                đã duyệt
-              </Select.Option>
-              <Select.Option value={"pendingProcess"} className="w-[120px]">
-                đang hoàn trả
-              </Select.Option>
-              <Select.Option value={"final"} className="w-[120px]">
-                đã hoàn thành
-              </Select.Option>
+              {allStatuses.map((status) => (
+                <Select.Option
+                  key={status.value}
+                  value={status.value}
+                  disabled={!validNextStatuses.includes(status.value)}
+                  className="w-[120px]"
+                >
+                  {status.label}
+                </Select.Option>
+              ))}
             </Select>
           </div>
         );

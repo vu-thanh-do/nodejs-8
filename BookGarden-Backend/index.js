@@ -104,12 +104,12 @@ app.get("/api/update-complaint/:id", async (req, res) => {
         new: true,
       }
     );
-    if (req.query.status === "final") {
+    if (req.query.status) {
       await order.findByIdAndUpdate(
         data.orderId,
         {
           $set: {
-            status: "finalcomplaint",
+            status: req.query.status,
           },
         },
         {
@@ -138,7 +138,7 @@ app.get("/api/update-complaint/:id", async (req, res) => {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: "thanhdo9xi@gmail.com",
+      to: data.user.email,
       subject: "Cập nhật trạng thái khiếu nại",
       text: emailContent,
     };
