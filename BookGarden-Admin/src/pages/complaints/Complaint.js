@@ -343,7 +343,7 @@ const Complaint = () => {
         console.log(record, "record");
         const statusFlow = {
           pendingcomplaint: ["acceptcomplaint"],
-          acceptcomplaint: ["refundcomplaint", "finalcomplaint"],
+          acceptcomplaint: ["refundcomplaint"],
           refundcomplaint: ["finalcomplaint"],
           finalcomplaint: [],
         };

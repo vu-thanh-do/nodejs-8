@@ -85,6 +85,13 @@ app.get("/api/complaint", async (req, res) => {
 app.post("/api/create-complaint", async (req, res) => {
   try {
     const complaint = await complaintModel.create(req.body);
+    await order.findByIdAndUpdate(req.body.orderId,{
+      $set:{
+        status :"pendingcomplaint"
+      }
+    },{
+      new : true
+    })
     return res.json(complaint);
   } catch (error) {
     res.status(500).json({ message: error.message });
